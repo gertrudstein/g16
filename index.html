@@ -99,13 +99,26 @@ d<!DOCTYPE html>
  <header>
   <div class="wrap mast">
     <div class="hero" aria-hidden="true">
-      <picture>
-        <source srcset="assets/banner.webp" type="image/webp" />
-        <img src="assets/banner.jpg" alt="Gieszer 16 Eingang – Banner" style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
-      </picture>
+      <!-- minimal, robust banner -->
+      <img id="bannerImg"
+           src="/assets/banner.jpg"
+           alt="Gieszer 16 Eingang – Banner"
+           style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
     </div>
   </div>
 </header>
+
+<script>
+  // If local file missing, fall back to Imgur automatically
+  (function () {
+    const img = document.getElementById('bannerImg');
+    const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
+    const test = new Image();
+    test.onload = () => { /* local exists, do nothing */ };
+    test.onerror = () => { img.src = fallback; };
+    test.src = img.src; // try /assets/banner.jpg
+  })();
+</script>
 
   <main class="wrap">
     <div class="notice"><strong>Hinweis:</strong> Es gibt bei uns grundsätzlich keinen Kartenvorverkauf, wir können auch keine Karten an der Abendkasse reservieren. Sorry.</div>
