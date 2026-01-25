@@ -1,4 +1,4 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
@@ -81,7 +81,7 @@ d<!DOCTYPE html>
     /* Contact */
     .contact{ background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin: 2rem 0; }
     label{ display:block; margin:.35rem 0 .2rem; color: var(--muted); text-align:left; }
-    input, textarea, select{ width:100%; padding:.75rem .9rem; background:#0e0e0e; color:#fff; border:1px solid #1f1f1f; border-radius:8px; box-sizing:border-box; }
+    input, textarea{ width:100%; padding:.75rem .9rem; background:#0e0e0e; color:#fff; border:1px solid #1f1f1f; border-radius:8px; box-sizing:border-box; }
     textarea{ min-height: 160px; }
     .row{ display:grid; gap:.8rem; grid-template-columns: 1fr 1fr; }
     @media (max-width: 700px){ .row{ grid-template-columns: 1fr; } }
@@ -90,35 +90,35 @@ d<!DOCTYPE html>
     footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
   </style>
 </head>
+
 <body>
   <div class="ribbon">
     <h1>G16 Veranstaltungen</h1>
     <p>Kein Bock auf Diskriminierung!</p>
   </div>
 
- <header>
-  <div class="wrap mast">
-    <div class="hero" aria-hidden="true">
-      <!-- minimal, robust banner -->
-      <img id="bannerImg"
-           src="/assets/banner.jpg"
-           alt="Gieszer 16 Eingang – Banner"
-           style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
+  <header>
+    <div class="wrap mast">
+      <div class="hero" aria-hidden="true">
+        <img id="bannerImg"
+             src="/assets/banner.jpg"
+             alt="Gieszer 16 Eingang – Banner"
+             style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<script>
-  // If local file missing, fall back to Imgur automatically
-  (function () {
-    const img = document.getElementById('bannerImg');
-    const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
-    const test = new Image();
-    test.onload = () => { /* local exists, do nothing */ };
-    test.onerror = () => { img.src = fallback; };
-    test.src = img.src; // try /assets/banner.jpg
-  })();
-</script>
+  <script>
+    // If local file missing, fall back to Imgur automatically
+    (function () {
+      const img = document.getElementById('bannerImg');
+      const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
+      const test = new Image();
+      test.onload = () => {};
+      test.onerror = () => { img.src = fallback; };
+      test.src = img.src;
+    })();
+  </script>
 
   <main class="wrap">
     <div class="notice"><strong>Hinweis:</strong> Es gibt bei uns grundsätzlich keinen Kartenvorverkauf, wir können auch keine Karten an der Abendkasse reservieren. Sorry.</div>
@@ -126,34 +126,32 @@ d<!DOCTYPE html>
     <!-- Veranstaltungen -->
     <section aria-labelledby="events-head">
       <h2 id="events-head">Veranstaltungen</h2>
-      <div id="events">
 
-<article class="event" data-date="2026-02-07">
+      <div id="events">
+        <article class="event" data-date="2026-02-07">
           <div class="date">07.02.2026: Konzert</div>
           <div class="content">
-Needful Things: Grindcore,Prag
-Controlled Exsitence: Grindcore,Prag
-Nidare: Post Blackmetal,Berlin
-Kuoleman Teatteri: D-Beat,Leipzig
-The Hole: Grindcore,Leipzig
+Needful Things: Grindcore, Prag
+Controlled Exsitence: Grindcore, Prag
+Nidare: Post Blackmetal, Berlin
+Kuoleman Teatteri: D-Beat, Leipzig
+The Hole: Grindcore, Leipzig
 
-Einlasz: 20:00  Bands: 21:00 
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
-      </div>
-    </section>
-        
-<article class="event" data-date="2026-02-14">
+
+        <article class="event" data-date="2026-02-14">
           <div class="date">14.02.2026: WYRD•PÄNG RecordRelease</div>
           <div class="content">
-Packung: HC Punk 
-Ecstasphere: Metallic IDM 
+Packung: HC Punk
+Ecstasphere: Metallic IDM
 Oliotronix: 8bit glitch
-DerWarst: Circuit Bent Noise 
-Skam: Mutant Acid 
+DerWarst: Circuit Bent Noise
+Skam: Mutant Acid
 CancelWashington: Hit³
-            
-DJ Sets: 
+
+DJ Sets:
 Enuit B2B Hektor Lack
 Caedes
 LUI
@@ -162,61 +160,53 @@ FRX
 Fugly
 Einemillion
 
-Einlasz: 21:30  Bands: 22:30 
+Einlass: 21:30  Bands: 22:30
           </div>
         </article>
-      </div>
-    </section>
 
-<article class="event" data-date="2026-02-21">
+        <article class="event" data-date="2026-02-21">
           <div class="date">21.02.2026: Konzert</div>
           <div class="content">
-Krav Boca: Punk Rap,Frankreich/Griechenland/Marokko 
-Flesia: Black Metal,Leipzig 
+Krav Boca: Punk Rap, Frankreich/Griechenland/Marokko
+Flesia: Black Metal, Leipzig
 tba + Aftershow
 
-Einlasz: 20:00  Bands: 21:00
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
-      </div>
-    </section>
 
-<article class="event" data-date="2026-02-28">
+        <article class="event" data-date="2026-02-28">
           <div class="date">28.02.2026: HEAVY ROOTATION - Soundsystem Conference</div>
           <div class="content">
-Siren Sisters Soundsystem & MC Treasure Irie: Reggae/Dub/Steppa/Bass,München
-Paam Soundsystem: Reggae/Dub/Steppa/Bass,Grimma,Leipzig 
+Siren Sisters Soundsystem & MC Treasure Irie: Reggae/Dub/Steppa/Bass, München
+Paam Soundsystem: Reggae/Dub/Steppa/Bass, Grimma/Leipzig
 
-Einlasz: 20:00  Bands: 21:00
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
-      </div>
-    </section>
 
-<article class="event" data-date="2026-03-13">
+        <article class="event" data-date="2026-03-13">
           <div class="date">13.03.2026: Konzert</div>
           <div class="content">
-Die Bockwurschtbude: Punk,Frankfurt(Oder)
-Dead Honeckers: Punk,Leipzig 
+Die Bockwurschtbude: Punk, Frankfurt (Oder)
+Dead Honeckers: Punk, Leipzig
 
-Einlasz: 20:00  Bands: 21:00 
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
-      </div>
-    </section>
 
-<article class="event" data-date="2026-03-14">
+        <article class="event" data-date="2026-03-14">
           <div class="date">14.03.2026: Konzert - 20 Jahre Schlagzeiln</div>
           <div class="content">
-Schlagzeiln: Zecken Rap,Berlin
+Schlagzeiln: Zecken Rap, Berlin
 tba Support + Aftershow
 
-Einlasz: 20:00  Bands: 21:00
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
       </div>
     </section>
-    
+
     <!-- Kalender -->
     <section aria-labelledby="cal-headline">
       <h2 id="cal-headline">Kalender</h2>
@@ -274,10 +264,21 @@ Einlasz: 20:00  Bands: 21:00
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
     const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+
     const today = new Date();
+    // normalize "today" to midnight for date-only compares
+    today.setHours(0,0,0,0);
+
     let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-    // Collect dates from the event list (data-date attributes)
+    // Remove past events BEFORE calendar render
+    document.querySelectorAll('.event[data-date]').forEach(el => {
+      const d = el.getAttribute('data-date');
+      if (!d) return;
+      const eventDate = new Date(d + "T00:00:00");
+      if (eventDate < today) el.remove();
+    });
+
     function getEventDates(){
       const dates = new Set();
       document.querySelectorAll('.event[data-date]').forEach(el => {
@@ -291,30 +292,46 @@ Einlasz: 20:00  Bands: 21:00
       const eventDates = getEventDates();
       const y = view.getFullYear();
       const m = view.getMonth();
+
       monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
 
       grid.innerHTML = '';
       for (const w of DOW){
         const el = document.createElement('div');
-        el.className = 'dow'; el.textContent = w; grid.appendChild(el);
+        el.className = 'dow';
+        el.textContent = w;
+        grid.appendChild(el);
       }
 
       const first = new Date(y, m, 1);
-      const startOffset = (first.getDay() + 6) % 7;
+      const startOffset = (first.getDay() + 6) % 7; // Monday-based
       const daysInMonth = new Date(y, m+1, 0).getDate();
+
       for (let i=0;i<startOffset;i++){
-        const b = document.createElement('div'); b.className='cell'; grid.appendChild(b);
+        const b = document.createElement('div');
+        b.className='cell';
+        grid.appendChild(b);
       }
+
       for (let d=1; d<=daysInMonth; d++){
         const el = document.createElement('div');
         el.className = 'cell';
+
         const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-        const day = document.createElement('div'); day.className='day'; day.textContent = d; el.appendChild(day);
+
+        const day = document.createElement('div');
+        day.className='day';
+        day.textContent = d;
+        el.appendChild(day);
+
         if (eventDates.has(dateStr)){
           el.classList.add('eventful');
-          const dot = document.createElement('div'); dot.className='dot'; el.appendChild(dot);
+          const dot = document.createElement('div');
+          dot.className='dot';
+          el.appendChild(dot);
           el.title = 'Event vorhanden';
         }
+
         grid.appendChild(el);
       }
     }
@@ -322,20 +339,8 @@ Einlasz: 20:00  Bands: 21:00
     prevBtn.addEventListener('click', () => { view.setMonth(view.getMonth()-1); renderCalendar(); });
     nextBtn.addEventListener('click', () => { view.setMonth(view.getMonth()+1); renderCalendar(); });
 
-    // Init
     renderCalendar();
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Remove past events
-    document.querySelectorAll('.event[data-date]').forEach(el => {
-      const d = el.getAttribute('data-date');
-      if (d) {
-        const eventDate = new Date(d);
-        if (eventDate < today) {
-          el.remove();
-        }
-      }
-    });
 
     // Contact form (mailto)
     document.getElementById('contactForm').addEventListener('submit', (e) => {
