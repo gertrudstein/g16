@@ -118,38 +118,41 @@
     <p>Kein Bock auf Diskriminierung!</p>
   </div>
 
-  <header>
-    <div class="wrap mast">
-      <div class="hero" aria-hidden="true">
-        <img id="bannerImg"
-             src="/assets/banner.jpg"
-             alt="Gieszer 16 Eingang – Banner"
-             style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
-      </div>
+<header>
+  <div class="wrap mast">
+    <div class="hero" aria-hidden="true">
+      <img id="bannerImg"
+           src="/assets/banner.jpg"
+           alt="Gieszer 16 Eingang – Banner"
+           style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
     </div>
-  </header>
+  </div>
+</header>
 
-  <script>
-    // If local file missing, fall back to Imgur automatically
-    (function () {
-      const img = document.getElementById('bannerImg');
-      const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
-      const test = new Image();
-      test.onload = () => {};
-      test.onerror = () => { img.src = fallback; };
-      test.src = img.src;
-    })();
-  </script>
+<script>
+  (function () {
+    const img = document.getElementById('bannerImg');
+    const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
+    const test = new Image();
+    test.onload = () => {};
+    test.onerror = () => { img.src = fallback; };
+    test.src = img.src;
+  })();
+</script>
 
-  <main class="wrap">
-    <div class="notice">
-      <h2>Hinweis:</h2>
-      Es gibt bei uns grundsätzlich keinen Kartenvorverkauf, wir können auch keine Karten an der Abendkasse reservieren. Sorry.
-    </div>
+<main class="wrap">
 
-    <!-- Veranstaltungen -->
-    <section aria-labelledby="events-head">
-      <h2 id="events-head">Veranstaltungen</h2>
+  <!-- space above Hinweis -->
+  <div style="margin-top:1.2rem;"></div>
+
+  <div class="notice">
+    <h2>Hinweis:</h2>
+    Es gibt bei uns grundsätzlich keinen Kartenvorverkauf, wir können auch keine Karten an der Abendkasse reservieren. Sorry.
+  </div>
+
+  <!-- Veranstaltungen -->
+  <section aria-labelledby="events-head">
+    <h2 id="events-head">Veranstaltungen</h2>
 
       <div id="events">
         <article class="event" data-date="2026-02-07">
