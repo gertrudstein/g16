@@ -307,14 +307,14 @@ Einlass: 20:00  Bands: 21:00
       </div>
     </section>
 
-    <!-- Kalender -->
+   <!-- Kalender -->
     <section aria-labelledby="cal-headline">
       <h2 id="cal-headline">Kalender</h2>
       <div class="cal" id="calendar">
         <div class="cal-head">
-          <button id="prev" type="button" aria-label="Vorheriger Monat">◀</button>
+          <button id="prev" aria-label="Vorheriger Monat">◀</button>
           <div class="cal-month" id="monthLabel">—</div>
-          <button id="next" type="button" aria-label="Nächster Monat">▶</button>
+          <button id="next" aria-label="Nächster Monat">▶</button>
         </div>
         <div class="cal-grid" id="grid"></div>
       </div>
@@ -336,13 +336,123 @@ Einlass: 20:00  Bands: 21:00
 
       <hr style="border: none; border-top:1px solid var(--border); margin: .8rem 0 1rem;"/>
 
-      <form id="contactForm" novalidate>
+      <form id="contactForm">
         <div class="row">
           <div>
             <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Dein Name" autocomplete="name" />
+            <input id="name" type="text" placeholder="Dein Name" />
           </div>
         </div>
-
         <label for="email">E-Mail</label>
-        <input id="email" name="email" type="email" placeholder="dein@mail.tld" autocomplete="email" input
+        <input id="email" type="email" placeholder="dein@mail.tld" />
+        <label for="msg">Nachricht</label>
+        <textarea id="msg" placeholder="Schreib uns…"></textarea>
+        <div style="margin-top:.8rem; text-align:left;">
+          <button type="submit" class="btn">Senden</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © Gieszer16 · <span id="year">2025</span>
+  </footer>
+
+  <script>
+    const monthLabel = document.getElementById('monthLabel');
+    const grid = document.getElementById('grid');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+
+    const today = new Date();
+    // normalize "today" to midnight for date-only compares
+    today.setHours(0,0,0,0);
+
+    let view = new Date(today.getFullYear(), today.getMonth(), 1);
+
+    // Remove past events BEFORE calendar render
+    document.querySelectorAll('.event[data-date]').forEach(el => {
+      const d = el.getAttribute('data-date');
+      if (!d) return;
+      const eventDate = new Date(d + "T00:00:00");
+      if (eventDate < today) el.remove();
+    });
+
+    function getEventDates(){
+      const dates = new Set();
+      document.querySelectorAll('.event[data-date]').forEach(el => {
+        const d = el.getAttribute('data-date');
+        if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
+      });
+      return dates;
+    }
+
+    function renderCalendar(){
+      const eventDates = getEventDates();
+      const y = view.getFullYear();
+      const m = view.getMonth();
+
+      monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+
+      grid.innerHTML = '';
+      for (const w of DOW){
+        const el = document.createElement('div');
+        el.className = 'dow';
+        el.textContent = w;
+        grid.appendChild(el);
+      }
+
+      const first = new Date(y, m, 1);
+      const startOffset = (first.getDay() + 6) % 7; // Monday-based
+      const daysInMonth = new Date(y, m+1, 0).getDate();
+
+      for (let i=0;i<startOffset;i++){
+        const b = document.createElement('div');
+        b.className='cell';
+        grid.appendChild(b);
+      }
+
+      for (let d=1; d<=daysInMonth; d++){
+        const el = document.createElement('div');
+        el.className = 'cell';
+
+        const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+        const day = document.createElement('div');
+        day.className='day';
+        day.textContent = d;
+        el.appendChild(day);
+
+        if (eventDates.has(dateStr)){
+          el.classList.add('eventful');
+          const dot = document.createElement('div');
+          dot.className='dot';
+          el.appendChild(dot);
+          el.title = 'Event vorhanden';
+        }
+
+        grid.appendChild(el);
+      }
+    }
+
+    prevBtn.addEventListener('click', () => { view.setMonth(view.getMonth()-1); renderCalendar(); });
+    nextBtn.addEventListener('click', () => { view.setMonth(view.getMonth()+1); renderCalendar(); });
+
+    renderCalendar();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contact form (mailto)
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const to = "vgruppe-g16@mail36.net";
+      const name = document.getElementById('name').value.trim();
+      const from = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
+      const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
