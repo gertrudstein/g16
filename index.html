@@ -2,9 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <!-- iOS + all devices: proper scaling + safe-area support -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
   <title>G16 Veranstaltungen</title>
   <meta name="description" content="G16 Veranstaltungen – Kein Bock auf Diskriminierung!" />
 
@@ -31,39 +29,21 @@
       --radius: 10px;
     }
 
-    /* ✅ Mobile/iOS-safe baseline */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-    body { margin:0; min-height: 100dvh; overflow-x: hidden; }
-
     body{
+      margin:0;
       font-family: 'Typo1915', 'Courier New', Courier, monospace;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.5;
+      overflow-x: hidden;
     }
-
-    /* Wrapper fits all screens + safe areas (iPhone notch) */
-    .wrap{
-      max-width:1100px;
-      width:100%;
-      margin: 0 auto;
-      padding-left: max(1rem, env(safe-area-inset-left));
-      padding-right: max(1rem, env(safe-area-inset-right));
-    }
-
-    /* Prevent media overflow */
-    img, video, canvas, svg { max-width: 100%; height: auto; display:block; }
-
-    /* Avoid iOS zoom on form focus */
-    input, textarea, select, button { font: inherit; font-size: 16px; }
+    .wrap{ max-width:1100px; width:100%; margin: 0 auto; padding: 0 1rem; box-sizing:border-box; }
 
     .ribbon{
       position: sticky; top:0; z-index: 50;
       width: 100%;
       background: #000; border-bottom: 1px solid var(--border);
-      text-align:center;
-      padding: calc(.9rem + env(safe-area-inset-top)) .8rem .9rem;
+      text-align:center; padding: .9rem .8rem;
       box-shadow: var(--shadow);
     }
     .ribbon h1{ margin:0; font-size: 2rem; color: var(--red); }
@@ -87,7 +67,7 @@
 
     /* Calendar */
     .cal{ margin: .2rem 0 2rem; user-select:none; }
-    .cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:.8rem; gap:.6rem; }
+    .cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:.8rem; }
     .cal-head button{ background:#000; border:1px solid var(--border); color: var(--ink); padding:.45rem .7rem; border-radius:8px; cursor:pointer; }
     .cal-head button:focus{ outline:2px solid var(--focus); outline-offset:2px; }
     .cal-month{ font-size:1.1rem; color:#fff; text-align:center; flex-grow:1; }
@@ -96,13 +76,13 @@
     .dow{ color: var(--muted); font-weight:bold; }
     .cell{ min-height:3rem; position:relative; }
     .cell .day{ position:absolute; top:.4rem; left:.5rem; color: var(--muted); font-size:.95rem; }
-    .cell.eventful{ border-color:#2b2b2b; background:#141414; }
+    .cell.eventful{ border-color:#2b2b2b; background:#141414; cursor:pointer; }
     .dot{ position:absolute; right:.45rem; bottom:.35rem; width:.55rem; height:.55rem; border-radius:50%; background: var(--red-strong); }
 
     /* Contact */
     .contact{ background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin: 2rem 0; }
     label{ display:block; margin:.35rem 0 .2rem; color: var(--muted); text-align:left; }
-    input, textarea{ width:100%; padding:.75rem .9rem; background:#0e0e0e; color:#fff; border:1px solid #1f1f1f; border-radius:8px; }
+    input, textarea{ width:100%; padding:.75rem .9rem; background:#0e0e0e; color:#fff; border:1px solid #1f1f1f; border-radius:8px; box-sizing:border-box; font-size:16px; }
     textarea{ min-height: 160px; }
     .row{ display:grid; gap:.8rem; grid-template-columns: 1fr 1fr; }
     @media (max-width: 700px){ .row{ grid-template-columns: 1fr; } }
@@ -118,41 +98,36 @@
     <p>Kein Bock auf Diskriminierung!</p>
   </div>
 
-<header>
-  <div class="wrap mast">
-    <div class="hero" aria-hidden="true">
-      <img id="bannerImg"
-           src="/assets/banner.jpg"
-           alt="Gieszer 16 Eingang – Banner"
-           style="width:100%;height:auto;max-height:340px;object-fit:cover;display:block;">
+  <header>
+    <div class="wrap mast">
+      <div class="hero" aria-hidden="true">
+        <img id="bannerImg"
+             src="/assets/banner.jpg"
+             alt="Gieszer 16 Eingang – Banner">
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<script>
-  (function () {
-    const img = document.getElementById('bannerImg');
-    const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
-    const test = new Image();
-    test.onload = () => {};
-    test.onerror = () => { img.src = fallback; };
-    test.src = img.src;
-  })();
-</script>
+  <script>
+    // If local file missing, fall back to Imgur automatically
+    (function () {
+      const img = document.getElementById('bannerImg');
+      const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
+      const test = new Image();
+      test.onload = () => {};
+      test.onerror = () => { img.src = fallback; };
+      test.src = img.src;
+    })();
+  </script>
 
-<main class="wrap">
+  <main class="wrap">
+    <div class="notice">
+      <h2>Hinweis:</h2>
+      Es gibt bei uns grundsätzlich keinen Kartenvorverkauf, wir können auch keine Karten an der Abendkasse reservieren. Sorry.
+    </div>
 
-  <!-- space above Hinweis -->
-  <div style="margin-top:1.2rem;"></div>
-
-  <div class="notice">
-    <h2>Hinweis:</h2>
-    Es gibt bei uns grundsätzlich keinen Kartenvorverkauf, wir können auch keine Karten an der Abendkasse reservieren. Sorry.
-  </div>
-
-  <!-- Veranstaltungen -->
-  <section aria-labelledby="events-head">
-    <h2 id="events-head">Veranstaltungen</h2>
+    <section aria-labelledby="events-head">
+      <h2 id="events-head">Veranstaltungen</h2>
 
       <div id="events">
         <article class="event" data-date="2026-02-07">
@@ -161,6 +136,7 @@
 Needful Things: Grindcore|Prag
 Controlled Existence: Grindcore|Prag
 Nidare: Post Blackmetal|Berlin
+Kuoleman Teatteri: D-Beat|Leipzig
 The Hole: Grindcore|Leipzig
 
 Einlass: 20:00  Bands: 21:00
@@ -202,10 +178,10 @@ Einlass: 20:00  Bands: 21:00
         </article>
 
         <article class="event" data-date="2026-02-28">
-          <div class="date">28.02.2026: HEAVY ROOTATION</div>
+          <div class="date">28.02.2026: HEAVY ROOTATION - Soundsystem Conference</div>
           <div class="content">
-Siren Sisters Soundsystem & MC Treasure Irie x Paam Soundsystem: 
-Reggae/Dub/Steppa/Bass|München|Grimma|Leipzig
+Siren Sisters Soundsystem & MC Treasure Irie: Reggae/Dub/Steppa/Bass|München
+Paam Soundsystem: Reggae/Dub/Steppa/Bass|Grimma|Leipzig
 
 Einlass: 20:00  Bands: 21:00
           </div>
@@ -233,7 +209,6 @@ Einlass: 20:00  Bands: 21:00
       </div>
     </section>
 
-    <!-- Kalender -->
     <section aria-labelledby="cal-headline">
       <h2 id="cal-headline">Kalender</h2>
       <div class="cal" id="calendar">
@@ -246,7 +221,6 @@ Einlass: 20:00  Bands: 21:00
       </div>
     </section>
 
-    <!-- Kontakt -->
     <section class="contact" aria-labelledby="contact-head">
       <h2 id="contact-head">Kontakt</h2>
       <p>
@@ -260,7 +234,7 @@ Einlass: 20:00  Bands: 21:00
         <a href="mailto:datesatg16@mail36.net">datesatg16@mail36.net</a>
       </p>
 
-      <hr style="border: none; border-top:1px solid var(--border); margin: .8rem 0 1rem;"/>
+      <hr style="border:none; border-top:1px solid var(--border); margin:.8rem 0 1rem;"/>
 
       <form id="contactForm">
         <div class="row">
@@ -304,6 +278,14 @@ Einlass: 20:00  Bands: 21:00
       if (eventDate < today) el.remove();
     });
 
+    // Optional: sort events by date (keeps order consistent everywhere)
+    (function sortEvents(){
+      const wrap = document.getElementById('events');
+      const items = Array.from(wrap.querySelectorAll('.event[data-date]'));
+      items.sort((a,b) => (a.getAttribute('data-date') || '').localeCompare(b.getAttribute('data-date') || ''));
+      items.forEach(it => wrap.appendChild(it));
+    })();
+
     function getEventDates(){
       const dates = new Set();
       document.querySelectorAll('.event[data-date]').forEach(el => {
@@ -313,10 +295,21 @@ Einlass: 20:00  Bands: 21:00
       return dates;
     }
 
+    function buildEventIndex(){
+      const map = new Map();
+      document.querySelectorAll('.event[data-date]').forEach(el => {
+        const d = el.getAttribute('data-date');
+        if (d && !map.has(d)) map.set(d, el);
+      });
+      return map;
+    }
+
     function renderCalendar(){
       const eventDates = getEventDates();
+      const eventIndex = buildEventIndex();
       const y = view.getFullYear();
       const m = view.getMonth();
+
       monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
 
       grid.innerHTML = '';
@@ -353,7 +346,12 @@ Einlass: 20:00  Bands: 21:00
           const dot = document.createElement('div');
           dot.className='dot';
           el.appendChild(dot);
-          el.title = 'Event vorhanden';
+          el.title = 'Zum Event springen';
+
+          const target = eventIndex.get(dateStr);
+          if (target){
+            el.addEventListener('click', () => target.scrollIntoView({behavior:'smooth', block:'start'}));
+          }
         }
 
         grid.appendChild(el);
@@ -366,6 +364,7 @@ Einlass: 20:00  Bands: 21:00
     renderCalendar();
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Contact form (mailto)
     document.getElementById('contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const to = "vgruppe-g16@mail36.net";
