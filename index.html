@@ -178,9 +178,6 @@
 
     /* Extra small screens (e.g., iPhone SE / 320px) */
  @media (max-width: 380px){
-     html{
-    font-size: 50%;
-}
       .ribbon h1{ font-size: 1rem; }
       .ribbon p{ font-size: 0.5rem; }
       .cal-grid{ gap:.4rem; }
@@ -188,6 +185,11 @@
       .cell{ min-height:2.6rem; }
       .cell .day{ top:.35rem; left:.4rem; }
     }
+@media (max-width: 600px){
+  html{
+    font-size: 50%;
+  }
+}
 }
   </style>
 </head>
