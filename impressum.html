@@ -25,13 +25,17 @@
 
     *{ box-sizing: border-box; }
 
+    /* Schrift wie auf Indexseite */
+    html{
+      font-size: 100%;
+    }
+
     body{
       margin:0;
       font-family: 'Typo1915', monospace;
       background: var(--bg);
       color: var(--ink);
       line-height:1.6;
-      font-size: 16px;
     }
 
     .wrap{
@@ -59,7 +63,7 @@
 
     /* E-Mail-Link blau */
     a{
-      color: #1E90FF; /* Blau */
+      color: #1E90FF;
       text-decoration: none;
       font-family: inherit;
     }
@@ -76,10 +80,10 @@
       font-size: 0.9rem;
     }
 
-    /* Responsives Design für Smartphones */
+    /* Responsives Design wie auf Indexseite */
     @media (max-width: 600px){
-      body{
-        font-size: 14px;
+      html{
+        font-size: 68%; /* identisch zur Indexseite */
       }
 
       h1{
@@ -114,12 +118,11 @@
       <p>Vertreten durch den Vorstand.</p>
 
       <p>
-      
         E-Mail: <a href="mailto:vgruppe-g16@mail36.net">vgruppe-g16@mail36.net</a>
       </p>
 
       <p>
-        Verantwortlich für den Inhalt nach i.S.d. § 18 Abs. 2 MStV:<br>
+        Verantwortlich i.S.d. § 18 Abs. 2 MStV:<br>
         Verein für Stadtteilförderung, Wohn- und Kultur e.V.
       </p>
     </div>
@@ -130,3 +133,4 @@
   </div>
 </body>
 </html>
+
