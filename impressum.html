@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Impressum – G16</title>
 
+  <style>
+    @font-face {
+      font-family: 'Typo1915';
+      src: url('fonts/1915-Typo-Typewriter.woff2') format('woff2'),
+           url('fonts/1915-Typo-Typewriter.woff') format('woff');
+      font-display: swap;
+    }
+
+    :root{
+      --bg: #0a0a0a;
+      --panel: #141414;
+      --ink: #e1e1e1;
+      --muted: #b3b3b3;
+      --red: #c11212;
+      --border: #262626;
+      --radius: 10px;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin:0;
+      font-family: 'Typo1915', monospace;
+      background: var(--bg);
+      color: var(--ink);
+      line-height:1.6;
+    }
+
+    .wrap{
+      max-width:800px;
+      margin: 4rem auto;
+      padding: 1rem;
+    }
+
+    h1{
+      color: var(--red);
+      margin-bottom: 2rem;
+    }
+
+    .box{
+      background: var(--panel);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    a{
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    a:hover{
+      color: var(--red);
+      text-decoration: underline;
+    }
+
+    footer{
+      margin-top: 3rem;
+      text-align:center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Impressum</h1>
+
+    <div class="box">
+      <p>
+        Angaben gemäß § 5 TMG
+      </p>
+
+      <p>
+        Verein für Stadtteilförderung, Wohn- und Kultur e.V.<br>
+        Gießerstraße 16<br>
+        04229 Leipzig<br>
+        Deutschland
+      </p>
+
+      <p>
+        Vertreten durch den Vorstand.
+      </p>
+
+      <p>
+        Kontakt:<br>
+        E-Mail: vgruppe-g16@mail36.net
+      </p>
+
+      <p>
+        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+        Verein für Stadtteilförderung, Wohn- und Kultur e.V.
+      </p>
+    </div>
+
+    <footer>
+      <a href="index.html">← Zurück zur Startseite</a>
+    </footer>
+  </div>
+</body>
+</html>
