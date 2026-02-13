@@ -31,17 +31,19 @@
       background: var(--bg);
       color: var(--ink);
       line-height:1.6;
+      font-size: 16px; /* Basis wie index.html */
     }
 
     .wrap{
       max-width:800px;
-      margin: 4rem auto;
+      margin: 2rem auto;
       padding: 1rem;
     }
 
     h1{
       color: var(--red);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
     }
 
     .box{
@@ -49,6 +51,10 @@
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: 1.5rem;
+    }
+
+    p{
+      margin-bottom: 1rem;
     }
 
     a{
@@ -62,10 +68,29 @@
     }
 
     footer{
-      margin-top: 3rem;
+      margin-top: 2rem;
       text-align:center;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsives Design für Smartphones */
+    @media (max-width: 600px){
+      body{
+        font-size: 14px; /* etwas kleiner auf kleinen Screens */
+      }
+
+      h1{
+        font-size: 1.5rem;
+      }
+
+      .wrap{
+        padding: 0.8rem;
+      }
+
+      .box{
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -76,7 +101,7 @@
 
     <div class="box">
       <p>
-        Angaben gemäß § 5 Digital-Dienste-Gesetz 
+        Angaben gemäß § 5 TMG
       </p>
 
       <p>
@@ -92,11 +117,11 @@
 
       <p>
         Kontakt:<br>
-        E-Mail: vgruppe-g16@mail36.net
+        E-Mail: <a href="mailto:vgruppe-g16@mail36.net">vgruppe-g16@mail36.net</a>
       </p>
 
       <p>
-        Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:<br>
+        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
         Verein für Stadtteilförderung, Wohn- und Kultur e.V.
       </p>
     </div>
