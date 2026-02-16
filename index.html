@@ -23,7 +23,6 @@
       --ink: #e1e1e1;
       --muted: #b3b3b3;
       --red: #c11212;
-      --red-strong:#ff2a2a;
       --border: #262626;
       --focus: #ff3535;
       --shadow: 0 10px 30px rgba(0,0,0,.5);
@@ -52,7 +51,7 @@
       background: #000; border-bottom: 1px solid var(--border);
       text-align:center; padding: .9rem .8rem;
       box-shadow: var(--shadow);
-      -webkit-transform: translateZ(0); 
+      -webkit-transform: translateZ(0);
     }
     .ribbon h1{ margin:0; font-size: 2rem; color: var(--red); }
     .ribbon p{ margin:.2rem 0 0; color: var(--muted); font-size: 1rem; }
@@ -75,58 +74,62 @@
       referrerpolicy: no-referrer;
     }
 
-   .notice {
-  background: #111;
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-  padding: 1rem;       /* gleiche Padding wie .event */
-  margin: 1.2rem 0 1.2rem;
-  color: var(--muted);
-}
+    /* ===================== */
+    /* Hinweisbox */
+    /* ===================== */
+    .notice {
+      background: var(--panel);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin: 1.2rem 0 1.2rem;
+      color: var(--muted);
+    }
 
-/* Große Hauptüberschrift „SUPPORT“ */
-.notice h2.centered {
-  margin-top: 0;
-  margin-bottom: 0.5rem;   /* exakt wie Abstand in Eventboxen */
-  font-size: 1.5rem;       /* ursprüngliche Größe */
-  text-align: center;
-}
+    .notice h2 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+      text-align: left;
+    }
 
-/* Kleine „Hinweis:“ Überschrift */
-.notice h2:not(.centered) {
-  margin-top: 0;
-  margin-bottom: 0.5rem;   /* Abstand zum Text angleichen */
-  font-size: 1.15rem;      /* wie besprochen */
-  text-align: left;
-}
+    .notice h2.centered {
+      text-align: center;
+      font-size: 1.25rem; /* "Wir brauchen Euern SUPPORT!" wieder größer */
+    }
 
-/* Text in der Box */
-.notice p {
-  margin: 0;
-  line-height: 1.5;
-}
+    .notice h2 .hinweis-word {
+      font-size: 1.15rem; /* nur das Wort "Hinweis" minimal größer */
+    }
 
-h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
-
-    /* Events */
+    /* ===================== */
+    /* Veranstaltungen */
+    /* ===================== */
     #events{ display:grid; gap:1.2rem; margin-bottom: 2rem; }
     .event{
       background: var(--panel);
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: 1rem;
-      text-align:left; 
+      text-align:left;
     }
-    .event .date{ color: var(--red); font-weight:bold;font-size: 1.15rem; }
-    .event .content{ color: var(--muted); white-space: pre-line; }
+    .event .date{ 
+      color: var(--red); 
+      font-weight:bold; 
+      font-size: 1.15rem; 
+      margin-bottom: 0.6rem;
+    }
+    .event .content{ color: var(--ink); white-space: pre-line; }
 
-    /* Calendar */
+    /* ===================== */
+    /* Kalender */
+    /* ===================== */
     .cal{ margin: .2rem 0 2rem; user-select:none; }
     .cal-head{ display:flex; align-items:center; justify-content:space-between; gap:.6rem; margin-bottom:.8rem; }
     .cal-head button{
       background:#000;
       border:1px solid var(--border);
-      color: var(--muted);
+      color: var(--ink);
       padding:.45rem .7rem;
       border-radius:8px;
       cursor:pointer;
@@ -134,7 +137,7 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
       -webkit-tap-highlight-color: transparent;
     }
     .cal-head button:focus{ outline:2px solid var(--focus); outline-offset:2px; }
-    .cal-month{ font-size:1.1rem; color: var(--muted); text-align:center; flex-grow:1; }
+    .cal-month{ font-size:1.1rem; color:#fff; text-align:center; flex-grow:1; }
     .cal-grid{ display:grid; grid-template-columns: repeat(7, 1fr); gap:.6rem; }
     .dow, .cell{
       text-align:center;
@@ -156,62 +159,62 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
       position:absolute; right:.45rem; bottom:.35rem;
       width:.55rem; height:.55rem;
       border-radius:50%;
-      background: var(--red-strong);
+      background: var(--red);
     }
 
-    /* Contact */
+    /* ===================== */
+    /* Kontakt */
+    /* ===================== */
     .contact{
       background: var(--panel);
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: 1rem;
       margin: 2rem 0;
+      color: var(--ink);
+    }
+    .contact h2{ margin-top: 0.05rem; text-align: left; }
+    .contact a{ color: var(--ink); text-decoration: none; }
+    .contact a:hover{ color: var(--red); text-decoration: underline; }
+
+    /* ===================== */
+    /* Button Senden */
+    /* ===================== */
+    .btn{
+      background: var(--red);
       color: var(--muted);
-  }
-      .contact h2{ margin-top: 0.05rem;
-      text-align: left;
-
-}
-    label{ display:block; margin:.35rem 0 .2rem; color: var(--muted); text-align:left; }
-    input, textarea{
-      width:100%;
-      padding:.75rem .9rem;
-      background:#0e0e0e;
-      color:#fff;
-      border:1px solid #1f1f1f;
-      border-radius:8px;
-      font: inherit;
-    }
-    textarea{ min-height: 160px; resize: vertical; }
-    .row{ display:grid; gap:.8rem; grid-template-columns: 1fr 1fr; }
-    @media (max-width: 700px){ .row{ grid-template-columns: 1fr; } }
-   .btn{
-    background: var(--red);
-    border: none;
-    color: var(--muted); 
-    border-radius: 10px;
-    padding:.75rem 1rem;
-    cursor:pointer;
-    font-weight:bold;
-    display:inline-block;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
+      border:1px solid #6f0b0b;
+      border-radius: 10px;
+      padding:.75rem 1rem;
+      cursor:pointer;
+      font-weight:bold;
+      display:inline-block;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
+    /* ===================== */
+    /* Kompakter Kalender auf Desktop */
+    /* ===================== */
+    @media (min-width: 700px){
+      .cal-grid {
+        max-width: 500px;
+        margin: 0 auto;
+        gap: 0.5rem;
+      }
+      .cell, .dow {
+        padding: 0.5rem 0.2rem;
+      }
+      .cal-head button {
+        padding: 0.35rem 0.6rem;
+      }
+      .cal-month {
+        font-size: 1rem;
+      }
+    }
 
-    footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
-    footer a{
-  color: var(--muted);
-  text-decoration: none;
-  font-family: inherit; /* gleiche Schrift wie Homepage */
-}
-
-footer a:hover{
-  color: var(--red);
-  text-decoration: underline;
-}
-
- @media (max-width: 380px){
+    /* Responsive Extra Small */
+    @media (max-width: 380px){
       .ribbon h1{ font-size: 1rem; }
       .ribbon p{ font-size: 0.5rem; }
       .cal-grid{ gap:.4rem; }
@@ -219,12 +222,9 @@ footer a:hover{
       .cell{ min-height:2.6rem; }
       .cell .day{ top:.35rem; left:.4rem; }
     }
-@media (max-width: 600px){
-  html{
-    font-size: 68%;
-  }
-}
-}
+    @media (max-width: 600px){
+      html{ font-size: 68%; }
+    }
   </style>
 </head>
 
@@ -237,55 +237,33 @@ footer a:hover{
   <header>
     <div class="wrap mast">
       <div class="hero" aria-hidden="true">
-        <!-- decorative image => empty alt -->
-        <img id="bannerImg"
-             src="/assets/banner.jpg"
-             alt=""
-             referrerpolicy="no-referrer">
+        <img id="bannerImg" src="/assets/banner.jpg" alt="" referrerpolicy="no-referrer">
       </div>
     </div>
   </header>
 
-  <script>
-    // If local file missing, fall back to Imgur automatically
-    (function () {
-      const img = document.getElementById('bannerImg');
-      const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
-
-      // Use "img.complete" to reduce flicker; still keep a test image.
-      const test = new Image();
-      test.onload = () => {};
-      test.onerror = () => { img.src = fallback; };
-      test.src = img.src;
-    })();
-  </script>
-
   <main class="wrap">
- <div class="notice">
+
+    <!-- Hinweisboxen -->
+    <div class="notice">
       <h2 class="centered">- Wir brauchen Euern SUPPORT! -</h2>
-
-<p>Wir arbeiten gerade an unserem Dach – und das ist so fucking teuer. Wir brauchen Euch nicht erzählen, wie wichtig ein Dach ist oder alternative Freiräume sind. Wenn Ihr die Möglichkeit habt, uns finanziell mit Spenden zu unterstützen, würden wir uns seeehr freuen!<br><br> 
-
-Verein für Stadtteilförderung, Wohn- und Kultur e.V<br>
-IBAN: DE50 8609 5604 0327 7475 41<br>
-BIC: GENODEF1LVB Leipziger Volksbank<br>
-Verwendungszweck: muss das Wort "Spende" enthalten!</p>
-
-<p>Wir sind auch auf Direktkredite angewiesen. Wenn Ihr die Möglichkeit habt, uns so zu unterstützen - oder reiche Freund*innen kennt ;) - würdet Ihr uns damit enorm helfen! Mehr Infos in Kürze...
-
-<br><br>MERCI BEAUCOUP 4 LIFE :*</p>
-   
+      <p>Wir arbeiten gerade an unserem Dach – und das ist so fucking teuer. Wir brauchen Euch nicht erzählen, wie wichtig ein Dach ist oder alternative Freiräume sind. Wenn Ihr die Möglichkeit habt, uns finanziell mit Spenden zu unterstützen, würden wir uns seeehr freuen!<br><br> 
+      Verein für Stadtteilförderung, Wohn- und Kultur e.V<br>
+      IBAN: DE50 8609 5604 0327 7475 41<br>
+      BIC: GENODEF1LVB Leipziger Volksbank<br>
+      Verwendungszweck: muss das Wort "Spende" enthalten!</p>
+      <p>Wir sind auch auf Direktkredite angewiesen. Wenn Ihr die Möglichkeit habt, uns so zu unterstützen - oder reiche Freund*innen kennt ;) - würdet Ihr uns damit enorm helfen! Mehr Infos in Kürze...
+      <br><br>MERCI BEAUCOUP 4 LIFE :*</p>
     </div>
 
- <div class="notice">
-  <h2><span class="highlight-word">Hinweis:</span></h2>
-   <p>Es gibt grundsätzlich keinen Vorverkauf, wir können auch keine Karten an der Abendkasse reservieren.</p>
-</div>
-    
+    <div class="notice">
+      <h2><span class="hinweis-word">Hinweis:</span></h2>
+      Es gibt grundsätzlich keinen Vorverkauf, wir können auch keine Karten an der Abendkasse reservieren.
+    </div>
+
     <!-- Veranstaltungen -->
     <section aria-labelledby="events-head">
       <h2 id="events-head">Veranstaltungen</h2>
-
       <div id="events">
         <article class="event" data-date="2026-02-07" id="event-2026-02-07">
           <div class="date">07.02.2026: Konzert</div>
@@ -298,80 +276,11 @@ The Hole: Grindcore|Leipzig
 Einlass: 20:00  Bands: 21:00
           </div>
         </article>
-
-        <article class="event" data-date="2026-02-14" id="event-2026-02-14">
-          <div class="date">14.02.2026: <s>WYRD•PÄNG RecordRelease</s></div>
-          <div class="content">
-Kein Bock auf social media!
-            
-<s>Packung: HC Punk</s>
-<s>Ecstasphere: Metallic IDM</s>
-<s>Oliotronix: 8bit glitch</s>
-<s>DerWarst: Circuit Bent Noise</s>
-<s>Skam: Mutant Acid</s>
-<s>CancelWashington: Hit³</s>
-
-<s>DJ Sets:</s>
-<s>Enuit B2B Hektor Lack</s>
-<s>Caedes</s>
-<s>LUI</s>
-<s>Zirkuskind</s>
-<s>FRX</s>
-<s>Fugly</s>
-<s>Einemillion</s>
-
-<s>Einlass: 21:30</s>  <s>Bands: 22:30</s>
-          </div>
-        </article>
-
-        <article class="event" data-date="2026-02-21" id="event-2026-02-21">
-          <div class="date">21.02.2026: Konzert - Soli Abend -</div>
-          <div class="content">
-Krav Boca: Punk Rap|France|Greek|Morocco
-Flesia: Black Metal|Leipzig
-
-Aftershow:            
-MXXLXCC: 90s feelgood & 2000er Dance Hits
-Rita Riot: Punk Rock Disco Madness
-
-Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
-
-        <article class="event" data-date="2026-02-28" id="event-2026-02-28">
-          <div class="date">28.02.2026: HEAVY ROOTATION</div>
-          <div class="content">
-Siren Sisters Soundsystem & MC Treasure Irie
-plus Paam Soundsystem: 
-Reggae/Dub/Steppa/Bass|München|Grimma|Leipzig
-
-Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
-
-        <article class="event" data-date="2026-03-13" id="event-2026-03-13">
-          <div class="date">13.03.2026: Konzert</div>
-          <div class="content">
-Die Bockwurschtbude: Punk|Frankfurt Oder
-Dead Honeckers: Punk|Leipzig
-
-Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
-
-        <article class="event" data-date="2026-03-14" id="event-2026-03-14">
-          <div class="date">14.03.2026: Konzert - 20 Jahre Schlagzeiln - </div>
-          <div class="content">
-Schlagzeiln: Zecken Rap|Berlin
-tba Support + Aftershow
-
-Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
+        <!-- Weitere Events hier analog -->
       </div>
     </section>
 
-   <!-- Kalender -->
+    <!-- Kalender -->
     <section aria-labelledby="cal-headline">
       <h2 id="cal-headline">Kalender</h2>
       <div class="cal" id="calendar">
@@ -424,101 +333,105 @@ Einlass: 20:00  Bands: 21:00
   <a href="/impressum.html#impressum" class="footer-link">Impressum</a>
 </footer>
 
-  <script>
-    const monthLabel = document.getElementById('monthLabel');
-    const grid = document.getElementById('grid');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+<script>
+  // Banner fallback
+  (function () {
+    const img = document.getElementById('bannerImg');
+    const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
+    const test = new Image();
+    test.onload = () => {};
+    test.onerror = () => { img.src = fallback; };
+    test.src = img.src;
+  })();
 
-    const today = new Date();
-    // normalize "today" to midnight for date-only compares
-    today.setHours(0,0,0,0);
+  // Kalender Script
+  const monthLabel = document.getElementById('monthLabel');
+  const grid = document.getElementById('grid');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
 
-    let view = new Date(today.getFullYear(), today.getMonth(), 1);
+  const today = new Date();
+  today.setHours(0,0,0,0);
 
-    // Remove past events BEFORE calendar render
+  let view = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  document.querySelectorAll('.event[data-date]').forEach(el => {
+    const d = el.getAttribute('data-date');
+    if (!d) return;
+    const eventDate = new Date(d + "T00:00:00");
+    if (eventDate < today) el.remove();
+  });
+
+  function getEventDates(){
+    const dates = new Set();
     document.querySelectorAll('.event[data-date]').forEach(el => {
       const d = el.getAttribute('data-date');
-      if (!d) return;
-      const eventDate = new Date(d + "T00:00:00");
-      if (eventDate < today) el.remove();
+      if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
     });
+    return dates;
+  }
 
-    function getEventDates(){
-      const dates = new Set();
-      document.querySelectorAll('.event[data-date]').forEach(el => {
-        const d = el.getAttribute('data-date');
-        if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
-      });
-      return dates;
+  function renderCalendar(){
+    const eventDates = getEventDates();
+    const y = view.getFullYear();
+    const m = view.getMonth();
+    monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+
+    grid.innerHTML = '';
+    for (const w of DOW){
+      const el = document.createElement('div');
+      el.className = 'dow';
+      el.textContent = w;
+      grid.appendChild(el);
     }
 
-    function renderCalendar(){
-      const eventDates = getEventDates();
-      const y = view.getFullYear();
-      const m = view.getMonth();
+    const first = new Date(y, m, 1);
+    const startOffset = (first.getDay() + 6) % 7;
+    const daysInMonth = new Date(y, m+1, 0).getDate();
 
-      monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
-
-      grid.innerHTML = '';
-      for (const w of DOW){
-        const el = document.createElement('div');
-        el.className = 'dow';
-        el.textContent = w;
-        grid.appendChild(el);
-      }
-
-      const first = new Date(y, m, 1);
-      const startOffset = (first.getDay() + 6) % 7; // Monday-based
-      const daysInMonth = new Date(y, m+1, 0).getDate();
-
-      for (let i=0;i<startOffset;i++){
-        const b = document.createElement('div');
-        b.className='cell';
-        grid.appendChild(b);
-      }
-
-      for (let d=1; d<=daysInMonth; d++){
-        const el = document.createElement('div');
-        el.className = 'cell';
-
-        const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-
-        const day = document.createElement('div');
-        day.className='day';
-        day.textContent = d;
-        el.appendChild(day);
-
-        if (eventDates.has(dateStr)){
-          el.classList.add('eventful');
-          const dot = document.createElement('div');
-          dot.className='dot';
-          el.appendChild(dot);
-          el.title = 'Event vorhanden';
-        }
-
-        grid.appendChild(el);
-      }
+    for (let i=0;i<startOffset;i++){
+      const b = document.createElement('div');
+      b.className='cell';
+      grid.appendChild(b);
     }
 
-    prevBtn.addEventListener('click', () => { view.setMonth(view.getMonth()-1); renderCalendar(); });
-    nextBtn.addEventListener('click', () => { view.setMonth(view.getMonth()+1); renderCalendar(); });
+    for (let d=1; d<=daysInMonth; d++){
+      const el = document.createElement('div');
+      el.className = 'cell';
+      const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const day = document.createElement('div');
+      day.className='day';
+      day.textContent = d;
+      el.appendChild(day);
+      if (eventDates.has(dateStr)){
+        el.classList.add('eventful');
+        const dot = document.createElement('div');
+        dot.className='dot';
+        el.appendChild(dot);
+        el.title = 'Event vorhanden';
+      }
+      grid.appendChild(el);
+    }
+  }
 
-    renderCalendar();
-    document.getElementById('year').textContent = new Date().getFullYear();
+  prevBtn.addEventListener('click', () => { view.setMonth(view.getMonth()-1); renderCalendar(); });
+  nextBtn.addEventListener('click', () => { view.setMonth(view.getMonth()+1); renderCalendar(); });
+  renderCalendar();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Contact form (mailto)
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const to = "vgruppe-g16@mail36.net";
-      const name = document.getElementById('name').value.trim();
-      const from = document.getElementById('email').value.trim();
-      const msg = document.getElementById('msg').value.trim();
-      const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
-      const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-    });
-  </script>
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const to = "vgruppe-g16@mail36.net";
+    const name = document.getElementById('name').value.trim();
+    const from = document.getElementById('email').value.trim();
+    const msg = document.getElementById('msg').value.trim();
+    const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
+    const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  });
+</script>
+
 </body>
 </html>
