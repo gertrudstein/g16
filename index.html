@@ -113,7 +113,7 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
     .cal-head button{
       background:#000;
       border:1px solid var(--border);
-      color: var(--ink);
+      color: var(--muted);
       padding:.45rem .7rem;
       border-radius:8px;
       cursor:pointer;
@@ -121,7 +121,7 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
       -webkit-tap-highlight-color: transparent;
     }
     .cal-head button:focus{ outline:2px solid var(--focus); outline-offset:2px; }
-    .cal-month{ font-size:1.1rem; color:#fff; text-align:center; flex-grow:1; }
+    .cal-month{ font-size:1.1rem; color:--muted; text-align:center; flex-grow:1; }
     .cal-grid{ display:grid; grid-template-columns: repeat(7, 1fr); gap:.6rem; }
     .dow, .cell{
       text-align:center;
@@ -418,12 +418,12 @@ Einlass: 20:00  Bands: 21:00
     const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
 
     const today = new Date();
-    // normalize "today" to midnight for date-only compares
+  
     today.setHours(0,0,0,0);
 
     let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-    // Remove past events BEFORE calendar render
+  
     document.querySelectorAll('.event[data-date]').forEach(el => {
       const d = el.getAttribute('data-date');
       if (!d) return;
