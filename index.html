@@ -76,24 +76,25 @@
       referrerpolicy: no-referrer;
     }
 
-    .notice{
-      background: #111;
-      border:1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 1rem;
-      margin: 1.2rem 0 1.2rem;
-      color: var(--muted);
-    }
-    .notice h2{
-        margin-top: 0;
-        text-align: left;
-      }
-    .notice h2 .highlight-word {
-  font-size: 1.15rem;
+    .notice {
+  background: #111;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;       /* gleiche Padding wie .event */
+  margin: 1.2rem 0 1.2rem;
+  color: var(--muted);
 }
 
-.notice h2.centered{
-  text-align: center;
+.notice h2 {
+  margin-top: 0.2rem;   /* minimaler Abstand oben */
+  margin-bottom: 0.5rem; /* minimaler Abstand unten */
+  font-size: 1.15rem;   /* optional, falls Überschrift minimal größer als Text */
+  text-align: left;     /* oder .centered behalten, je nach Bedarf */
+}
+
+.notice p {
+  margin: 0;           /* entfernt extra <p> Abstand oben/unten */
+  line-height: 1.5;    /* gleiche Zeilenhöhe wie Body/Eventbox */
 }
   
 h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
