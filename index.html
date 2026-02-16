@@ -42,7 +42,6 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* Prevent mobile horizontal overflow (emails, long band names, URLs) */
     p, a, .event, .content, .notice { overflow-wrap: anywhere; word-break: break-word; }
 
     .wrap{ max-width:1100px; width:100%; margin: 0 auto; padding: 0 1rem; }
@@ -53,7 +52,7 @@
       background: #000; border-bottom: 1px solid var(--border);
       text-align:center; padding: .9rem .8rem;
       box-shadow: var(--shadow);
-      -webkit-transform: translateZ(0); /* helps some iOS sticky repaint quirks */
+      -webkit-transform: translateZ(0); 
     }
     .ribbon h1{ margin:0; font-size: 2rem; color: var(--red); }
     .ribbon p{ margin:.2rem 0 0; color: var(--muted); font-size: 1rem; }
@@ -76,7 +75,7 @@
       referrerpolicy: no-referrer;
     }
 
-    .notice {
+   .notice {
   background: #111;
   border: 1px dashed var(--border);
   border-radius: var(--radius);
@@ -85,18 +84,28 @@
   color: var(--muted);
 }
 
-.notice h2 {
-  margin-top: 0.2rem;   /* minimaler Abstand oben */
-  margin-bottom: 0.5rem; /* minimaler Abstand unten */
-  font-size: 1.15rem;   /* optional, falls Überschrift minimal größer als Text */
-  text-align: left;     /* oder .centered behalten, je nach Bedarf */
+/* Große Hauptüberschrift „SUPPORT“ */
+.notice h2.centered {
+  margin-top: 0;
+  margin-bottom: 0.5rem;   /* exakt wie Abstand in Eventboxen */
+  font-size: 1.5rem;       /* ursprüngliche Größe */
+  text-align: center;
 }
 
-.notice p {
-  margin: 0;           /* entfernt extra <p> Abstand oben/unten */
-  line-height: 1.5;    /* gleiche Zeilenhöhe wie Body/Eventbox */
+/* Kleine „Hinweis:“ Überschrift */
+.notice h2:not(.centered) {
+  margin-top: 0;
+  margin-bottom: 0.5rem;   /* Abstand zum Text angleichen */
+  font-size: 1.15rem;      /* wie besprochen */
+  text-align: left;
 }
-  
+
+/* Text in der Box */
+.notice p {
+  margin: 0;
+  line-height: 1.5;
+}
+
 h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
 
     /* Events */
@@ -106,7 +115,7 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: 1rem;
-      text-align:left; /* avoid justify oddities on mobile */
+      text-align:left; 
     }
     .event .date{ color: var(--red); font-weight:bold;font-size: 1.15rem; }
     .event .content{ color: var(--muted); white-space: pre-line; }
@@ -202,7 +211,6 @@ footer a:hover{
   text-decoration: underline;
 }
 
-    /* Extra small screens (e.g., iPhone SE / 320px) */
  @media (max-width: 380px){
       .ribbon h1{ font-size: 1rem; }
       .ribbon p{ font-size: 0.5rem; }
