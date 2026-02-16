@@ -40,7 +40,6 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* Prevent mobile horizontal overflow (emails, long band names, URLs) */
     p, a, .event, .content, .notice { overflow-wrap: anywhere; word-break: break-word; }
 
     .wrap{ max-width:1100px; width:100%; margin: 0 auto; padding: 0 1rem; }
@@ -51,7 +50,7 @@
       background: #000; border-bottom: 1px solid var(--border);
       text-align:center; padding: .9rem .8rem;
       box-shadow: var(--shadow);
-      -webkit-transform: translateZ(0); /* helps some iOS sticky repaint quirks */
+      -webkit-transform: translateZ(0); 
     }
     .ribbon h1{ margin:0; font-size: 2rem; color: var(--red); }
     .ribbon p{ margin:.2rem 0 0; color: var(--muted); font-size: 1rem; }
@@ -100,7 +99,7 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: 1rem;
-      text-align:left; /* avoid justify oddities on mobile */
+      text-align:left; 
     }
     .event .date{ color: var(--red-strong); font-weight:bold; }
     .event .content{ color: var(--ink); white-space: pre-line; }
@@ -186,7 +185,7 @@ h2{ color: var(--red); margin: 1.2rem 0 .6rem; text-align:center; }
     footer a{
   color: var(--muted);
   text-decoration: none;
-  font-family: inherit; /* gleiche Schrift wie Homepage */
+  font-family: inherit; 
 }
 
 footer a:hover{
