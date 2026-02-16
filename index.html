@@ -466,7 +466,7 @@ Einlass: 20:00  Bands: 21:00
         const el = document.createElement('div');
         el.className = 'cell';
 
-        const dateStr = ${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')};
+        const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
         const day = document.createElement('div');
         day.className='day';
@@ -498,10 +498,10 @@ Einlass: 20:00  Bands: 21:00
       const name = document.getElementById('name').value.trim();
       const from = document.getElementById('email').value.trim();
       const msg = document.getElementById('msg').value.trim();
-      const subject = encodeURIComponent([G16] Nachricht von ${name || 'Website'});
-      const body = encodeURIComponent((from ? Absender: ${from}\n\n : '') + msg);
-      window.location.href = mailto:${to}?subject=${subject}&body=${body};
-    });
+      const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
+      const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+ });
   </script>
 </body>
 </html>
