@@ -16,7 +16,7 @@
     :root{
       --bg: #0a0a0a;
       --panel: #141414;
-      --ink: #e1e1e1;
+      --ink: #b3b3b3; /* Muted als Standardfarbe */
       --muted: #b3b3b3;
       --red: #c11212;
       --border: #262626;
@@ -25,9 +25,7 @@
 
     *{ box-sizing: border-box; }
 
-    html{
-      font-size: 100%;
-    }
+    html{ font-size: 100%; }
 
     body{
       margin:0;
@@ -67,205 +65,210 @@
       font-family: inherit;
     }
 
-    footer a:hover{
+    a:hover{
       color: var(--red);
       text-decoration: underline;
     }
 
-    footer{
-      margin-top: 2rem;
-      text-align:center;
+    h2{
+      color: var(--red);
+      margin-top:1.5rem;
+      font-size: 1.15rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
       color: var(--muted);
+      text-align: center;
+      padding: 1.2rem 0 2.4rem;
       font-size: 0.9rem;
     }
 
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      font-family: inherit;
+    }
+
+    footer a:hover {
+      color: var(--red);
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px){
-      html{
-        font-size: 68%; 
-      }
-
-      h1{
-        font-size: 1.5rem;
-      }
-
-      .wrap{
-        padding: 0.8rem;
-      }
-
-      .box{
-        padding: 1rem;
-      }
+      html{ font-size: 68%; }
+      h1{ font-size: 1.5rem; }
+      .wrap{ padding: 0.8rem; }
+      .box{ padding: 1rem; }
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-   
-<div class="box" style="margin-bottom: 1.5rem;">
-  <h2 id="datenschutz" style="color: var(--red); margin-top:0;">Datenschutz:</h2>
+    <div class="box" style="margin-bottom: 1.5rem;">
+      <h2 id="datenschutz">Datenschutz:</h2>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">1. Verantwortlicher</p>
+      <p style="font-weight: bold;">1. Verantwortlicher</p>
 
-  <p>
-    Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO):
-  </p>
+      <p>
+        Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO):
+      </p>
 
-  <p>
-    Verein für Stadtteilförderung, Wohn- und Kultur e.V.<br>
-    Gießerstraße 16<br>
-    04229 Leipzig<br>
-    Deutschland<br><br>
-    E-Mail: <a href="mailto:vgruppe-g16@mail36.net">vgruppe-g16(at)mail36.net</a>
-  </p>
+      <p>
+        Verein für Stadtteilförderung, Wohn- und Kultur e.V.<br>
+        Gießerstraße 16<br>
+        04229 Leipzig<br>
+        Deutschland<br><br>
+        E-Mail: <a href="mailto:vgruppe-g16@mail36.net">vgruppe-g16(at)mail36.net</a>
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">2. Allgemeine Hinweise zur Datenverarbeitung</p>
+      <p style="font-weight: bold;">2. Allgemeine Hinweise zur Datenverarbeitung</p>
 
-  <p>
-    Wir nehmen den Schutz Ihrer personenbezogenen Daten sehr ernst.
-    Personenbezogene Daten werden vertraulich und entsprechend der gesetzlichen
-    Datenschutzvorschriften (DSGVO, BDSG) behandelt.
-  </p>
+      <p>
+        Wir nehmen den Schutz Ihrer personenbezogenen Daten sehr ernst.
+        Personenbezogene Daten werden vertraulich und entsprechend der gesetzlichen
+        Datenschutzvorschriften (DSGVO, BDSG) behandelt.
+      </p>
 
-  <p>
-    Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert
-    werden können (z. B. Name, E-Mail-Adresse, IP-Adresse).
-  </p>
+      <p>
+        Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert
+        werden können (z. B. Name, E-Mail-Adresse, IP-Adresse).
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">3. Hosting und Server-Logfiles</p>
+      <p style="font-weight: bold;">3. Hosting und Server-Logfiles</p>
 
-  <p>
-    Beim Besuch unserer Website werden automatisch Informationen durch den
-    Hosting-Anbieter erhoben:
-  </p>
+      <p>
+        Beim Besuch unserer Website werden automatisch Informationen durch den
+        Hosting-Anbieter erhoben:
+      </p>
 
-  <p>
-    - IP-Adresse (ggf. anonymisiert)<br>
-    - Datum und Uhrzeit der Serveranfrage<br>
-    - Browsertyp und -version<br>
-    - Betriebssystem<br>
-    - Referrer-URL
-  </p>
+      <p>
+        - IP-Adresse (ggf. anonymisiert)<br>
+        - Datum und Uhrzeit der Serveranfrage<br>
+        - Browsertyp und -version<br>
+        - Betriebssystem<br>
+        - Referrer-URL
+      </p>
 
-  <p>
-    Diese Daten dienen ausschließlich der technischen Sicherheit und Stabilität
-    der Website.
-  </p>
+      <p>
+        Diese Daten dienen ausschließlich der technischen Sicherheit und Stabilität
+        der Website.
+      </p>
 
-  <p>
-    Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO
-    (berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website)
-  </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO
+        (berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website)
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">4. Cookies</p>
+      <p style="font-weight: bold;">4. Cookies</p>
 
-  <p>
-    Unsere Website verwendet sogenannte „Cookies“. Cookies sind kleine Textdateien,
-    die auf Ihrem Endgerät gespeichert werden.
-  </p>
+      <p>
+        Unsere Website verwendet sogenannte „Cookies“. Cookies sind kleine Textdateien,
+        die auf Ihrem Endgerät gespeichert werden.
+      </p>
 
-  <p style="color: var(--red); font-weight: bold;">a) Technisch notwendige Cookies</p>
+      <p style="font-weight: bold;">a) Technisch notwendige Cookies</p>
 
-  <p>
-    Wir verwenden ausschließlich technisch notwendige Cookies, sofern diese für
-    den Betrieb der Website erforderlich sind.
-  </p>
+      <p>
+        Wir verwenden ausschließlich technisch notwendige Cookies, sofern diese für
+        den Betrieb der Website erforderlich sind.
+      </p>
 
-  <p>
-    Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO sowie § 25 Abs. 2 TTDSG.
-  </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO sowie § 25 Abs. 2 TTDSG.
+      </p>
 
-  <p style="color: var(--red); font-weight: bold;">b) Keine Tracking- oder Marketing-Cookies</p>
+      <p style="font-weight: bold;">b) Keine Tracking- oder Marketing-Cookies</p>
 
-  <p>
-    Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt.
-    Es findet kein Nutzer-Tracking statt.
-  </p>
+      <p>
+        Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt.
+        Es findet kein Nutzer-Tracking statt.
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">5. Kontaktaufnahme per E-Mail</p>
+      <p style="font-weight: bold;">5. Kontaktaufnahme per E-Mail</p>
 
-  <p>
-    Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben inklusive der von
-    Ihnen angegebenen Kontaktdaten zur Bearbeitung der Anfrage gespeichert.
-  </p>
+      <p>
+        Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben inklusive der von
+        Ihnen angegebenen Kontaktdaten zur Bearbeitung der Anfrage gespeichert.
+      </p>
 
-  <p>
-    Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
-    (Vertrag / vorvertragliche Maßnahme) sowie Art. 6 Abs. 1 lit. f DSGVO
-    (berechtigtes Interesse an Kommunikation).
-  </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO
+        (Vertrag / vorvertragliche Maßnahme) sowie Art. 6 Abs. 1 lit. f DSGVO
+        (berechtigtes Interesse an Kommunikation).
+      </p>
 
-  <p>
-    Die Daten werden gelöscht, sobald sie für den Zweck der Verarbeitung nicht
-    mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen.
-  </p>
+      <p>
+        Die Daten werden gelöscht, sobald sie für den Zweck der Verarbeitung nicht
+        mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen.
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">6. Spenden</p>
+      <p style="font-weight: bold;">6. Spenden</p>
 
-  <p>
-    Im Rahmen von Spenden verarbeiten wir personenbezogene Daten (z. B. Name,
-    Kontodaten), soweit dies zur Abwicklung der Spende und ggf. Ausstellung einer
-    Zuwendungsbestätigung erforderlich ist.
-  </p>
+      <p>
+        Im Rahmen von Spenden verarbeiten wir personenbezogene Daten (z. B. Name,
+        Kontodaten), soweit dies zur Abwicklung der Spende und ggf. Ausstellung einer
+        Zuwendungsbestätigung erforderlich ist.
+      </p>
 
-  <p>
-    Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO sowie Art. 6 Abs. 1 lit. c DSGVO
-    (steuerrechtliche Aufbewahrungspflichten).
-  </p>
+      <p>
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO sowie Art. 6 Abs. 1 lit. c DSGVO
+        (steuerrechtliche Aufbewahrungspflichten).
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">7. Ihre Rechte</p>
+      <p style="font-weight: bold;">7. Ihre Rechte</p>
 
-  <p>
-    Sie haben jederzeit das Recht auf:
-  </p>
+      <p>
+        Sie haben jederzeit das Recht auf:
+      </p>
 
-  <p>
-    - Auskunft gemäß Art. 15 DSGVO<br>
-    - Berichtigung gemäß Art. 16 DSGVO<br>
-    - Löschung gemäß Art. 17 DSGVO<br>
-    - Einschränkung der Verarbeitung gemäß Art. 18 DSGVO<br>
-    - Datenübertragbarkeit gemäß Art. 20 DSGVO<br>
-    - Widerspruch gemäß Art. 21 DSGVO
-  </p>
+      <p>
+        - Auskunft gemäß Art. 15 DSGVO<br>
+        - Berichtigung gemäß Art. 16 DSGVO<br>
+        - Löschung gemäß Art. 17 DSGVO<br>
+        - Einschränkung der Verarbeitung gemäß Art. 18 DSGVO<br>
+        - Datenübertragbarkeit gemäß Art. 20 DSGVO<br>
+        - Widerspruch gemäß Art. 21 DSGVO
+      </p>
 
-  <p>
-    Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung per E-Mail.
-  </p>
+      <p>
+        Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung per E-Mail.
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">8. Beschwerderecht</p>
+      <p style="font-weight: bold;">8. Beschwerderecht</p>
 
-  <p>
-    Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die
-    Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
-  </p>
+      <p>
+        Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die
+        Verarbeitung Ihrer personenbezogenen Daten zu beschweren.
+      </p>
 
-  <p>
-    Zuständige Aufsichtsbehörde in Sachsen:</p>
-   <p>
-    Sächsischer Datenschutz- und Transparenzbeauftragter<br>
-    Devrientstraße 5<br>
-    01067 Dresden
-  </p>
+      <p>
+        Zuständige Aufsichtsbehörde in Sachsen:</p>
+      <p>
+        Sächsischer Datenschutz- und Transparenzbeauftragter<br>
+        Devrientstraße 5<br>
+        01067 Dresden
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">9. SSL- bzw. TLS-Verschlüsselung</p>
+      <p style="font-weight: bold;">9. SSL- bzw. TLS-Verschlüsselung</p>
 
-  <p>
-    Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung.
-    Eine verschlüsselte Verbindung erkennen Sie an „https://“ in der Adresszeile
-    Ihres Browsers.
-  </p>
+      <p>
+        Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung.
+        Eine verschlüsselte Verbindung erkennen Sie an „https://“ in der Adresszeile
+        Ihres Browsers.
+      </p>
 
-  <p style="color: var(--red); font-weight: bold; margin-top:1.5rem;font-size: 1.15rem;">10. Aktualität</p>
+      <p style="font-weight: bold;">10. Aktualität</p>
 
-  <p>
-    Diese Datenschutzerklärung ist aktuell gültig (Stand: Februar 2026).
-    Wir behalten uns vor, sie bei Bedarf anzupassen.
-  </p>
-
-</div>
+      <p>
+        Diese Datenschutzerklärung ist aktuell gültig (Stand: Februar 2026).
+        Wir behalten uns vor, sie bei Bedarf anzupassen.
+      </p>
+    </div>
 
     <div class="box">
-      <h2 id="impressum" style="color: var(--red); margin-top:0;">Impressum:</h2>
+      <h2 id="impressum">Impressum:</h2>
       <p>Angaben gemäß § 5 Digitale-Dienste-Gesetz:</p>
 
       <p>
@@ -282,8 +285,9 @@
       </p>
 
       <p>
-        Verantwortlich im Sinne des § 18 Abs. 2 MStV:</p>
-        <p>
+        Verantwortlich im Sinne des § 18 Abs. 2 MStV:
+      </p>
+      <p>
         Verein für Stadtteilförderung, Wohn- und Kultur e.V.<br>
         Gießerstraße 16<br>
         04229 Leipzig<br>
@@ -291,13 +295,11 @@
       </p>
     </div>
 
- <footer>
-  <a href="index.html">
-    ← Zurück zur Startseite
-  </a>
-</footer>
-
+    <footer>
+      <a href="index.html">← Zurück zur Startseite</a> ·
+      <a href="/impressum.html#datenschutz">Datenschutz</a> ·
+      <a href="/impressum.html#impressum">Impressum</a>
+    </footer>
   </div>
 </body>
 </html>
-
