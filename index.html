@@ -275,41 +275,70 @@ footer a:hover{
 .white-link:hover {
   color: var(--red);
 }
- /* Extra small screens (e.g., iPhone SE / 320px) */
- @media (max-width: 380px){
-      .ribbon h1{ font-size: 1rem; }
-      .ribbon p{ font-size: 0.5rem; }
-      .cal-grid{ gap:.4rem; }
-      .dow, .cell{ padding:.45rem .15rem; }
-      .cell{ min-height:2.6rem; }
-      .cell .day{ top:.35rem; left:.4rem; }
-    }
-@media (max-width: 600px){
-  html{
-    font-size: 68%;
+
+/* --- Basis-Schriftgröße für Mobilgeräte --- */
+@media (max-width: 600px) {
+  html { font-size: 68%; } /* Ausgangsgröße wie vorher */
+
+  /* Ribbon */
+  .ribbon h1 { font-size: 1.2rem; }
+  .ribbon p  { font-size: 0.75rem; }
+
+  /* Überschriften und Formulare */
+  h2 { font-size: 1.3rem; text-align: center; }
+  .contact h2 { font-size: 1.2rem; }
+  label { font-size: 0.9rem; }
+  input, textarea { font-size: 0.9rem; }
+
+  /* Kalender */
+  .cal-grid { gap: 0.3rem; }
+  .dow, .cell { padding: 0.35rem 0.1rem; font-size: 0.8rem; }
+  .cell { min-height: 2.4rem; }
+  .cell .day { top: 0.25rem; left: 0.3rem; font-size: 0.75rem; }
+
+  /* Layout: Kalender + Kontakt */
+  .cal-contact-wrapper { display: block; gap: 1rem; }
+
+  /* Form untereinander */
+  .row { grid-template-columns: 1fr; }
+}
+
+/* --- Media Queries --- */
+  /* Desktop große Geräte ab 1024px */
+  @media (min-width: 1024px) {
+    .row { grid-template-columns: 1fr 1fr; }
+    .cal-contact-wrapper { display: flex; }
   }
 
-  @media (max-width: 380px){
-  html { font-size: 68%; } /* statt 68% */
-  .ribbon h1{ font-size: 1.2rem; } 
-  .ribbon p{ font-size: 0.75rem; }
-  .cal-grid{ gap:.3rem; }
-  .dow, .cell{ padding:.35rem .1rem; font-size: 0.8rem; }
-  .cell{ min-height:2.4rem; }
-  .cell .day{ top:.25rem; left:.3rem; font-size:.75rem; }
-  .contact h2{ font-size: 1rem; }
-  label{ font-size: 0.9rem; }
-  input, textarea{ font-size: 0.9rem; }
-}
+  /* Tablets / Mobilgeräte <= 600px */
+  @media (max-width: 600px) {
+    html { font-size: 68%; } /* Ausgangsgröße mobil */
 
-/* Tablets / kleine Geräte <= 600px */
-@media (max-width: 600px){
-  html { font-size: 68%; } /* Standard mobil Scaling */
-  .row{ grid-template-columns: 1fr; } /* Form untereinander */
-  h2{ font-size: 1.3rem; }
-  .contact h2{ font-size: 1.2rem; }
-  label{ font-size: 1rem; }
-}
+    h2 { font-size: 1.3rem; text-align: center; }
+    .contact h2 { font-size: 1.2rem; }
+    label, input, textarea { font-size: 0.9rem; }
+
+    .row { grid-template-columns: 1fr; } /* Formulare untereinander */
+    .cal-contact-wrapper { display: block; gap: 1rem; }
+
+    .ribbon h1 { font-size: 1.2rem; }
+    .ribbon p { font-size: 0.75rem; }
+
+    .cal-grid { gap: 0.3rem; }
+    .dow, .cell { padding: 0.35rem 0.1rem; font-size: 0.8rem; }
+    .cell { min-height: 2.4rem; }
+    .cell .day { top: 0.25rem; left: 0.3rem; font-size: 0.75rem; }
+  }
+
+  /* Extra kleine Geräte <= 380px */
+  @media (max-width: 380px) {
+    .ribbon h1 { font-size: 1rem; }
+    .ribbon p { font-size: 0.5rem; }
+
+    .dow, .cell { padding: 0.3rem 0.1rem; font-size: 0.75rem; }
+    .cell { min-height: 2.2rem; }
+    .cell .day { top: 0.2rem; left: 0.25rem; font-size: 0.7rem; }
+  }
   
 }
 
