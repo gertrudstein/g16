@@ -380,20 +380,20 @@ textarea{
 @media (max-width: 600px) {
   html { font-size: 68%; } /* Ausgangsgröße wie vorher */
 
-  input,
-  textarea,
-  select {
-    font-size: 16px !important;
+  /* Kontaktformular Eingabefelder */
+  .contact input,
+  .contact textarea {
+    font-size: 0.85rem !important; /* ca. 13px, kleiner für Mobilgeräte */
   }
-  
-/* Placeholder auf Mobile anpassen */
-input::placeholder,
-textarea::placeholder {
-  font-size: 0.875rem !important; /* gleiche Größe wie Event-Text */
-  color: var(--muted) !important;
-  opacity: 0.6 !important;
-  -webkit-text-size-adjust: 100%;
-}
+
+  /* Placeholder anpassen */
+  .contact input::placeholder,
+  .contact textarea::placeholder {
+    font-size: 0.85rem !important;
+    color: var(--muted) !important;
+    opacity: 0.6 !important;
+  }
+
   /* Ribbon */
   .ribbon h1 { font-size: 2rem; }
   .ribbon p  { font-size: 1rem; }
