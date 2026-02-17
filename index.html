@@ -316,11 +316,28 @@ textarea{
   }
 
   /* Kalender-Buttons bündig oben mit Kontaktbox */
-  .cal-head {
-    justify-content: space-between;
-    margin-top: 0;       /* Kein Abstand nach oben */
-    align-self: flex-start; /* Obere Kante bündig */
-  }
+  .cal-head {position: relative;       /* Damit Buttons absolut platziert werden können */
+  justify-content: center;   /* Monat mittig */
+  margin-top: 0;       
+  align-self: flex-start; 
+}
+
+/* Links-Button absolut links */
+.cal-head #prev {
+  position: absolute;
+  left: 0;
+}
+
+/* Rechts-Button absolut rechts */
+.cal-head #next {
+  position: absolute;
+  right: 0;
+}
+
+.cal-month {
+  text-align: center;      /* Monat zentriert */
+  flex-grow: 0;            /* nicht mehr wachsen */
+}
 
   .cal-grid {
     flex: 1; /* Gitter füllt restliche Höhe */
