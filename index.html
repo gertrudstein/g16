@@ -385,7 +385,13 @@ textarea{
   select {
     font-size: 16px !important;
   }
-
+  
+  input::placeholder,
+  textarea::placeholder {
+  font-size: 1rem;        /* gleiche Größe wie Event-Text */
+  color: var(--muted);
+  opacity: 0.6;
+}
   /* Ribbon */
   .ribbon h1 { font-size: 2rem; }
   .ribbon p  { font-size: 1rem; }
