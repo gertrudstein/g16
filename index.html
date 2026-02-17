@@ -555,13 +555,7 @@ Einlass: 20:00  Bands: 21:00
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
  });
 
-document.querySelectorAll('footer a.footer-link').forEach(link => {
-  link.addEventListener('click', () => {
-    const newTitle = link.dataset.title;
-    if (newTitle) document.title = newTitle;
-    // Kein preventDefault → Link funktioniert normal
-  });
-});
+
 
    </script>
 </body>
