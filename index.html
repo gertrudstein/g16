@@ -276,24 +276,26 @@ textarea{
     }
 
 .cal-contact-wrapper {
-  display: block; /* mobil: untereinander */
-  gap: 20px;
+  display: block; /* Mobil: untereinander */
 }
 
-@media screen and (min-width: 1024px) {
+/* Desktop ab 1024px */
+@media (min-width: 1024px) {
   .cal-contact-wrapper {
-    display: flex;           /* Desktop: nebeneinander */
-    justify-content: space-between;
+    display: flex;
+    gap: 40px;
     align-items: flex-start;
   }
 
-  .cal-contact-wrapper section {
-    flex: 1;                 /* gleiche Breite */
-    margin-right: 20px;
+  /* Reihenfolge tauschen */
+  .cal-contact-wrapper .contact {
+    order: 1;
+    flex: 1;
   }
 
-  .cal-contact-wrapper section:last-child {
-    margin-right: 0;
+  .cal-contact-wrapper section:first-child {
+    order: 2;
+    flex: 1;
   }
 
   footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
