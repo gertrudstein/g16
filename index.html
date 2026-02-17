@@ -294,14 +294,23 @@ textarea{
   order: 2; /* Kontakt danach */
 }
 
-/* Desktop große Geräte ab 1024px */
 @media (min-width: 1024px) {
 
-  /* Layout: Kontakt links, Kalender rechts */
   .cal-contact-wrapper {
     display: flex;
+    flex-direction: row; /* NEBENEINANDER */
     gap: 40px;
     align-items: flex-start;
+  }
+
+  .cal-contact-wrapper .contact {
+    order: 1;
+    flex: 1;
+  }
+
+  .cal-contact-wrapper .cal-wrapper {
+    order: 2;
+    flex: 1;
   }
 
   /* Kontaktbox links */
