@@ -279,12 +279,23 @@ textarea{
   display: block; /* Mobil: untereinander */
 }
 
-/* Desktop ab 1024px */
 @media (min-width: 1024px) {
   .cal-contact-wrapper {
     display: flex;
     gap: 40px;
-    align-items: stretch; /* wichtig: gleiche Höhe */
+    align-items: stretch; /* gleiche Höhe */
+  }
+
+  .cal-contact-wrapper section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Reihenfolge: Kontakt links, Kalender rechts */
+  .contact { order: 1; }   /* links */
+  [aria-labelledby="cal-headline"] { order: 2; } /* rechts */
+
   }
 
   .cal-contact-wrapper section {
