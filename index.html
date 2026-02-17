@@ -284,18 +284,40 @@ textarea{
   .cal-contact-wrapper {
     display: flex;
     gap: 40px;
-    align-items: flex-start;
+    align-items: stretch; /* wichtig: gleiche Höhe */
   }
 
-  /* Reihenfolge tauschen */
-  .cal-contact-wrapper .contact {
-    order: 1;
+  .cal-contact-wrapper section {
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
-  .cal-contact-wrapper section:first-child {
-    order: 2;
+  /* Kalender nimmt die volle Höhe der Kontaktbox */
+  #calendar {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Kalender-Überschrift oben bündig */
+  #cal-headline {
+    margin: 0 0 1rem 0;
+    flex-shrink: 0; /* Überschrift bleibt oben */
+  }
+
+  /* Kalender-Gitter nimmt restliche Höhe */
+  .cal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-grid {
+    flex: 1; /* Grid füllt restliche Höhe */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: .6rem;
   }
 
   footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
