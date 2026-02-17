@@ -279,62 +279,23 @@ textarea{
   display: block; /* Mobil: untereinander */
 }
 
+/* Desktop große Geräte ab 1024px */
 @media (min-width: 1024px) {
-  /* Wrapper für Kontakt + Kalender */
+
+  /* Layout: Kontakt links, Kalender rechts */
   .cal-contact-wrapper {
-    
     display: flex;
     gap: 40px;
     align-items: flex-start;
   }
 
-  .cal-contact-wrapper .contact {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cal-contact-wrapper .cal-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-  }
-
-  /* --- KALENDER HEADER --- */
-  .cal-head {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* Links-Button | Monat | Rechts-Button */
-    align-items: center;
-    margin-bottom: 0.8rem;
-  }
-
-  .cal-head #prev {
-    justify-self: start;
-  }
-
-  .cal-head .cal-month {
-    justify-self: center;
-    text-align: center;
-  }
-
-  .cal-head #next {
-    justify-self: end;
-  }
-
-  .cal-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.6rem;
-  }
-
-  /* Kontakt links */
+  /* Kontaktbox links */
   .cal-contact-wrapper .contact {
     order: 1;
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin-top: 0;
   }
 
   /* Kalender rechts */
@@ -343,44 +304,40 @@ textarea{
     flex: 1;
     display: flex;
     flex-direction: column;
-
-    /* Hier wird die obere Kante des Kalenders genau auf die Kontaktbox ausgerichtet */
-    margin-top: 0; /* Kein extra Abstand */
+    margin-top: 0;
   }
 
-  /* Kalender füllt restliche Höhe */
+  /* Kalender füllt den Wrapper */
   .cal {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
-  /* Kalender-Buttons bündig oben mit Kontaktbox */
-  .cal-head {position: relative;       /* Damit Buttons absolut platziert werden können */
-  justify-content: center;   /* Monat mittig */
-  margin-top: 0;       
-  align-self: flex-start; 
-}
+  /* Kalender Header als Grid */
+  .cal-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Links-Button | Monat | Rechts-Button */
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
 
-/* Links-Button absolut links */
-.cal-head #prev {
-  position: absolute;
-  left: 0;
-}
+  .cal-head #prev {
+    justify-self: start;   /* Linker Button ganz außen */
+  }
 
-/* Rechts-Button absolut rechts */
-.cal-head #next {
-  position: absolute;
-  right: 0;
-}
+  .cal-head .cal-month {
+    justify-self: center;  /* Monat zentriert */
+    text-align: center;
+  }
 
-.cal-month {
-  text-align: center;      /* Monat zentriert */
-  flex-grow: 0;            /* nicht mehr wachsen */
-}
+  .cal-head #next {
+    justify-self: end;     /* Rechter Button ganz außen */
+  }
 
+  /* Kalender Grid */
   .cal-grid {
-    flex: 1; /* Gitter füllt restliche Höhe */
+    flex: 1; 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.6rem;
