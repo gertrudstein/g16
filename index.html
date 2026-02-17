@@ -279,47 +279,48 @@ textarea{
   display: block; /* Mobil: untereinander */
 }
 
-/* Desktop ab 1024px */
 @media (min-width: 1024px) {
-  /* Wrapper für Kalender + Kontakt */
+  /* Wrapper für Kontakt + Kalender */
   .cal-contact-wrapper {
     display: flex;
     gap: 40px;
     align-items: flex-start; /* Obere Kanten bündig */
   }
 
-  /* Kontaktbox links */
+  /* Kontakt links */
   .cal-contact-wrapper .contact {
-    order: 1; /* links */
+    order: 1;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
   /* Kalender rechts */
-  .cal-contact-wrapper section[aria-labelledby="cal-headline"] {
-    order: 2; /* rechts */
+  .cal-contact-wrapper .cal-wrapper {
+    order: 2;
     flex: 1;
     display: flex;
     flex-direction: column;
+
+    /* Hier wird die obere Kante des Kalenders genau auf die Kontaktbox ausgerichtet */
+    margin-top: 0; /* Kein extra Abstand */
   }
 
-  /* Kalender-Überschrift oben bündig mit Kontaktbox */
-  #cal-headline {
-    margin: 0;           /* kein zusätzlicher Abstand */
-    padding: 0;          /* kein padding */
-    align-self: flex-start; /* oben ausrichten */
-  }
-
-  /* Kalender-Gitter füllt die restliche Höhe */
+  /* Kalender füllt restliche Höhe */
   .cal {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
+  /* Kalender-Buttons bündig oben mit Kontaktbox */
+  .cal-head {
+    margin-top: 0;       /* Kein Abstand nach oben */
+    align-self: flex-start; /* Obere Kante bündig */
+  }
+
   .cal-grid {
-    flex: 1;
+    flex: 1; /* Gitter füllt restliche Höhe */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.6rem;
