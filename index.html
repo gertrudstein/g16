@@ -530,43 +530,44 @@ Einlass: 20:00  Bands: 21:00
       </div>
     </section>
 
-   <!-- Kalender -->
-    <div class="cal-contact-wrapper">
-    <section aria-labelledby="cal-headline">
-      <h2 id="cal-headline"></h2>
-      <div class="cal" id="calendar">
-        <div class="cal-head">
-          <button id="prev" aria-label="Vorheriger Monat">◀</button>
-          <div class="cal-month" id="monthLabel">—</div>
-          <button id="next" aria-label="Nächster Monat">▶</button>
+  <div class="cal-contact-wrapper">
+
+  <!-- Kontakt links -->
+  <section class="contact" aria-labelledby="contact-head">
+    <h2 id="contact-head">Kontakt:</h2>
+    
+    <hr style="border: none; border-top:1px solid var(--border); margin: .8rem 0 1rem;"/>
+
+    <form id="contactForm">
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Dein Name" />
         </div>
-        <div class="cal-grid" id="grid"></div>
       </div>
-    </section>
+      <label for="email">E-Mail</label>
+      <input id="email" type="email" placeholder="deine(at)mail.tld" />
+      <label for="msg">Nachricht</label>
+      <textarea id="msg" placeholder="Schreib uns…"></textarea>
+      <div style="margin-top:.8rem; text-align:left;">
+        <button type="submit" class="btn">Senden</button>
+      </div>
+    </form>
+  </section>
 
-    <!-- Kontakt -->
-    <section class="contact" aria-labelledby="contact-head">
-      <h2 id="contact-head">Kontakt:</h2>
-      
-      <hr style="border: none; border-top:1px solid var(--border); margin: .8rem 0 1rem;"/>
-
-      <form id="contactForm">
-        <div class="row">
-          <div>
-            <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Dein Name" />
-          </div>
-        </div>
-        <label for="email">E-Mail</label>
-        <input id="email" type="email" placeholder="deine(at)mail.tld" />
-        <label for="msg">Nachricht</label>
-        <textarea id="msg" placeholder="Schreib uns…"></textarea>
-        <div style="margin-top:.8rem; text-align:left;">
-          <button type="submit" class="btn">Senden</button>
-        </div>
-      </form>
-    </section>
+  <!-- Kalender rechts -->
+  <section class="cal-wrapper">
+    <div class="cal" id="calendar">
+      <div class="cal-head">
+        <button id="prev" aria-label="Vorheriger Monat">◀</button>
+        <div class="cal-month" id="monthLabel">—</div>
+        <button id="next" aria-label="Nächster Monat">▶</button>
+      </div>
+      <div class="cal-grid" id="grid"></div>
     </div>
+  </section>
+
+</div>
   </main>
 
 <footer>
