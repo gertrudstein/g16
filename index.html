@@ -453,9 +453,9 @@ Einlass: 20:00  Bands: 21:00
 
 <footer>
   © Gieszer16 · <span id="year">2026</span> ·
- <a href="/impressum.html#datenschutz" class="footer-link" onclick="document.title='Datenschutz – G16'">Datenschutz</a> ·
-  <a href="/impressum.html#impressum" class="footer-link" onclick="document.title='Impressum – G16'">Impressum</a> ·
-  <a href="/kontakte.html" class="footer-link" onclick="document.title='Kontakte – G16'">Kontakte</a> 
+  <a href="#datenschutz" class="footer-link" data-title="Datenschutz – G16">Datenschutz</a> ·
+  <a href="#impressum" class="footer-link" data-title="Impressum – G16">Impressum</a> ·
+  <a href="#kontakte" class="footer-link" data-title="Kontakte – G16">Kontakte</a>
 </footer>
 
   <script>
@@ -553,6 +553,21 @@ Einlass: 20:00  Bands: 21:00
       const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
  });
+
+    // Footer-Link Titeländerung
+document.querySelectorAll('footer a.footer-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault(); // Verhindert Neuladen
+    const newTitle = link.dataset.title;
+    if(newTitle) document.title = newTitle;
+
+    // Optional: scrollen zu einer Section auf der Seite
+    const targetId = link.getAttribute('href').substring(1); // #datenschutz -> datenschutz
+    const target = document.getElementById(targetId);
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+});
+  
   </script>
 </body>
 </html>
