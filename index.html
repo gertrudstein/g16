@@ -30,13 +30,23 @@
 
   *{ box-sizing: border-box; }
 
-  body{
+  html {
+  font-size: 100%; /* Desktop */
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 68% !important;
+  }
+
+  body{font-size: 1rem;
       margin:0;
       font-family: 'Typo1915', ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.5;
       -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
       text-rendering: optimizeLegibility;
     }
 
@@ -287,8 +297,6 @@ footer a:hover{
   /* Überschriften und Formulare */
   h2 { font-size: 1.3rem; text-align: center; }
   .contact h2 { font-size: 1.2rem; }
-  label { font-size: 0.9rem; }
-  input, textarea { font-size: 0.9rem; }
 
   /* Kalender */
   .cal-grid { gap: 0.3rem; }
