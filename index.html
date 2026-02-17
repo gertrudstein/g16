@@ -225,25 +225,24 @@ textarea{
     }
 
 .cal-contact-wrapper {
-  display: block; /* Standard: untereinander */
-  gap: 20px;      /* Abstand zwischen Kalender und Kontakt */
+  display: block; /* mobil: untereinander */
+  gap: 20px;
 }
 
-/* Desktop-Bildschirme ab 1024px Breite */
 @media screen and (min-width: 1024px) {
   .cal-contact-wrapper {
-    display: flex;           /* nebeneinander */
-    justify-content: space-between; /* Abstand automatisch */
-    align-items: flex-start; /* oben ausrichten */
+    display: flex;           /* Desktop: nebeneinander */
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   .cal-contact-wrapper section {
     flex: 1;                 /* gleiche Breite */
-    margin-right: 20px;      /* Abstand rechts, außer beim letzten */
+    margin-right: 20px;
   }
 
   .cal-contact-wrapper section:last-child {
-    margin-right: 0;         /* Kein extra Abstand beim letzten */
+    margin-right: 0;
   }
 
   footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
@@ -289,6 +288,29 @@ footer a:hover{
   html{
     font-size: 68%;
   }
+
+  @media (max-width: 380px){
+  html { font-size: 60%; } /* statt 68% */
+  .ribbon h1{ font-size: 1.2rem; } 
+  .ribbon p{ font-size: 0.75rem; }
+  .cal-grid{ gap:.3rem; }
+  .dow, .cell{ padding:.35rem .1rem; font-size: 0.8rem; }
+  .cell{ min-height:2.4rem; }
+  .cell .day{ top:.25rem; left:.3rem; font-size:.75rem; }
+  .contact h2{ font-size: 1rem; }
+  label{ font-size: 0.9rem; }
+  input, textarea{ font-size: 0.9rem; }
+}
+
+/* Tablets / kleine Geräte <= 600px */
+@media (max-width: 600px){
+  html { font-size: 68%; } /* Standard mobil Scaling */
+  .row{ grid-template-columns: 1fr; } /* Form untereinander */
+  h2{ font-size: 1.3rem; }
+  .contact h2{ font-size: 1.2rem; }
+  label{ font-size: 1rem; }
+}
+  
 }
 
   </style>
