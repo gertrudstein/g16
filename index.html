@@ -282,7 +282,16 @@ textarea{
     }
 
 .cal-contact-wrapper {
-  display: block; /* Mobil: untereinander */
+  display: flex;
+  flex-direction: column;
+}
+
+.cal-contact-wrapper .cal-wrapper {
+  order: 1; /* Kalender zuerst */
+}
+
+.cal-contact-wrapper .contact {
+  order: 2; /* Kontakt danach */
 }
 
 /* Desktop große Geräte ab 1024px */
