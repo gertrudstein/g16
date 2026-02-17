@@ -224,6 +224,28 @@ textarea{
       -webkit-tap-highlight-color: transparent;
     }
 
+.cal-contact-wrapper {
+  display: block; /* Standard: untereinander */
+  gap: 20px;      /* Abstand zwischen Kalender und Kontakt */
+}
+
+/* Desktop-Bildschirme ab 1024px Breite */
+@media screen and (min-width: 1024px) {
+  .cal-contact-wrapper {
+    display: flex;           /* nebeneinander */
+    justify-content: space-between; /* Abstand automatisch */
+    align-items: flex-start; /* oben ausrichten */
+  }
+
+  .cal-contact-wrapper section {
+    flex: 1;                 /* gleiche Breite */
+    margin-right: 20px;      /* Abstand rechts, außer beim letzten */
+  }
+
+  .cal-contact-wrapper section:last-child {
+    margin-right: 0;         /* Kein extra Abstand beim letzten */
+  }
+
   footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
   footer a{
   color: var(--muted);
@@ -416,6 +438,7 @@ Einlass: 20:00  Bands: 21:00
     </section>
 
    <!-- Kalender -->
+    <div class="cal-contact-wrapper">
     <section aria-labelledby="cal-headline">
       <h2 id="cal-headline">Kalender</h2>
       <div class="cal" id="calendar">
@@ -450,6 +473,7 @@ Einlass: 20:00  Bands: 21:00
         </div>
       </form>
     </section>
+    </div>
   </main>
 
 <footer>
