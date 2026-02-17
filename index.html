@@ -15,21 +15,6 @@
     font-display: swap;
     }
 
-footer a:hover{
-  color: var(--red);
-  text-decoration: underline;
-}
-  /* Kontakt-Links */
-.contact a {
-  color: var(--muted);       /* Standardfarbe */
-  text-decoration: underline;
-}
-
-.contact a:hover {
-  color: var(--red);         /* beim Hover rot */
-  text-decoration: underline; /* optional für besseren Hover-Effekt */
-}
-  
   :root{
     --bg: #0a0a0a;
     --panel: #141414;
@@ -65,6 +50,38 @@ footer a:hover{
       text-rendering: optimizeLegibility;
     }
 
+footer a:hover{
+  color: var(--red);
+  text-decoration: underline;
+}
+  /* Kontakt-Links */
+.contact a {
+  color: var(--muted);       /* Standardfarbe */
+  text-decoration: underline;
+}
+
+.contact a:hover {
+  color: var(--red);         /* beim Hover rot */
+  text-decoration: underline; /* optional für besseren Hover-Effekt */
+
+  
+footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  padding: 1.2rem 0 2.4rem;
+}
+
+footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--red);
+  text-decoration: underline;
+}
+  
     p, a, .event, .content, .notice { overflow-wrap: anywhere; word-break: break-word; }
 
 
