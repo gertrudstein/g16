@@ -554,20 +554,14 @@ Einlass: 20:00  Bands: 21:00
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
  });
 
-    // Footer-Link Titeländerung
 document.querySelectorAll('footer a.footer-link').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault(); // Verhindert Neuladen
+  link.addEventListener('click', () => {
     const newTitle = link.dataset.title;
-    if(newTitle) document.title = newTitle;
-
-    // Optional: scrollen zu einer Section auf der Seite
-    const targetId = link.getAttribute('href').substring(1); // #datenschutz -> datenschutz
-    const target = document.getElementById(targetId);
-    if(target) target.scrollIntoView({behavior:'smooth'});
+    if (newTitle) document.title = newTitle;
+    // Kein preventDefault → Link funktioniert normal
   });
 });
-  
-  </script>
+
+   </script>
 </body>
 </html>
