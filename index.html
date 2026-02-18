@@ -811,7 +811,16 @@ Einlass: 20:00  Bands: 21:00
   window.addEventListener('load', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   });
-
+    window.addEventListener('load', () => {
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 50); // 50ms Verzögerung, funktioniert meist zuverlässig
+});
+    window.addEventListener('pageshow', () => {
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 50);
+});
 
    </script>
 </body>
