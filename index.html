@@ -379,8 +379,14 @@ textarea{
 /* --- Basis-Schriftgröße für Mobilgeräte --- */
 @media (max-width: 600px) {
   html { font-size: 68%; } /* Ausgangsgröße wie vorher */
-  #events {
-    margin-top: 2rem; /* vorher wahrscheinlich 0 oder klein */
+    /* Abstand zwischen letzter Hinweisbox und Überschrift "Veranstaltungen" */
+  .notice:last-of-type {
+    margin-bottom: 2rem; /* Abstand nach unten vergrößern */
+  }
+
+  /* Optional: Überschrift "Veranstaltungen" noch etwas Luft nach oben */
+  #events-head {
+    margin-top: 1rem; /* Abstand nach oben */
   }
   /* Placeholder anpassen */
   .contact input::placeholder,
