@@ -125,6 +125,39 @@ footer a:hover {
       referrerpolicy: no-referrer;
     }
 
+  .ribbon {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: #000;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 0.8rem;
+  /* verhindert dass iOS die Größe falsch rendert */
+  -webkit-transform: translateZ(0);
+}
+
+.ribbon h1 {
+  /* dynamische Skalierung: min 1.5rem, maximal 2rem, abhängig von Viewport-Breite */
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin: 0;
+  color: var(--red);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.ribbon p {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
     .notice{
       background: #111;
       border:1px dashed var(--border);
