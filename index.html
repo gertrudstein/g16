@@ -379,14 +379,14 @@ textarea{
 /* --- Basis-Schriftgröße für Mobilgeräte --- */
 @media (max-width: 600px) {
   html { font-size: 68%; } /* Ausgangsgröße wie vorher */
-    /* Abstand zwischen letzter Hinweisbox und Überschrift "Veranstaltungen" */
-  .notice:last-of-type {
-    margin-bottom: 10rem; /* Abstand nach unten vergrößern */
+.notice:last-of-type {
+    margin-bottom: 2rem !important; /* wichtig, um vorherige Regeln zu überschreiben */
   }
 
-  /* Optional: Überschrift "Veranstaltungen" noch etwas Luft nach oben */
+  /* Überschrift "Veranstaltungen" nach der Hinweisbox etwas Luft */
   #events-head {
-    margin-top: 10rem; /* Abstand nach oben */
+    margin-top: 2rem !important; /* Abstand nach oben */
+    margin-bottom: 1rem !important; /* optional, Abstand nach unten */
   }
   /* Placeholder anpassen */
   .contact input::placeholder,
