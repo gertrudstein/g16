@@ -376,71 +376,83 @@ textarea{
   color: var(--red);
 }
 
-/* --- Basis-Schriftgröße für Mobilgeräte --- */
 @media (max-width: 600px) {
-  html { font-size: 68%; } /* Ausgangsgröße wie vorher */
-.notice:last-of-type {
-    margin-bottom: 2rem !important; /* wichtig, um vorherige Regeln zu überschreiben */
-  }
 
-  /* Überschrift "Veranstaltungen" nach der Hinweisbox etwas Luft */
-  #events-head {
-    margin-top: 2rem !important; /* Abstand nach oben */
-    margin-bottom: 1rem !important; /* optional, Abstand nach unten */
-  }
-  /* Placeholder anpassen */
-  .contact input::placeholder,
-  .contact textarea::placeholder {
-    font-size: 0.85rem !important;
-    color: var(--muted) !important;
-    opacity: 0.6 !important;
-  }
+  /* Basis-Schriftgröße kleiner */
+  html { font-size: 68%; }
 
   /* Ribbon */
   .ribbon h1 { font-size: 2rem; }
-  .ribbon p  { font-size: 1rem; }
+  .ribbon p { font-size: 1rem; }
 
-  /* Überschriften und Formulare */
+  /* Überschriften */
   h2 { font-size: 1.3rem; text-align: center; }
   .contact h2 { font-size: 1.2rem; }
 
+  /* Hinweisboxen */
+  .notice {
+    margin: 1.2rem 0 1.2rem;
+    padding: 0.9rem 1rem;
+  }
+  .notice:last-of-type {
+    margin-bottom: 2rem; /* Abstand zum Events-Container */
+  }
+
+  /* Veranstaltungen */
+  #events-head {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  #events {
+    margin-bottom: 2rem; /* Abstand zum Kalender/Kontakt */
+  }
+
+  .event {
+    padding: 0.9rem;
+  }
+
   /* Kalender */
-  .cal-grid { gap: 0.3rem; }
-  .dow, .cell { padding: 0.35rem 0.1rem; font-size: 0.8rem; }
-  .cell { min-height: 2.4rem; }
-  .cell .day { top: 0.25rem; left: 0.3rem; font-size: 0.75rem; }
+  .cal-contact-wrapper {
+    display: block;
+    gap: 1rem;
+    margin-top: 0;
+  }
 
-  /* Layout: Kalender + Kontakt */
-  .cal-contact-wrapper { display: block; gap: 1rem;margin-top: -1rem; }
+  .cal-wrapper h2 {
+    margin: 1.2rem 0 0.6rem;
+  }
 
-  /* Form untereinander */
+  .cal-grid {
+    gap: 0.3rem;
+  }
+
+  .dow, .cell {
+    padding: 0.35rem 0.1rem;
+    font-size: 0.8rem;
+  }
+
+  .cell {
+    min-height: 2.4rem;
+  }
+
+  .cell .day {
+    top: 0.25rem;
+    left: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  /* Kontaktformular */
   .row { grid-template-columns: 1fr; }
 
-    /* Abstand Events → Kalender angleichen */
-  #events {
-    margin-bottom: 0;
+  .contact input::placeholder,
+  .contact textarea::placeholder {
+    font-size: 0.85rem;
+    color: var(--muted);
+    opacity: 0.6;
   }
 
-  .cal-wrapper {
-    margin-top:   -1rem;
-  }
-  .cal-wrapper h2 {
-   margin: 1.2rem 0 .6rem;
-  }
-
-  #events {
-    margin-bottom: 0;
-  }
- 
-/* --- Media Queries --- */
-  /* Desktop große Geräte ab 1024px */
-  @media (min-width: 1024px) {
-    .row { grid-template-columns: 1fr 1fr; }
-    .cal-contact-wrapper { display: flex; }
-  }
-
-
-  /* Extra kleine Geräte <= 380px */
+  /* Extra kleine Geräte <=380px */
   @media (max-width: 380px) {
     .ribbon h1 { font-size: 1rem; }
     .ribbon p { font-size: 0.5rem; }
@@ -448,6 +460,13 @@ textarea{
     .dow, .cell { padding: 0.3rem 0.1rem; font-size: 0.75rem; }
     .cell { min-height: 2.2rem; }
     .cell .day { top: 0.2rem; left: 0.25rem; font-size: 0.7rem; }
+  }
+ 
+/* --- Media Queries --- */
+  /* Desktop große Geräte ab 1024px */
+  @media (min-width: 1024px) {
+    .row { grid-template-columns: 1fr 1fr; }
+    .cal-contact-wrapper { display: flex; }
   }
   
   </style>
