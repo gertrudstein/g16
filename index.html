@@ -313,6 +313,19 @@ textarea{
   flex-direction: column;
 }
 
+@media (max-width: 1023px) and (orientation: landscape) {
+
+  .cal-contact-wrapper {
+    flex-direction: row;
+    gap: 20px;
+  }
+   }
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;
+    margin-top: 0;
+  }
+
 .cal-contact-wrapper .cal-wrapper {
   order: 1; /* Kalender zuerst */
 }
