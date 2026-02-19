@@ -310,8 +310,14 @@ textarea{
 
 .cal-contact-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* vertikal stapeln */
+  gap: 1rem;
 }
+
+/* Mobile Portrait: Kalender oben, Kontakt unten */
+.cal-contact-wrapper .cal-wrapper { order: 1; }
+.cal-contact-wrapper .contact { order: 2; }
+
 
 @media (max-width: 1023px) and (orientation: landscape) {
   .cal-contact-wrapper {
