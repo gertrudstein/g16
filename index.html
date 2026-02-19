@@ -231,15 +231,18 @@ label{
 
 input,
 textarea{
+input,
+textarea{
   width:100%;
-  padding:.75rem .9rem;
-  background:#0e0e0e;
-  color: var(--muted);
-  border:1px solid #1f1f1f;
-  border-radius:8px;
-
+  padding:.5rem .6rem;   /* weniger Innenabstand */
+  font-size:14px;        /* kleinere Schrift */
+  border-radius:6px;     /* optional etwas kompakter */
   font-family: inherit;
-  font-size: 16px; /* verhindert iOS Zoom */
+   
+}
+
+textarea{
+  min-height:120px;      /* vorher 160px */
 }
 
 input:focus,
