@@ -48,7 +48,6 @@ p, a, .event, .content, .notice {
   word-break: break-word;
 }
 
-/* Links */
 a,
 .contact a,
 .white-link {
@@ -75,7 +74,6 @@ footer a {
   text-decoration: none;
 }
 
-/* Layout */
 .wrap {
   max-width: 1100px;
   width: 100%;
@@ -85,7 +83,6 @@ footer a {
 
 main.wrap { margin-bottom: 2rem; }
 
-/* Ribbon */
 .ribbon {
   position: sticky;
   top: 0;
@@ -109,7 +106,6 @@ main.wrap { margin-bottom: 2rem; }
   color: var(--muted);
 }
 
-/* Header */
 header {
   border-bottom: 1px solid var(--border);
   background: #0d0d0d;
@@ -137,7 +133,6 @@ header {
   display: block;
 }
 
-/* Notice */
 .notice {
   background: #111;
   border: 1px dashed var(--border);
@@ -156,7 +151,6 @@ h2 {
   text-align: center;
 }
 
-/* Events */
 #events {
   display: grid;
   gap: 1.2rem;
@@ -181,7 +175,6 @@ h2 {
   white-space: pre-line;
 }
 
-/* Calendar */
 .cal { margin-bottom: 2rem; user-select: none; }
 
 .cal-head {
@@ -258,7 +251,6 @@ h2 {
   background: var(--red-strong);
 }
 
-/* Contact */
 .contact {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -311,7 +303,6 @@ textarea {
   font-weight: bold;
 }
 
-/* Calendar + Contact Layout */
 .cal-contact-wrapper {
   display: flex;
   flex-direction: column;
@@ -329,7 +320,6 @@ textarea {
     align-items: stretch;
   }
 
-  /* Kontakt links */
   .cal-contact-wrapper .contact {
     flex: 1;
     display: flex;
@@ -338,7 +328,6 @@ textarea {
     margin-top: 0;
   }
 
-  /* Kalender rechts */
   .cal-contact-wrapper .cal-wrapper {
     flex: 1;
     display: flex;
@@ -358,8 +347,6 @@ textarea {
   }
 }
 
-
-/* ---------- Tablet & Mobile ≤ 1024px ---------- */
 @media (max-width: 1023px) {
 
   .cal-contact-wrapper {
@@ -367,27 +354,21 @@ textarea {
     flex-direction: column;
   }
 
-  /* Kalender zuerst */
   .cal-contact-wrapper .cal-wrapper {
     order: 1;
   }
 
-  /* Kontakt darunter */
   .cal-contact-wrapper .contact {
     order: 2;
   }
 }
 
-
-/* ---------- ≤ 700px ---------- */
 @media (max-width: 700px) {
   .row {
     grid-template-columns: 1fr;
   }
 }
 
-
-/* ---------- Mobile ≤ 600px ---------- */
 @media (max-width: 600px) {
 
   html {
@@ -461,8 +442,6 @@ textarea {
   }
 }
 
-
-/* ---------- Sehr kleine Geräte ≤ 380px ---------- */
 @media (max-width: 380px) {
 
   .ribbon h1 {
@@ -661,7 +640,6 @@ Einlass: 20:00  Bands: 21:00
 
   <div class="cal-contact-wrapper">
 
-  <!-- Kontakt links -->
   <section class="contact" aria-labelledby="contact-head">
     <h2 id="contact-head"></h2>
     <form id="contactForm" novalidate>
@@ -681,7 +659,6 @@ Einlass: 20:00  Bands: 21:00
     </form>
   </section>
 
-  <!-- Kalender rechts -->
   <section class="cal-wrapper">
     
     <div class="cal" id="calendar">
@@ -717,7 +694,6 @@ Einlass: 20:00  Bands: 21:00
 
     let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-  
     document.querySelectorAll('.event[data-date]').forEach(el => {
       const d = el.getAttribute('data-date');
       if (!d) return;
@@ -788,7 +764,6 @@ Einlass: 20:00  Bands: 21:00
     renderCalendar();
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Contact form (mailto)
     document.getElementById('contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const to = "vgruppe-g16@mail36.net";
@@ -799,8 +774,6 @@ Einlass: 20:00  Bands: 21:00
       const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
  });
-
-
 
    </script>
 </body>
