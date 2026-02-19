@@ -473,12 +473,13 @@ textarea {
   body {
     transform: scale(0.68);
     transform-origin: top center;
-    width: 147%;
-    height: calc(100vh / 0.68); /* Höhe anpassen, damit kein Scrollen entsteht */
-    overflow-x: hidden;          /* horizontales Scrollen verhindern */
-    overflow-y: auto;            /* vertikales Scrollen erlaubt nur, wenn nötig */
+    width: 100%;      /* Breite normal lassen */
+    height: auto;     /* Höhe automatisch */
+    margin: 0 auto;   /* zentriert den Inhalt horizontal */
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-  
+
   footer {
     transform: scale(1);         /* Footer in Originalgröße */
     transform-origin: top center;
