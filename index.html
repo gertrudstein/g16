@@ -392,31 +392,43 @@ textarea{
   html { font-size: 68%; }
 
   .cal-contact-wrapper {
-    flex-direction: row; /* nebeneinander */
+    flex-direction: row;       /* nebeneinander */
     gap: 1rem;
+    align-items: stretch;      /* gleiche Höhe */
   }
 
   .cal-contact-wrapper .contact {
-    order: 1; /* links */
-    flex: 1;  /* gleiche Breite wie Kalender */
+    order: 1;                  /* links */
+    flex: 1;                   /* gleiche Breite und Höhe wie Kalender */
+    display: flex;
+    flex-direction: column;
   }
 
   .cal-contact-wrapper .cal-wrapper {
-    order: 2; /* rechts */
-    flex: 1;  /* gleiche Breite wie Kontakt */
+    order: 2;                  /* rechts */
+    flex: 1;                   /* gleiche Breite und Höhe wie Kontakt */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-wrapper .cal {
+    flex: 1;                   /* füllt die Höhe des Wrappers */
+    display: flex;
+    flex-direction: column;
   }
 
   .cal-grid {
+    flex: 1;                   /* füllt die Höhe */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     gap: 0.3rem;
   }
 
-  .dow, .cell {
+  .cell {
+    min-height: 0;
+    aspect-ratio: 1 / 1;       /* immer quadratisch */
     padding: 0.35rem 0.1rem;
     font-size: 0.8rem;
-  }
-
-  .cell {
-    min-height: 2.4rem;
   }
 
   .cell .day {
