@@ -319,10 +319,21 @@ textarea{
 .cal-contact-wrapper .contact { order: 2; }
 
 
-@media (max-width: 1023px) and (orientation: landscape) {
+@media (max-width: 1023px) and (orientation: portrait) {
   .cal-contact-wrapper {
-    flex-direction: row;
-    gap: 20px;
+    flex-direction: column; /* vertikal stapeln */
+    gap: 1rem;
+  }
+
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: unset;       /* keine automatische Höhenverteilung */
+    display: block;    /* normale Block-Darstellung */
+  }
+
+  /* Kalenderhöhe = Kontaktboxhöhe */
+  .cal-contact-wrapper .cal-wrapper .cal {
+    height: 100%;      /* füllt Wrapper */
   }
 
   .cal-contact-wrapper .contact {
