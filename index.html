@@ -346,27 +346,25 @@ textarea{
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Kalender nach oben ausrichten */
-    margin-top: 0; /* komplett oben bündig mit Kontaktbox */
+    margin-top: 0; /* bündig mit Kontaktbox */
   }
 
   .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
-    flex: 1;       /* Grid füllt den Rest nach unten */
   }
 
   .cal-wrapper .cal-head {
-    margin-bottom: 0.8rem; /* Abstand zwischen Buttons und Grid */
+    margin: 0; /* Buttons bündig nach oben */
   }
 
   .cal-wrapper .cal-grid {
-    flex: 1;       /* Grid streckt sich nach unten */
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.5rem;
     min-height: 0;
   }
-}
 
 /* --- Portrait <1024px --- */
 @media (max-width: 1023px) and (orientation: portrait) {
