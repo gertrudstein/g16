@@ -333,9 +333,8 @@ textarea{
 @media (min-width: 1024px) {
   .cal-contact-wrapper {
     display: flex;
-    flex-direction: row;
     gap: 1rem;
-    align-items: stretch; /* Boxen gleiche Höhe */
+    align-items: stretch; /* gleiche Höhe */
   }
 
   .cal-contact-wrapper .contact,
@@ -343,21 +342,29 @@ textarea{
     display: flex;
     flex-direction: column;
     flex: 1; /* gleiche Breite */
+    min-height: 0; /* wichtig, damit Flexbox korrekt rechnet */
   }
 
-  /* Kalenderinhalt so strecken, dass Unterkante bündig mit Kontaktbox */
-  .cal-wrapper .cal {
+  .cal-wrapper {
     display: flex;
     flex-direction: column;
-    flex: 1;          /* füllt die Höhe der Box */
+    flex: 1;
+    min-height: 0;
   }
 
-  /* Kalender-Grid nimmt den restlichen Platz ein */
+  .cal-wrapper .cal {
+    flex: 1; /* füllt die Höhe des Wrappers */
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* wichtig für Flexbox */
+  }
+
   .cal-wrapper .cal-grid {
-    flex: 1;          /* streckt sich, damit Unterkante bündig */
+    flex: 1; /* streckt Grid, damit Unterkante bündig */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.5rem;
+    min-height: 0; /* verhindert Overflow */
   }
 
   .cal-contact-wrapper .contact,
