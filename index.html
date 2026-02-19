@@ -332,13 +332,40 @@ textarea{
 /* --- Desktop ≥1024px --- */
 @media (min-width: 1024px) {
   .cal-contact-wrapper {
-    flex-direction: row;
+    flex-direction: row;       /* nebeneinander */
+    align-items: stretch;      /* gleiche Höhe */
+    gap: 1rem;
   }
+
   .cal-contact-wrapper .contact {
     order: 1;
+    flex: 1;                   /* gleiche Breite wie Kalender */
+    display: flex;
+    flex-direction: column;
   }
+
   .cal-contact-wrapper .cal-wrapper {
     order: 2;
+    flex: 1;                   /* gleiche Breite wie Kontakt */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-wrapper .cal {
+    flex: 1;                   /* füllt die Höhe des Wrappers */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-grid {
+    flex: 1;                   /* füllt die Höhe */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+
+  .cell {
+    aspect-ratio: 1 / 1;       /* immer quadratisch */
   }
 }
 
