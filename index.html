@@ -333,7 +333,8 @@ textarea{
 @media (min-width: 1024px) {
   .cal-contact-wrapper {
     flex-direction: row;       /* nebeneinander */
-    align-items: stretch;      /* gleiche Höhe */
+    align-items: stretch;/* gleiche Höhe */
+    align-items: flex-start;
     gap: 1rem;
   }
 
@@ -394,7 +395,8 @@ textarea{
   .cal-contact-wrapper {
     flex-direction: row;       /* nebeneinander */
     gap: 1rem;
-    align-items: stretch;      /* gleiche Höhe */
+    align-items: stretch;    /* gleiche Höhe */
+    align-items: flex-start;
   }
 
   .cal-contact-wrapper .contact {
@@ -404,6 +406,12 @@ textarea{
     flex-direction: column;
   }
 
+  .cal-contact-wrapper .contact h2,
+  .cal-contact-wrapper .cal-wrapper h2 {
+    margin-top: 0;      /* Überschriften oben bündig */
+    margin-bottom: 0.5rem;
+  }
+  
   .cal-contact-wrapper .cal-wrapper {
     order: 2;                  /* rechts */
     flex: 1;                   /* gleiche Breite und Höhe wie Kontakt */
