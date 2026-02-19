@@ -358,43 +358,38 @@ textarea{
   .cal-wrapper .cal { height: 100%; } /* Kalender füllt Wrapper */
 }
 
-/* --- Landscape <900px --- */
 @media (max-width: 900px) and (orientation: landscape) {
   html { font-size: 68%; }
 
   .cal-contact-wrapper {
-    flex-direction: row; /* nebeneinander */
+    flex-direction: row;      /* nebeneinander */
     gap: 1rem;
+    align-items: stretch;     /* gleiche Höhe */
   }
 
   .cal-contact-wrapper .contact {
-    order: 1; /* links */
-    flex: 1;  /* gleiche Breite wie Kalender */
+    order: 1; 
+    flex: 1;                  /* gleiche Breite wie Kalender */
+    display: flex;
+    flex-direction: column;   /* Inhalt vertikal */
   }
 
   .cal-contact-wrapper .cal-wrapper {
-    order: 2; /* rechts */
-    flex: 1;  /* gleiche Breite wie Kontakt */
+    order: 2; 
+    flex: 1;                  /* gleiche Breite wie Kontakt */
+    display: flex;
+    flex-direction: column;   /* Inhalt vertikal */
   }
 
-  .cal-grid {
-    gap: 0.3rem;
+  .cal-wrapper .cal {
+    flex: 1;                  /* Kalender füllt Wrapper */
   }
 
-  .dow, .cell {
-    padding: 0.35rem 0.1rem;
-    font-size: 0.8rem;
-  }
-
-  .cell {
-    min-height: 2.4rem;
-  }
-
-  .cell .day {
-    top: 0.25rem;
-    left: 0.3rem;
-    font-size: 0.75rem;
-  }
+  .cal-grid { gap: 0.3rem; }
+  .dow, .cell { padding: 0.35rem 0.1rem; font-size: 0.8rem; }
+  .cell { min-height: 2.4rem; }
+  .cell .day { top: 0.25rem; left: 0.3rem; font-size: 0.75rem; }
+}
 
   footer{ border-top:1px solid var(--border); color: var(--muted); text-align:center; padding: 1.2rem 0 2.4rem; }
   footer a{
