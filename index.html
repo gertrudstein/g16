@@ -330,23 +330,30 @@ textarea{
 }
 
 /* --- Desktop ≥1024px --- */
-@media (min-width: 1024px) {
-  .cal-contact-wrapper {
-    flex-direction: row;       /* nebeneinander */
-    align-items: stretch;/* gleiche Höhe */
+@media (min-width: 1024px), (max-width: 900px) and (orientation: landscape) {
+  .cal-contact-header {
+    display: flex;
+    justify-content: space-between; /* links Kontakt, rechts Kalender */
+    align-items: baseline;          /* exakt gleiche Höhe */
+    margin-bottom: 1rem;
     gap: 1rem;
   }
 
-  .cal-contact-wrapper .contact {
-    order: 1;
-    flex: 1;                   /* gleiche Breite wie Kalender */
-    display: flex;
-    flex-direction: column;
+  .cal-contact-header h2 {
+    margin: 0;
   }
 
+  /* Boxen nebeneinander, gleiche Höhe */
+  .cal-contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    order: 2;
-    flex: 1;                   /* gleiche Breite wie Kontakt */
+    flex: 1;
     display: flex;
     flex-direction: column;
   }
