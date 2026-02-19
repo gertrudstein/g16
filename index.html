@@ -681,6 +681,13 @@ Einlass: 20:00  Bands: 21:00
   <a href="kontakte.html">Kontakte</a>
 </footer>
 
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      document.body.classList.add('loaded');
+    }, 200); 
+  });
+  
   <script>
     const monthLabel = document.getElementById('monthLabel');
     const grid = document.getElementById('grid');
