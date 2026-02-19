@@ -330,42 +330,29 @@ textarea{
 }
 
 /* --- Desktop ≥1024px --- */
-@media (min-width: 1024px) {
-  .cal-contact-wrapper {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start; /* Obere Kanten ausrichten */
-  }
+@media (min-width: 1024px) { .cal-contact-wrapper {
+   display: flex; gap: 1rem; align-items: flex-start; /* Obere Kanten ausrichten */ }
 
-  .cal-contact-wrapper .contact {
-    flex: 0 0 auto; /* natürliche Höhe */
-  }
+.cal-contact-wrapper .contact { 
+  flex: 0 0 auto; /* natürliche Höhe */ }
 
-  .cal-contact-wrapper .cal-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Kalender nach oben ausrichten */
-    margin-top: 0; /* bündig mit Kontaktbox */
-  }
+.cal-contact-wrapper .cal-wrapper { 
+  flex: 1; display: flex; flex-direction: column; justify-content: flex-start; /* Kalender nach oben ausrichten */ 
+  margin-top: 0; /* komplett oben bündig mit Kontaktbox */ }
 
-  .cal-wrapper .cal {
-    display: flex;
-    flex-direction: column;
-  }
-
+.cal-wrapper .cal { 
+  display: flex; flex-direction: column; flex: 1; /* Grid füllt den Rest nach unten */ }
   .cal-wrapper .cal-head {
     margin: 0; /* Buttons bündig nach oben */
   }
 
-  .cal-wrapper .cal-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-    min-height: 0;
-  }
+.cal-wrapper .cal-grid { 
+  flex: 1; /* Grid streckt sich nach unten */ 
+  display: grid; grid-template-columns: repeat(7, 1fr); 
+  gap: 0.5rem; min-height: 0; 
 
+}
+                         
 /* --- Portrait <1024px --- */
 @media (max-width: 1023px) and (orientation: portrait) {
   .cal-contact-wrapper {
