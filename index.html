@@ -289,7 +289,7 @@ textarea{
   order: 2; /* Kontakt danach */
 }
 
- @media (min-width: 1024px) {
+@media (min-width: 1024px) {
 
   .cal-contact-wrapper {
     display: flex;
@@ -298,6 +298,7 @@ textarea{
     align-items: stretch;
   }
 
+  /* Kontakt links */
   .cal-contact-wrapper .contact {
     flex: 1;
     display: flex;
@@ -306,6 +307,7 @@ textarea{
     margin-top: 0;
   }
 
+  /* Kalender rechts */
   .cal-contact-wrapper .cal-wrapper {
     flex: 1;
     display: flex;
@@ -326,6 +328,26 @@ textarea{
 }
 
 
+/* ---------- Tablet & Mobile ≤ 1024px ---------- */
+@media (max-width: 1023px) {
+
+  .cal-contact-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Kalender zuerst */
+  .cal-contact-wrapper .cal-wrapper {
+    order: 1;
+  }
+
+  /* Kontakt darunter */
+  .cal-contact-wrapper .contact {
+    order: 2;
+  }
+}
+
+
 /* ---------- ≤ 700px ---------- */
 @media (max-width: 700px) {
   .row {
@@ -334,7 +356,7 @@ textarea{
 }
 
 
-/* ---------- ≤ 600px ---------- */
+/* ---------- Mobile ≤ 600px ---------- */
 @media (max-width: 600px) {
 
   html {
@@ -380,16 +402,6 @@ textarea{
     padding: 0.9rem;
   }
 
-  .cal-contact-wrapper {
-    display: block;
-    gap: 1rem;
-    margin-top: 0;
-  }
-
-  .cal-wrapper h2 {
-    margin: 1.2rem 0 0.6rem;
-  }
-
   .cal-grid {
     gap: 0.3rem;
   }
@@ -419,7 +431,7 @@ textarea{
 }
 
 
-/* ---------- ≤ 380px ---------- */
+/* ---------- Sehr kleine Geräte ≤ 380px ---------- */
 @media (max-width: 380px) {
 
   .ribbon h1 {
