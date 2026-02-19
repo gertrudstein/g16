@@ -471,14 +471,16 @@ textarea {
   
 @media (orientation: landscape) {
   body {
-    transform: scale(0.68);       
-    transform-origin: top center;  
-    width: fit-content;                  
+    transform: scale(0.68);
+    transform-origin: top center;
+    width: 147%;
+    height: calc(100vh / 0.68); /* Höhe anpassen, damit kein Scrollen entsteht */
+    overflow-x: hidden;          /* horizontales Scrollen verhindern */
+    overflow-y: auto;            /* vertikales Scrollen erlaubt nur, wenn nötig */
   }
-}
-
+  
   footer {
-    transform: scale(1);     
+    transform: scale(1);         /* Footer in Originalgröße */
     transform-origin: top center;
   }
 }
