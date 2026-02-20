@@ -408,60 +408,38 @@ textarea {
 }
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+
   .cal-contact-wrapper {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    align-items: stretch; /* sorgt dafür, dass beide Bereiche die gleiche Höhe haben */
+    align-items: stretch; /* Beide exakt gleich hoch */
   }
 
-  /* Kalender-Container */
-  .cal-wrapper {
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
     flex: 1;
+    margin-top: 0;
+  }
+
+  /* Kalender Container bekommt feste Höhe */
+  .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
+    height: 650px; /* ← hier ggf. leicht anpassen */
   }
 
-  /* Kalender-Größe fixieren */
+  /* Kopf bleibt fix */
+  .cal-head {
+    flex-shrink: 0;
+  }
+
+  /* Grid füllt restliche Höhe */
   .cal-grid {
+    flex: 1;
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 gleichmäßige Spalten */
-    grid-template-rows: repeat(6, 1fr); /* 6 gleichmäßige Reihen */
-    gap: 0.6rem; /* Abstand zwischen den Zellen */
-    height: 100%; /* Kalender füllt die gesamte Höhe */
-  }
-
-  /* Zellen des Kalenders */
-  .cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--border);
-    background: #0f0f0f;
-    border-radius: 8px;
-    min-height: 70px;  /* Feste Höhe für die Zellen */
-    min-width: 70px;   /* Feste Breite für die Zellen */
-  }
-
-  /* Zusätzliche Stil-Anpassungen für das Erscheinungsbild */
-  .cell .day {
-    font-size: 1rem;
-    color: var(--muted);
-  }
-
-  /* Eventuelle markierte Tage */
-  .cell.eventful {
-    background-color: #141414;
-    cursor: pointer;
-  }
-  .dot {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--red-strong);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
   }
 }
 
