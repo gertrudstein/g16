@@ -408,36 +408,45 @@ textarea {
 }
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+  /* Wrapper für Kalender + Kontakt nebeneinander */
   .cal-contact-wrapper {
     flex-direction: row;
     gap: 20px;
-    align-items: stretch; /* WICHTIG: passt Höhe an Kontakt an */
+    align-items: stretch; /* Kontakt und Kalender gleich hoch */
   }
 
+  /* Kalender-Wrapper */
   .cal-contact-wrapper .cal-wrapper {
     flex: 1;
-    order: 1;  /* Kalender links */
+    order: 1; /* Kalender links */
     display: flex;
     flex-direction: column;
+    height: 100%; /* Höhe an Kontaktbox anpassen */
   }
 
+  /* Kontakt-Box */
   .cal-contact-wrapper .contact {
     flex: 1;
-    order: 0;  /* Kontakt rechts */
+    order: 0; /* Kontakt rechts */
     margin-top: 0;
-    height: 100%;
   }
 
+  /* Kalender-Inhalt */
   .cal {
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100%; /* streckt Kalender */
   }
 
+  /* Kalender-Grid */
   .cal-grid {
     flex: 1;
-    height: 100%;/* Grid füllt gesamte Höhe */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.6rem;
+    align-content: start; /* Events oben ausrichten */
+    height: 100%; /* füllt gesamte Höhe des Kalenders */
   }
 }
 
