@@ -328,7 +328,7 @@ textarea {
   .cal-contact-wrapper {
     margin-top: 0rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 40px;
     align-items: stretch;
   }
@@ -375,9 +375,9 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 
-  #events {
-    margin-left: 2rem;
-    margin-right: 2rem;
+#events .event {
+    width: 100%; /* volle Breite des Containers */
+    max-width: none; /* verhindert Begrenzung */
   }
 }
 
