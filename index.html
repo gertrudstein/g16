@@ -419,6 +419,28 @@ textarea {
     align-items: flex-start;   /* oben ausrichten */
   }
 
+    @media (max-width: 1023px) and (orientation: landscape) {
+  .cal-contact-wrapper {
+    align-items: stretch; /* beide Spalten gleich hoch */
+  }
+
+  .cal-contact-wrapper .cal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    height: 100%; /* nimmt volle Höhe der Kontaktbox */
+  }
+
+  .cal {
+    flex: 1; /* Kalender füllt Container komplett aus */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-grid {
+    flex: 1; /* Grid dehnt sich über die gesamte Höhe */
+  }
+
   .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
     flex: 1;                   /* beide gleich breit */
