@@ -324,60 +324,44 @@ textarea {
 .cal-contact-wrapper .contact { order: 2; }
 
 @media (min-width: 1024px) {
-
+  /* Wrapper für Kalender + Kontakt nebeneinander */
   .cal-contact-wrapper {
-    margin-top: 0rem;
     display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: stretch;
+    flex-direction: row;       /* Nebeneinander */
+    gap: 40px;                 /* Abstand zwischen den Spalten */
+    align-items: flex-start;   /* Oben ausrichten */
+    margin-top: 2rem;
   }
 
-  .notice:nth-of-type(2) + #events {
-    margin-bottom: 2rem;
-  }
-  
-  .cal-contact-wrapper .contact {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    order: 1;
-    margin-top: 0;
-  }
-
+  /* Kontaktformular und Kalender gleichmäßig verteilen */
+  .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
+    flex: 1;                   /* Beide nehmen gleichen Platz ein */
+    margin-top: 0;             /* kein zusätzlicher Abstand */
+    order: 0;                   /* Reihenfolge wie im HTML */
+  }
+
+  /* Kalender-inhalt sauber anordnen */
+  .cal-wrapper .cal {
+    display: flex;
+    flex-direction: column;
+    height: auto;              /* Höhe richtet sich nach Inhalt */
+  }
+
+  .cal {
     flex: 1;
     display: flex;
     flex-direction: column;
-    order: 2;
-    margin-top: 0;
   }
 
-.cal {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.cal-wrapper {
-  display: flex;
-}
-
-.cal-wrapper .cal {
-  flex: 1;
-}
-
-.cal-grid {
-  flex: 1;
-}
-  .row {
-    grid-template-columns: 1fr 1fr;
+  .cal-grid {
+    flex: 1;
   }
 
-#events .event {
-    width: 100%; /* volle Breite des Containers */
-    max-width: none; /* verhindert Begrenzung */
+  /* Events volle Breite im Kalender-Container */
+  #events .event {
+    width: 100%;
+    max-width: none;
   }
 }
 
