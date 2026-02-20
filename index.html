@@ -409,43 +409,26 @@ textarea {
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
 
-  .cal-contact-wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    align-items: flex-start; /* nicht stretch */
-    margin-top: 2rem;
-  }
-
-  .cal-contact-wrapper .contact,
-  .cal-contact-wrapper .cal-wrapper {
-    flex: 1;
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
   .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
-    height: auto; /* Höhe richtet sich nach Inhalt */
+    height: 100%; /* Container-Höhe nutzen */
   }
 
   .cal-head {
-    flex-shrink: 0; /* Header bleibt feste Höhe */
+    flex-shrink: 0; /* bleibt feste Höhe */
   }
 
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(7); /* 7 Reihen fix, Höhe 90px */
+    grid-template-rows: repeat(7, 1fr); /* 7 Reihen gleichmäßig verteilen */
     gap: .6rem;
-    flex: unset;   /* ❌ keine automatische Skalierung */
+    flex: 1; /* Grid füllt die restliche Höhe */
   }
 
   .cell {
-    height: 90px;   /* feste Höhe */
-    min-height: unset;
+    height: 100%;  /* jede Zelle füllt ihr Grid-Row */
   }
 }
 
