@@ -409,44 +409,34 @@ textarea {
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
 
-  /* Wrapper für Kalender + Kontakt nebeneinander */
   .cal-contact-wrapper {
     display: flex;
-    flex-direction: row;       /* Nebeneinander */
-    gap: 40px;                 /* Abstand zwischen den Spalten */
-    align-items: flex-start;   /* Oben ausrichten */
+    flex-direction: row;
+    gap: 40px;
+    align-items: stretch; /* gleich hoch wie Desktop */
     margin-top: 2rem;
   }
 
-  /* Kontaktformular und Kalender gleichmäßig verteilen */
   .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    flex: 1;                   /* Beide nehmen gleichen Platz ein */
-    margin-top: 0;             /* kein zusätzlicher Abstand */
-    order: 0;                   /* Reihenfolge wie im HTML */
-  }
-
-  /* Kalender-inhalt sauber anordnen */
-  .cal-wrapper .cal {
+    flex: 1;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
-    height: auto;              /* Höhe richtet sich nach Inhalt */
   }
 
-  .cal {
+  .cal-wrapper .cal {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  .cal-head {
+    flex-shrink: 0; /* Header bleibt feste Höhe */
   }
 
   .cal-grid {
-    flex: 1;
-  }
-
-  /* Events volle Breite im Kalender-Container */
-  #events .event {
-    width: 100%;
-    max-width: none;
+    flex: 1;       /* Grid füllt restliche Höhe */
   }
 }
 
