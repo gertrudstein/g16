@@ -408,34 +408,33 @@ textarea {
 }
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
-
   .cal-contact-wrapper {
-    display: flex;
     flex-direction: row;
-    gap: 40px;
-    margin-top: 2rem;
+    gap: 20px;
+    align-items: stretch; /* WICHTIG: passt Höhe an Kontakt an */
   }
 
-  /* Feste Höhe für BEIDE Spalten */
-  .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
     flex: 1;
-    height: 650px;   /* ← HIER feste Höhe anpassen */
+    order: 1;  /* Kalender links */
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Kalender füllt die feste Höhe komplett */
-  .cal-wrapper .cal {
-    height: 100%;
+  .cal-contact-wrapper .contact {
+    flex: 1;
+    order: 0;  /* Kontakt rechts */
+    margin-top: 0;
+  }
+
+  .cal {
+    flex: 1;
     display: flex;
     flex-direction: column;
   }
 
   .cal-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 0.6rem;
+    flex: 1;  /* Grid füllt gesamte Höhe */
   }
 }
 
@@ -541,90 +540,11 @@ textarea {
     font-size: 0.7rem;
   }
 
-   
 #events-head {
     margin-top: 2rem;
   }
-}.cal-contact-wrapper {
-  display: flex;
-  flex-direction: column; /* Mobile default */
-  gap: 2rem;
 }
-
-@media (min-width: 700px) {
-  .cal-contact-wrapper {
-    flex-direction: row;
-    gap: 40px;
-    align-items: flex-start;
-  }
-
-  .cal-contact-wrapper .cal-wrapper,
-  .cal-contact-wrapper .contact {
-    flex: 1;
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cal-wrapper .cal {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.6rem;
-    flex: 1;
-  }
-
-  .dow, .cell {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .cell {
-    min-height: 0;
-    position: relative;
-  }
-
-  .cell .day {
-    position: absolute;
-    top: 0.4rem;
-    left: 0.5rem;
-    font-size: 0.95rem;
-  }
-
-  .cell .dot {
-    position: absolute;
-    right: 0.45rem;
-    bottom: 0.35rem;
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-  }
-
-  .contact {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 699px) {
-  .cal-contact-wrapper {
-    flex-direction: column;
-  }
-
-  .cal-wrapper, .contact {
-    flex: none;
-  }
-
-  .cal-grid {
-    grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: minmax(2.5rem, auto);
-  }
-    }
+   
   </style>
 </head>
 
