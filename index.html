@@ -512,6 +512,20 @@ textarea {
 #events-head {
     margin-top: 2rem;
   }
+
+  @media (max-width: 1023px) and (orientation: landscape) {
+  .cal-contact-wrapper {
+    flex-direction: row;       /* nebeneinander */
+    gap: 20px;                 /* Abstand zwischen Kalender und Kontakt */
+    align-items: flex-start;   /* oben ausrichten */
+  }
+
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;                   /* beide gleich breit */
+    margin-top: 0;             /* keinen zusätzlichen Abstand */
+    order: 0;                  /* normale Reihenfolge */
+  }
   
 }
    
