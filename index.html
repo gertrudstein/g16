@@ -413,6 +413,8 @@ textarea {
     flex-direction: row;
     gap: 20px;
     align-items: stretch; /* Kontakt und Kalender gleich hoch */
+    /* Höhe automatisch nach höchstem Kind */
+    display: flex;
   }
 
   /* Kalender-Wrapper */
@@ -421,7 +423,6 @@ textarea {
     order: 1; /* Kalender links */
     display: flex;
     flex-direction: column;
-    height: 100%; /* Höhe an Kontaktbox anpassen */
   }
 
   /* Kontakt-Box */
@@ -436,7 +437,6 @@ textarea {
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100%; /* streckt Kalender */
   }
 
   /* Kalender-Grid */
@@ -445,8 +445,7 @@ textarea {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.6rem;
-    align-content: start; /* Events oben ausrichten */
-    height: 100%; /* füllt gesamte Höhe des Kalenders */
+    align-content: start;
   }
 }
 
