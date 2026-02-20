@@ -408,53 +408,34 @@ textarea {
 }
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
-  /* Wrapper für Kalender + Kontakt nebeneinander */
   .cal-contact-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 40px;               /* wie Desktop */
-    align-items: stretch;    /* gleiche Höhe für beide Spalten */
+    gap: 40px;
+    align-items: stretch; /* sorgt für gleiche Höhe */
     margin-top: 2rem;
   }
 
-  /* Kontaktbox */
-  .cal-contact-wrapper .contact {
-    flex: 1;
-    order: 0;
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Kalender Wrapper */
+  .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    flex: 1;
-    order: 1;
+    flex: 1;                /* gleiche Breite */
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;          /* überschreibt bisherigen Abstand */
+  }
+
+  .cal-wrapper .cal {
+    flex: 1;                /* füllt die Höhe der Spalte */
     display: flex;
     flex-direction: column;
   }
 
-  /* Kalender Container */
-  .cal {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  /* Kalender Grid */
   .cal-grid {
+    flex: 1;                /* füllt die Höhe der Kalender-Spalte */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr); /* 6 Wochen fix */
     gap: 0.6rem;
-    flex: none; /* keine automatische Dehnung */
-    height: 100%;
-  }
-
-  /* Zellen */
-  .cell {
-    position: relative;
-    min-height: 0; /* Höhe wird vom Grid bestimmt */
   }
 }
 
