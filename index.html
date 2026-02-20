@@ -354,12 +354,20 @@ textarea {
     margin-top: 0;
   }
 
-  .cal {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+.cal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
+.cal-wrapper {
+  display: flex;
+}
+
+.cal-wrapper .cal {
+  flex: 1;
+}
   .row {
     grid-template-columns: 1fr 1fr;
   }
