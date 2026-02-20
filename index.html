@@ -408,33 +408,35 @@ textarea {
 }
 
 @media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+
   .cal-contact-wrapper {
     display: flex;
     flex-direction: row;
     gap: 40px;
-    align-items: stretch; /* sorgt für gleiche Höhe */
+    align-items: stretch;   /* beide Spalten exakt gleich hoch */
     margin-top: 2rem;
   }
 
   .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    flex: 1;                /* gleiche Breite */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    margin-top: 0;          /* überschreibt bisherigen Abstand */
+    margin-top: 0;
   }
 
+  /* Kalender füllt komplette Spaltenhöhe */
   .cal-wrapper .cal {
-    flex: 1;                /* füllt die Höhe der Spalte */
+    flex: 1;
     display: flex;
     flex-direction: column;
   }
 
+  /* WICHTIG: KEINE festen grid-template-rows mehr */
   .cal-grid {
-    flex: 1;                /* füllt die Höhe der Kalender-Spalte */
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr); /* 6 Wochen fix */
     gap: 0.6rem;
   }
 }
