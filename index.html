@@ -412,42 +412,6 @@ textarea {
     font-size: 68%;
   }
 
-    @media (max-width: 1023px) and (orientation: landscape) {
-  .cal-contact-wrapper {
-    flex-direction: row;       /* nebeneinander */
-    gap: 20px;                 /* Abstand zwischen Kalender und Kontakt */
-    align-items: flex-start;   /* oben ausrichten */
-  }
-
-  .cal-contact-wrapper .contact,
-  .cal-contact-wrapper .cal-wrapper {
-    flex: 1;                   /* beide gleich breit */
-    margin-top: 0;             /* keinen zusätzlichen Abstand */
-    order: 0;                  /* normale Reihenfolge */
-  }
-
-  /* Kalender an die Höhe der Kontaktbox anpassen */
-  .cal-contact-wrapper {
-    align-items: stretch; /* beide Spalten gleich hoch */
-  }
-
-  .cal-contact-wrapper .cal-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    height: 100%; /* volle Höhe der Kontaktbox */
-  }
-
-  .cal {
-    flex: 1; /* Kalender füllt Container komplett aus */
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cal-grid {
-    flex: 1; /* Grid dehnt sich über die gesamte Höhe */
-  }
-  
   .ribbon h1 {
     font-size: 2rem;
   }
@@ -545,6 +509,42 @@ textarea {
     font-size: 0.7rem;
   }
 
+    @media (max-width: 1023px) and (orientation: landscape) {
+  .cal-contact-wrapper {
+    flex-direction: row;       /* nebeneinander */
+    gap: 20px;                 /* Abstand zwischen Kalender und Kontakt */
+    align-items: flex-start;   /* oben ausrichten */
+  }
+
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;                   /* beide gleich breit */
+    margin-top: 0;             /* keinen zusätzlichen Abstand */
+    order: 0;                  /* normale Reihenfolge */
+  }
+
+  /* Kalender an die Höhe der Kontaktbox anpassen */
+  .cal-contact-wrapper {
+    align-items: stretch; /* beide Spalten gleich hoch */
+  }
+
+  .cal-contact-wrapper .cal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    height: 100%; /* volle Höhe der Kontaktbox */
+  }
+
+  .cal {
+    flex: 1; /* Kalender füllt Container komplett aus */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-grid {
+    flex: 1; /* Grid dehnt sich über die gesamte Höhe */
+}
+    
 #events-head {
     margin-top: 2rem;
   }
