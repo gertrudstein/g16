@@ -407,44 +407,36 @@ textarea {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape),
-       (min-width: 1024px) {
+@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
   .cal-contact-wrapper {
-    flex-direction: row;          /* Kalender + Kontakt nebeneinander */
-    gap: 40px;
-    align-items: flex-start;
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch; /* WICHTIG: passt Höhe an Kontakt an */
   }
 
-  .cal-wrapper {
+  .cal-contact-wrapper .cal-wrapper {
     flex: 1;
+    order: 1;  /* Kalender links */
     display: flex;
     flex-direction: column;
-    height: 100%;                 /* Wrapper-Höhe ausfüllen */
+  }
+
+  .cal-contact-wrapper .contact {
+    flex: 1;
+    order: 0;  /* Kontakt rechts */
+    margin-top: 0;
   }
 
   .cal {
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100%;                 /* volle Höhe innerhalb Wrapper */
   }
 
   .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.6rem;
-    flex: 1;                      /* Grid füllt restliche Höhe aus */
-    height: 100%;                 /* auf volle Höhe skalieren */
+    flex: 1;  /* Grid füllt gesamte Höhe */
   }
-
-  .cell {
-    min-height: 0;                /* Höhe wird durch Grid bestimmt */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: relative;
-  }
-    }
+}
 
 @media (max-width: 600px), (max-height: 600px) {
   html {
