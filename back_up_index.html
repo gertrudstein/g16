@@ -91,19 +91,32 @@ main.wrap { margin-bottom: 2rem; }
   background: #000;
   border-bottom: 1px solid var(--border);
   text-align: center;
-  padding: .9rem .8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem; 
   box-shadow: var(--shadow);
+  min-height: 10vh; 
 }
 
 .ribbon h1 {
-  margin: 0;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   color: var(--red);
+  margin: 0;
 }
 
 .ribbon p {
-  margin: .2rem 0 0;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  margin: 0.2rem 0 0;
   color: var(--muted);
+}
+
+@media (max-width: 380px) {
+  .ribbon {
+    padding: 1.5rem 0.5rem;
+    min-height: 8vh;
+ } 
 }
 
 header {
@@ -394,8 +407,38 @@ textarea {
   }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+  .cal-contact-wrapper {
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch; /* WICHTIG: passt Höhe an Kontakt an */
+  }
 
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;
+    order: 1;  /* Kalender links */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-contact-wrapper .contact {
+    flex: 1;
+    order: 0;  /* Kontakt rechts */
+    margin-top: 0;
+  }
+
+  .cal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-grid {
+    flex: 1;  /* Grid füllt gesamte Höhe */
+  }
+}
+
+@media (max-width: 600px), (max-height: 600px) {
   html {
     font-size: 68%;
   }
@@ -500,7 +543,6 @@ textarea {
 #events-head {
     margin-top: 2rem;
   }
-  
 }
    
   </style>
