@@ -138,23 +138,17 @@ header {
   border: 1px dashed var(--border);
   border-radius: var(--radius);
   padding: .9rem 1rem;
-  margin: 2rem 0;
+  margin-bottom: 2rem; /* nur unterer Abstand */
   color: var(--muted);
 }
 
-.notice:nth-of-type(2) + #events {
-  margin-top: 2rem;
+.notice:first-of-type {
+  margin-top: 0; /* erste Box klebt am Header */
+}
 
- } 
-  
 .notice + .notice {
-  margin-bottom: 2rem;
+  margin-top: 2rem; /* Abstand zur vorherigen Box */
 }
-  
-  .notice:last-of-type {
-  margin-bottom: 2rem;
-}
-
 .notice h2 { margin-top: 0; text-align: left; }
 .notice h2.centered { text-align: center; }
 
