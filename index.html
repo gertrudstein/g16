@@ -411,32 +411,27 @@ textarea {
   .cal-contact-wrapper {
     flex-direction: row;
     gap: 20px;
-    align-items: stretch; /* WICHTIG: passt Höhe an Kontakt an */
+    align-items: stretch; /* Wrapper gleich hoch */
   }
 
-  .cal-contact-wrapper .cal-wrapper {
+  .cal-wrapper {
     flex: 1;
-    order: 1;  /* Kalender links */
     display: flex;
     flex-direction: column;
-    height: auto;
-  }
-
-  .cal-contact-wrapper .contact {
-    flex: 1;
-    order: 0;  /* Kontakt rechts */
-    margin-top: 0;
+    height: 100%;       /* Wrapper füllt Höhe */
   }
 
   .cal {
-    flex: 1;
+    flex: 1;            /* Kalender füllt Wrapper */
     display: flex;
     flex-direction: column;
   }
 
   .cal-grid {
-    flex: 1;  /* Grid füllt gesamte Höhe */
+    flex: 0;            /* keine vertikale Streckung */
+    height: auto;       /* natürliche Höhe wie Desktop */
   }
+
 }
 
 @media (max-width: 600px), (max-height: 600px) {
