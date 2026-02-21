@@ -379,41 +379,43 @@ textarea {
 
 @media (max-width: 1023px) {
 
+  /* Kalender und Kontakt vertikal anordnen */
   .cal-contact-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Kalender oben, Kontakt unten */
     gap: 20px;
     align-items: stretch;
     margin-top: 2rem;
   }
 
-  .cal-contact-wrapper .contact,
-  .cal-contact-wrapper .cal-wrapper {
+  /* Beide Container nehmen gleich viel Platz ein */
+  .cal-contact-wrapper .cal-wrapper,
+  .cal-contact-wrapper .contact {
     flex: 1;
     margin-top: 0;
     order: 0;
   }
 
-  /* Festlegen der Kalenderhöhe */
+  /* Kalender: gleiche Einstellungen wie im Landscape-Modus */
   .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
-    height: 600px; /* feste Höhe, beliebig anpassen */
+    height: auto; /* Höhe richtet sich nicht nach Anzahl der Tage */
   }
 
-  /* Grid auf volle Höhe strecken */
+  /* Grid: gleiche Spalten wie im Landscape, Höhe passt sich automatisch */
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr); /* 6 Reihen, fixiert */
     gap: 0.6rem;
     flex: 1;
-    height: 100%;
+    height: auto; /* keine feste Höhe */
   }
 
+  /* Zellen innerhalb des Grids */
   .cell {
-    min-height: 0; /* entfernt Mindesthöhe */
-    height: 100%;  /* Zellen füllen gleichmäßig die Reihen */
+    min-height: 3rem; /* bleibt wie Desktop/Landscape */
+    position: relative;
   }
 }
 
