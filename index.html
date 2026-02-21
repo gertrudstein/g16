@@ -377,7 +377,11 @@ textarea {
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1023px) 
+  {
+  html {
+    font-size: 68%;
+  }
 
   .cal-contact-wrapper {
     display: flex;
@@ -436,15 +440,6 @@ textarea {
   }
 }
 
-@media (orientation: landscape) {
-  body {
-    transform: scale(0.68);     
-    transform-origin: top left;   
-    width: 147%;                 
-    height: 147%;                
-    overflow-x: hidden;           
-  }
-}
 
 @media (max-width: 600px) {
   html {
