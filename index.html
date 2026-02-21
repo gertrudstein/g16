@@ -811,7 +811,7 @@ Einlass: 20:00  DJ sets: 21:00
 </footer>
   <div id="cellTooltip" class="cell-tooltip"></div>
   
- <script>
+<script>
   const monthLabel = document.getElementById('monthLabel');
   const grid = document.getElementById('grid');
   const prevBtn = document.getElementById('prev');
@@ -925,14 +925,22 @@ Einlass: 20:00  DJ sets: 21:00
         const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
         if (!eventEl) return;
 
-        // Titel: alles nach dem Doppelpunkt
+        // Erste Zeile aus der Event-Box ohne Datum/Doppelpunkt
         const dateText = eventEl.querySelector('.date').innerText || '';
         const titleLine = dateText.includes(':') ? dateText.split(':')[1].trim() : dateText;
 
-        // Event-Text
-        const contentText = eventEl.querySelector('.content').innerText.trim();
+        // Ganze Eventbox Text aufteilen in Zeilen
+        const contentLines = eventEl.querySelector('.content').innerText
+          .trim()
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line.length > 0);
 
-        tooltip.textContent = `${titleLine}\n${contentText}`;
+        // Letzte Zeile aus dem Inhalt
+        const lastLine = contentLines[contentLines.length - 1] || '';
+
+        // Tooltip nur erste + letzte Zeile
+        tooltip.textContent = `${titleLine}\n${lastLine}`;
         tooltip.style.display = 'block';
       });
 
@@ -959,7 +967,6 @@ Einlass: 20:00  DJ sets: 21:00
 
   // Tooltip bei initialem Rendern anbringen
   attachTooltipEvents();
-
-   </script>
+</script>
 </body>
 </html>
