@@ -903,37 +903,21 @@ function attachTooltipEvents() {
       const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
       if (!eventEl) return;
 
-      // Erste Zeile aus .date nach Doppelpunkt
+      // Nur Überschrift ohne Datum und Doppelpunkt
       let dateText = eventEl.querySelector('.date').innerText || '';
       const colonIndex = dateText.indexOf(':');
-      const titleLine = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
+      const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
 
-      // Letzte relevante Zeile aus .content (Einlass/Bands)
-      let lastLine = '';
-      const contentEl = eventEl.querySelector('.content');
-      if (contentEl) {
-        const lines = contentEl.innerText
-          .split('\n')
-          .map(l => l.trim())
-          .filter(l => l.length > 0);
-        for (let i = lines.length - 1; i >= 0; i--) {
-          if (/Einlass|Bands/i.test(lines[i])) {
-            lastLine = lines[i];
-            break;
-          }
-        }
-      }
-
-      tooltip.textContent = `${titleLine}\n${lastLine}`;
+      tooltip.textContent = titleOnly;
       tooltip.style.display = 'block';
     };
 
-  cell.onmousemove = (e) => {
-  const tooltipWidth = tooltip.offsetWidth;       // aktuelle Breite des Tooltips
-  let leftPos = e.pageX - tooltipWidth - 10;     // links von Maus, 10px Abstand
-  if (leftPos < 5) leftPos = 5;                  // verhindert dass Tooltip aus dem Bildschirm ragt
-  tooltip.style.top = (e.pageY + 10) + 'px';
-  tooltip.style.left = leftPos + 'px';
+    cell.onmousemove = (e) => {
+      const tooltipWidth = tooltip.offsetWidth;
+      let leftPos = e.pageX - tooltipWidth - 10; // links von Maus, 10px Abstand
+      if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
+      tooltip.style.top = (e.pageY + 10) + 'px';
+      tooltip.style.left = leftPos + 'px';
     };
 
     cell.onmouseleave = () => {
