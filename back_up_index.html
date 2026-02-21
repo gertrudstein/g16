@@ -377,8 +377,9 @@ textarea {
   }
 }
 
-@media (max-width: 1023px) {
-
+@media (max-width: 1023px) 
+  {
+ 
   .cal-contact-wrapper {
     display: flex;
     flex-direction: column;
@@ -407,38 +408,46 @@ textarea {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+@media (min-width: 700px) and (orientation: landscape) {
+
   .cal-contact-wrapper {
+    display: flex;
     flex-direction: row;
-    gap: 20px;
-    align-items: stretch; /* WICHTIG: passt Höhe an Kontakt an */
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 2rem;
   }
 
+  .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
     flex: 1;
-    order: 1;  /* Kalender links */
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cal-contact-wrapper .contact {
-    flex: 1;
-    order: 0;  /* Kontakt rechts */
     margin-top: 0;
+    order: 0;
   }
 
+  .cal-wrapper .cal,
   .cal {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    height: auto;
   }
 
   .cal-grid {
-    flex: 1;  /* Grid füllt gesamte Höhe */
+    flex: 1;
   }
 }
 
-@media (max-width: 600px), (max-height: 600px) {
+@media (max-width: 1023px) and (orientation: landscape) {
+  body {
+    transform: scale(0.68);      /* Seite verkleinern */
+    transform-origin: top left;   /* Skalierung startet oben links */
+    width: 147%;                  /* kompensiert die Skalierung */
+    height: 147%;
+    overflow-x: hidden;           /* verhindert horizontalen Scroll */
+  }
+}
+  
+@media (max-width: 600px) {
   html {
     font-size: 68%;
   }
@@ -714,7 +723,7 @@ Einlass: 20:00  Bands: 21:00
 <article class="event" data-date="2026-03-28" id="event-2026-03-28">
           <div class="date">28.03.2026: Subardo Spring Edition</div>
           <div class="content">
-Jungle/Drum'n'Bass/Dubstep/Bassmusic by:
+Jungle/Drum'n'Bass/Dubstep/Bassmusic:
 Cuepric b2b NOVALU
 DjBadshape
 EL P
@@ -723,7 +732,7 @@ Heftique
 Mary Jane
 YouDid
 
-Downtempo/Bass/Breaks/House/Electro/Techno by: 
+Downtempo/Bass/Breaks/House/Electro/Techno: 
 Derrick
 Eni T           
 Lars Goldammer b2b Lichtschalter
