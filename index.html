@@ -673,9 +673,14 @@ Kein Bock auf social media!
           </div>
         </article>
 
-        <article class="event" data-date="2026-02-21" id="event-2026-02-21">
-          <div class="date">21.02.2026: Konzert - Soli Abend -</div>
-          <div class="content">
+    <div class="event" data-date="2026-02-21" id="event-2026-02-21">
+  <div class="date">21.02.2026: Konzert - Soli Abend -</div>
+
+    <div><span class="band">Krav Boca: Punk Rap|France|Greek|Morocco</span></div>
+    <div><span class="band">Flesia: Black Metal|Leipzig</span></div>
+    <div><span class="starttime">Einlass: 20:00</span> <span class="bands">Bands: 21:00</span></div>
+
+      <div class="content">
 Krav Boca: Punk Rap|France|Greek|Morocco
 Flesia: Black Metal|Leipzig
 
@@ -831,7 +836,7 @@ document.querySelectorAll('.event[data-date]').forEach(el => {
   if (eventDate < today) el.remove();
 });
 
-// Hilfsfunktion: alle Event-Daten sammeln
+// Alle Event-Daten sammeln
 function getEventDates() {
   const dates = new Set();
   document.querySelectorAll('.event[data-date]').forEach(el => {
@@ -895,51 +900,49 @@ function renderCalendar() {
   attachTooltipEvents(); // Tooltip für neue Zellen
 }
 
-// Tooltip-Funktion
+// Tooltip-Events
 function attachTooltipEvents() {
   document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
-    // Desktop: hover
-    cell.onmouseenter = () => {
-      showTooltip(cell);
-    };
-    cell.onmousemove = (e) => {
-      moveTooltipLeftOfMouse(e);
-    };
-    cell.onmouseleave = () => {
-      tooltip.style.display = 'none';
-    };
+    // Desktop: Hover
+    cell.onmouseenter = () => { showTooltip(cell); };
+    cell.onmousemove = (e) => { moveTooltipLeftOfMouse(e); };
+    cell.onmouseleave = () => { tooltip.style.display = 'none'; };
 
     // Mobile: Touch
-    cell.ontouchstart = () => {
-      showTooltip(cell);
-    };
+    cell.ontouchstart = () => { showTooltip(cell); };
   });
 }
 
-// Tooltip-Inhalt setzen und anzeigen
+// Tooltip-Inhalt aus getaggten Elementen
 function showTooltip(cell) {
   const dateStr = cell.dataset.date;
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
   if (!eventEl) return;
 
-  let dateText = eventEl.querySelector('.date').innerText || '';
+  // Titel ohne Datum/Doppelpunkt
+  const dateText = eventEl.querySelector('.date').innerText || '';
   const colonIndex = dateText.indexOf(':');
   const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
 
-  tooltip.textContent = titleOnly;
+  // Getaggte Inhalte
+  const starttime = eventEl.querySelector('.starttime')?.innerText || '';
+  const bands = eventEl.querySelector('.bands')?.innerText || '';
+  const djsets = eventEl.querySelector('.djsets')?.innerText || '';
+
+  tooltip.textContent = [titleOnly, starttime, bands, djsets].filter(Boolean).join('\n');
   tooltip.style.display = 'block';
 }
 
-// Tooltip links von der Maus positionieren
+// Tooltip links von Maus/Touch positionieren
 function moveTooltipLeftOfMouse(e) {
   const tooltipWidth = tooltip.offsetWidth;
   let leftPos = e.pageX - tooltipWidth - 10; // links von Maus
-  if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
+  if (leftPos < 5) leftPos = 5;
   tooltip.style.top = (e.pageY + 10) + 'px';
   tooltip.style.left = leftPos + 'px';
 }
 
-// Tooltip schließen, wenn Klick/Tap außerhalb
+// Tooltip schließen bei Klick/Tap außerhalb
 document.addEventListener('touchstart', (e) => {
   const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
   if (!isTooltipOrCell) tooltip.style.display = 'none';
@@ -956,7 +959,7 @@ function hideTooltipOnOrientationChange() {
 window.addEventListener('orientationchange', hideTooltipOnOrientationChange);
 window.addEventListener('resize', hideTooltipOnOrientationChange);
 
-// Buttons
+// Kalenderbuttons
 prevBtn.addEventListener('click', () => { 
   view.setMonth(view.getMonth()-1); 
   renderCalendar(); 
