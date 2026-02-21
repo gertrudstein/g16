@@ -407,33 +407,28 @@ textarea {
   }
 }
 
-@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+@media (min-width: 700px) and (orientation: landscape) {
 
   .cal-contact-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 20px;                /* wie Desktop */
-    align-items: flex-start;  /* wie Desktop */
+    gap: 20px;
+    align-items: flex-start;
     margin-top: 2rem;
   }
 
   .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    flex: 1;                  /* wie Desktop */
-    margin-top: 0;
-    order: 0;                 /* HTML-Reihenfolge */
-  }
-
-  .cal-wrapper .cal {
-    display: flex;
-    flex-direction: column;
-    height: auto;             /* wie Desktop */
-  }
-
-  .cal {
     flex: 1;
+    margin-top: 0;
+    order: 0;
+  }
+
+  .cal-wrapper .cal,
+  .cal {
     display: flex;
     flex-direction: column;
+    height: auto;
   }
 
   .cal-grid {
@@ -441,7 +436,7 @@ textarea {
   }
 }
 
-@media (max-width: 600px), (max-height: 600px) {
+@media (max-width: 600px),  {
   html {
     font-size: 68%;
   }
