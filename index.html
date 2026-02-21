@@ -379,47 +379,23 @@ textarea {
 
 @media (max-width: 1023px) {
 
-  /* Kalender und Kontakt vertikal anordnen */
-  .cal-contact-wrapper {
-    display: flex;
-    flex-direction: column; /* Kalender oben, Kontakt unten */
-    gap: 10px;
-    align-items: stretch;
-    margin-top: 2rem;
-  }
-
-  /* Kontakt darf flexibel wachsen */
-  .cal-contact-wrapper .contact {
-    flex: 1; 
-    order: 2;
-  }
-
-  /* Kalender soll nicht wachsen */
-  .cal-contact-wrapper .cal-wrapper {
-    flex: 0; 
-    order: 1;
-  }
-
-  /* Kalender selbst: feste Höhe wie Desktop/Landscape */
   .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
-    height: 360px; /* feste Höhe für alle Monate */
+    height: 360px; /* feste Höhe für Kalender */
   }
 
-  /* Grid: nimmt gesamte Kalenderhöhe ein */
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.6rem;
-    flex: 1;         /* gleichmäßig die Höhe des Kalenders nutzen */
-    height: 100%;    /* bleibt innerhalb der festen Kalenderhöhe */
+    height: 100%;            /* volle Kalenderhöhe nutzen */
+    grid-auto-rows: 1fr;     /* alle Zeilen gleich hoch */
   }
 
-  /* Zellen innerhalb des Grids */
   .cell {
-    min-height: 3rem; /* gleiche Höhe wie Desktop/Landscape */
     position: relative;
+    min-height: 3rem; /* kann optional bleiben, überschrieben durch grid-auto-rows */
   }
 }
 
