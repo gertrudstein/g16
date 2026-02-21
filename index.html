@@ -100,23 +100,22 @@ main.wrap { margin-bottom: 2rem; }
   min-height: 10vh; 
 }
 
+.ribbon {
+  padding: clamp(1.2rem, 4vw, 2.2rem) 1rem;
+  min-height: auto;
+}
+
 .ribbon h1 {
-  font-size: clamp(1.5rem, 6vw, 2.5rem);
-  color: var(--red);
+  font-size: clamp(1.6rem, 7vw, 2.6rem);
+  line-height: 1.1;
   margin: 0;
 }
 
 .ribbon p {
-  font-size: clamp(0.9rem, 3vw, 1.2rem);
-  margin: 0.2rem 0 0;
-  color: var(--muted);
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  margin-top: 0.4rem;
 }
 
-@media (max-width: 380px) {
-  .ribbon {
-    padding: 1.5rem 0.5rem;
-    min-height: 8vh;
- } 
 }
 
 header {
@@ -460,14 +459,6 @@ textarea {
 @media (max-width: 600px) {
   html {
     font-size: 68%;
-  }
-
-  .ribbon h1 {
-    font-size: 2rem;
-  }
-
-  .ribbon p {
-    font-size: 1rem;
   }
 
   h2 {
