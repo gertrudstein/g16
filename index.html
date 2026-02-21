@@ -378,24 +378,24 @@ textarea {
 }
 
 @media (max-width: 1023px) {
-
   .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
-    height: 360px; /* feste Höhe für Kalender */
+    height: auto; /* nicht fixieren */
   }
 
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.6rem;
-    height: 100%;            /* volle Kalenderhöhe nutzen */
-    grid-auto-rows: 1fr;     /* alle Zeilen gleich hoch */
+    height: auto; /* automatisch */
+    grid-auto-rows: minmax(3rem, auto); /* flexible Höhe */
   }
+}
 
+@media (max-width: 600px) {
   .cell {
-    position: relative;
-    min-height: 3rem; /* kann optional bleiben, überschrieben durch grid-auto-rows */
+    min-height: 3rem; /* optional: Mindesthöhe, aber nicht kleiner */
   }
 }
 
