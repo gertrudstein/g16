@@ -908,34 +908,35 @@ function attachTooltipEvents() {
   });
 }
 
-// Tooltip-Inhalt setzen und anzeigen (Überschrift + Einlass + Bandszeit)
+// Tooltip-Inhalt setzen: Überschrift + Einlass + Bands
 function showTooltip(cell) {
   const dateStr = cell.dataset.date;
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
   if (!eventEl) return;
 
-  // Nur Überschrift ohne Datum/Doppelpunkt
+  // Überschrift ohne Datum/Doppelpunkt
   let dateText = eventEl.querySelector('.date').innerText || '';
   const colonIndex = dateText.indexOf(':');
   const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
 
-  // Einlass + Bands-Zeile aus .content
-  let timing = '';
+  // Nur Einlass- und Bands-Zeilen aus .content
   const contentEl = eventEl.querySelector('.content');
+  let timingLines = [];
   if (contentEl) {
     const lines = contentEl.innerText
       .split('\n')
       .map(l => l.trim())
       .filter(l => l.length > 0);
-    for (let i = lines.length - 1; i >= 0; i--) {
-      if (/Einlass|Bands/i.test(lines[i])) {
-        timing = lines[i];
-        break;
+    
+    for (const line of lines) {
+      if (/Einlass|Bands/i.test(line)) {
+        timingLines.push(line);
       }
     }
   }
 
-  tooltip.textContent = titleOnly + (timing ? '\n' + timing : '');
+  // Tooltip nur mit Überschrift + relevanten Zeilen
+  tooltip.textContent = titleOnly + (timingLines.length ? '\n' + timingLines.join('\n') : '');
   tooltip.style.display = 'block';
 }
 
