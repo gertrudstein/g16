@@ -101,13 +101,13 @@ main.wrap { margin-bottom: 2rem; }
 }
 
 .ribbon h1 {
-  font-size: clamp(1.4rem, 6vw, 2.5rem);
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   color: var(--red);
   margin: 0;
 }
 
 .ribbon p {
-  font-size: clamp(0.85rem, 3vw, 1.2rem);
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
   margin: 0.2rem 0 0;
   color: var(--muted);
 }
@@ -438,25 +438,26 @@ textarea {
 }
 
 @media (max-width: 1023px) and (orientation: landscape) {
-  #content-wrapper {
-    transform: scale(0.68);
-    transform-origin: top left;
-    width: 147%;
-    margin-bottom: 0; /* Kein zusätzlicher Scrollraum */
-  }
-
-  main.wrap {
-    overflow: hidden; /* verhindert Scroll unter Footer */
-  }
-
-  footer {
-    transform: none; /* Footer bleibt unverändert */
+  body {
+    transform: scale(0.68);      /* Seite verkleinern */
+    transform-origin: top left;   /* Skalierung startet oben links */
+    width: 147%;                  /* kompensiert die Skalierung */
+    height: 147%;
+    overflow-x: hidden;           /* verhindert horizontalen Scroll */
   }
 }
   
 @media (max-width: 600px) {
   html {
     font-size: 68%;
+  }
+
+  .ribbon h1 {
+    font-size: 2rem;
+  }
+
+  .ribbon p {
+    font-size: 1rem;
   }
 
   h2 {
@@ -505,13 +506,13 @@ textarea {
   }
 
   .cell {
-    min-height: 3.2rem;
+    min-height: 2.4rem;
   }
 
   .cell .day {
     top: 0.25rem;
     left: 0.3rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .contact input::placeholder,
@@ -523,6 +524,14 @@ textarea {
 }
 
 @media (max-width: 380px) {
+
+  .ribbon h1 {
+    font-size: 1rem;
+  }
+
+  .ribbon p {
+    font-size: 0.5rem;
+  }
 
   .dow,
   .cell {
@@ -580,193 +589,199 @@ textarea {
     })();
   </script>
 
- <main class="wrap">
-  <div id="content-wrapper">
+  <main class="wrap">
+ <div class="notice">
 
-    <!-- Notices -->
-    <div class="notice">
       <h2 class="centered">- Wir brauchen Euern SUPPORT! -</h2>
-      <p>
-        Wir arbeiten gerade an unserem <u>Dach</u> – und das ist so fucking teuer. 
-        Wir brauchen Euch nicht erzählen, wie wichtig ein Dach ist oder alternative Freiräume sind. 
-        Wenn Ihr die Möglichkeit habt, uns finanziell mit <u>Spenden</u> zu unterstützen, würden wir uns seeehr freuen!<br><br>
 
-        Verein für Stadtteilförderung, Wohn- und Kultur e.V<br>
-        IBAN: DE50 8609 5604 0327 7475 41<br>
-        BIC: GENODEF1LVB Leipziger Volksbank<br>
-        Verwendungszweck: muss das Wort "Spende" enthalten!
-      </p>
-      <p>
-        Wir sind auch auf <u>Direktkredite</u> angewiesen. Wenn Ihr die Möglichkeit habt, uns so zu unterstützen 
-        - oder reiche Freund*innen kennt ;) - würdet Ihr uns damit enorm helfen! Für mehr Infos oder Fragen hier 
-        <a href="mailto:direktkredit-g16@systemli.org" class="white-link">klicken</a>.<br><br>
-        MERCI BEAUCOUP 4 LIFE :*
-      </p>
+<p>Wir arbeiten gerade an unserem <u>Dach</u> – und das ist so fucking teuer. Wir brauchen Euch nicht erzählen, wie wichtig ein Dach ist oder alternative Freiräume sind. Wenn Ihr die Möglichkeit habt, uns finanziell mit <u>Spenden</u> zu unterstützen, würden wir uns seeehr freuen!<br><br> 
+
+Verein für Stadtteilförderung, Wohn- und Kultur e.V<br>
+IBAN: DE50 8609 5604 0327 7475 41<br>
+BIC: GENODEF1LVB Leipziger Volksbank<br>
+Verwendungszweck: muss das Wort "Spende" enthalten!</p>
+
+<p>Wir sind auch auf <u>Direktkredite</u> angewiesen. Wenn Ihr die Möglichkeit habt, uns so zu unterstützen - oder reiche Freund*innen kennt ;) - würdet Ihr uns damit enorm helfen! Für mehr Infos oder Fragen hier <a href="mailto:direktkredit-g16@systemli.org" class="white-link">klicken</a>.
+
+<br><br>MERCI BEAUCOUP 4 LIFE :*</p>
+   
     </div>
 
-    <div class="notice">
-      <h2><span class="highlight-hinweis">Hinweis:</span></h2>
-      Es gibt grundsätzlich keinen Vorverkauf, wir können auch keine Karten an der Abendkasse reservieren.
-    </div>
-
+ <div class="notice">
+  <h2><span class="highlight-hinweis">Hinweis:</span></h2>
+  Es gibt grundsätzlich keinen Vorverkauf, wir können auch keine Karten an der Abendkasse reservieren.
+</div>
+    
     <!-- Veranstaltungen -->
     <section aria-labelledby="events-head">
       <div id="events">
-        <article class="event" data-date="2026-02-07">
+        <article class="event" data-date="2026-02-07" id="event-2026-02-07">
           <div class="date">07.02.2026: Konzert</div>
           <div class="content">
-            Needful Things: Grindcore|Prag<br>
-            Controlled Existence: Grindcore|Prag<br>
-            Nidare: Post Blackmetal|Berlin<br>
-            The Hole: Grindcore|Leipzig<br><br>
-            Einlass: 20:00  Bands: 21:00
+Needful Things: Grindcore|Prag
+Controlled Existence: Grindcore|Prag
+Nidare: Post Blackmetal|Berlin
+The Hole: Grindcore|Leipzig
+
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
 
-        <article class="event" data-date="2026-02-14">
+        <article class="event" data-date="2026-02-14" id="event-2026-02-14">
           <div class="date">14.02.2026: <s>WYRD•PÄNG RecordRelease</s></div>
           <div class="content">
-            Kein Bock auf social media!<br>
-            <s>Packung: HC Punk</s><br>
-            <s>Ecstasphere: Metallic IDM</s><br>
-            <s>Oliotronix: 8bit glitch</s><br>
-            <s>DerWarst: Circuit Bent Noise</s><br>
-            <s>Skam: Mutant Acid</s><br>
-            <s>CancelWashington: Hit³</s><br>
-            <s>DJ Sets:</s><br>
-            <s>Enuit B2B Hektor Lack</s><br>
-            <s>Caedes</s><br>
-            <s>LUI</s><br>
-            <s>Zirkuskind</s><br>
-            <s>FRX</s><br>
-            <s>Fugly</s><br>
-            <s>Einemillion</s><br>
-            <s>Einlass: 21:30</s>  <s>Bands: 22:30</s>
+Kein Bock auf social media!
+            
+<s>Packung: HC Punk</s>
+<s>Ecstasphere: Metallic IDM</s>
+<s>Oliotronix: 8bit glitch</s>
+<s>DerWarst: Circuit Bent Noise</s>
+<s>Skam: Mutant Acid</s>
+<s>CancelWashington: Hit³</s>
+
+<s>DJ Sets:</s>
+<s>Enuit B2B Hektor Lack</s>
+<s>Caedes</s>
+<s>LUI</s>
+<s>Zirkuskind</s>
+<s>FRX</s>
+<s>Fugly</s>
+<s>Einemillion</s>
+
+<s>Einlass: 21:30</s>  <s>Bands: 22:30</s>
           </div>
         </article>
 
-        <article class="event" data-date="2026-02-21">
+        <article class="event" data-date="2026-02-21" id="event-2026-02-21">
           <div class="date">21.02.2026: Konzert - Soli Abend -</div>
           <div class="content">
-            Krav Boca: Punk Rap|France|Greek|Morocco<br>
-            Flesia: Black Metal|Leipzig<br><br>
-            Aftershow/ DJ sets:<br>            
-            MXXLXCC: 90s Feelgood & 2000er Dance Hits<br>
-            Rita Riot: Punk Rock Disco Madness<br><br>
-            Einlass: 20:00  Bands: 21:00
+Krav Boca: Punk Rap|France|Greek|Morocco
+Flesia: Black Metal|Leipzig
+
+Aftershow/ DJ sets:            
+MXXLXCC: 90s Feelgood & 2000er Dance Hits
+Rita Riot: Punk Rock Disco Madness
+
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
 
-        <article class="event" data-date="2026-02-28">
+        <article class="event" data-date="2026-02-28" id="event-2026-02-28">
           <div class="date">28.02.2026: HEAVY ROOTATION</div>
           <div class="content">
-            Siren Sisters Soundsystem ls. MC Treasure Irie plus Paam Soundsystem: <br>
-            Reggae/Dub/Steppa/Bass|München|Grimma|Leipzig<br><br>
-            Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
+Siren Sisters Soundsystem ls. MC Treasure Irie plus Paam Soundsystem: 
+Reggae/Dub/Steppa/Bass|München|Grimma|Leipzig
 
-        <article class="event" data-date="2026-03-07">
+Einlass: 20:00  Bands: 21:00
+</div>
+</article>
+
+        <article class="event" data-date="2026-03-07" id="event-2026-03-07">
           <div class="date">07.03.2026: SubDiversity7</div>
           <div class="content">
-            Elen in Waves: genrefluid soulful<br>
-            Francis Hunter: Stoner Rock<br><br>
-            Afterhow/ Dj Sets:<br>
-            Dustertanz: Darkwave <br>
-            Madam Glocharg: Psytrance <br>
-            Acinonyx vs. GarHermes: Forest/ Dark <br>
-            Jack Delik: Hi-Tech <br>
-            Komp.Log: Dubsteb <br>
-            Johnny Deep: Drum'n'Bass <br>
-            moodus: Hypno Tek<br>
-            Malena Blum: Hardtechno <br>
-            Vladislost: Techno<br><br>
-            Einlass: 20:00  Bands: 21:30      
+Elen in Waves: genrefluid soulful
+Francis Hunter: Stoner Rock
+
+Afterhow/ Dj Sets: 
+Dustertanz: Darkwave 
+Madam Glocharg: Psytrance 
+Acinonyx vs. GarHermes: Forest/ Dark 
+Jack Delik: Hi-Tech 
+Komp.Log: Dubsteb 
+Johnny Deep: Drum'n'Bass 
+moodus: Hypno Tek
+Malena Blum: Hardtechno 
+Vladislost: Techno
+
+Einlass: 20:00  Bands: 21:30      
           </div>
         </article>
 
-        <article class="event" data-date="2026-03-13">
+        <article class="event" data-date="2026-03-13" id="event-2026-03-13">
           <div class="date">13.03.2026: Konzert</div>
           <div class="content">
-            Die Bockwurschtbude: Punk|Frankfurt Oder<br>
-            Dead Honeckers: Punk|Leipzig<br><br>
-            Einlass: 20:00  Bands: 21:00
+Die Bockwurschtbude: Punk|Frankfurt Oder
+Dead Honeckers: Punk|Leipzig
+
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
 
-        <article class="event" data-date="2026-03-14">
+        <article class="event" data-date="2026-03-14" id="event-2026-03-14">
           <div class="date">14.03.2026: Konzert - 20 Jahre Schlagzeiln - </div>
           <div class="content">
-            Schlagzeiln: Zecken Rap|Berlin<br>
-            + Support tba <br><br>
-            Aftershow/ DJ sets:<br>
-            tba<br><br>
-            Einlass: 20:00  Bands: 21:00
+Schlagzeiln: Zecken Rap|Berlin
++ Support tba 
+            
+Aftershow/ DJ sets:
+tba
+
+Einlass: 20:00  Bands: 21:00
           </div>
         </article>
 
-        <article class="event" data-date="2026-03-28">
+<article class="event" data-date="2026-03-28" id="event-2026-03-28">
           <div class="date">28.03.2026: Subardo Spring Edition</div>
           <div class="content">
-            Jungle/Drum'n'Bass/Dubstep/Bassmusic:<br>
-            Cuepric b2b NOVALU<br>
-            DjBadshape<br>
-            EL P<br>
-            Grawinkel<br>
-            Heftique<br>
-            Mary Jane<br>
-            YouDid<br><br>
-            Downtempo/Bass/Breaks/House/Electro/Techno: <br>
-            Derrick<br>
-            Eni T<br>           
-            Lars Goldammer b2b Lichtschalter<br>
-            Lauter Unfuch<br>
-            Semi-Legit<br>
-            Zukunft Pink<br><br>
-            Einlass: 20:00  DJ sets: 21:00      
+Jungle/Drum'n'Bass/Dubstep/Bassmusic:
+Cuepric b2b NOVALU
+DjBadshape
+EL P
+Grawinkel
+Heftique
+Mary Jane
+YouDid
+
+Downtempo/Bass/Breaks/House/Electro/Techno: 
+Derrick
+Eni T           
+Lars Goldammer b2b Lichtschalter
+Lauter Unfuch
+Semi-Legit
+Zukunft Pink
+
+Einlass: 20:00  DJ sets: 21:00      
           </div>
-        </article>
+        </article>  
       </div>
     </section>
 
-    <!-- Kalender + Kontakt -->
-    <div class="cal-contact-wrapper">
+  <div class="cal-contact-wrapper">
 
-      <section class="contact" aria-labelledby="contact-head">
-        <h2 id="contact-head"></h2>
-        <form id="contactForm" novalidate>
-          <div class="row">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Dein Name" />
-            </div>
-          </div>
-          <label for="email">E-Mail</label>
-          <input id="email" type="email" placeholder="deine(at)mail.tld" />
-          <label for="msg">Nachricht</label>
-          <textarea id="msg" placeholder="Schreib uns…"></textarea>
-          <div style="margin-top:.8rem; text-align:left;">
-            <button type="submit" class="btn">Senden</button>
-          </div>
-        </form>
-      </section>
-
-      <section class="cal-wrapper">
-        <div class="cal" id="calendar">
-          <div class="cal-head">
-            <button id="prev" aria-label="Vorheriger Monat">◀</button>
-            <div class="cal-month" id="monthLabel">—</div>
-            <button id="next" aria-label="Nächster Monat">▶</button>
-          </div>
-          <div class="cal-grid" id="grid"></div>
+  <section class="contact" aria-labelledby="contact-head">
+    <h2 id="contact-head"></h2>
+    <form id="contactForm" novalidate>
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Dein Name" />
         </div>
-      </section>
+      </div>
+      <label for="email">E-Mail</label>
+      <input id="email" type="email" placeholder="deine(at)mail.tld" />
+      <label for="msg">Nachricht</label>
+      <textarea id="msg" placeholder="Schreib uns…"></textarea>
+      <div style="margin-top:.8rem; text-align:left;">
+        <button type="submit" class="btn">Senden</button>
+      </div>
+    </form>
+  </section>
 
+  <section class="cal-wrapper">
+    
+    <div class="cal" id="calendar">
+      <div class="cal-head">
+        <button id="prev" aria-label="Vorheriger Monat">◀</button>
+        <div class="cal-month" id="monthLabel">—</div>
+        <button id="next" aria-label="Nächster Monat">▶</button>
+      </div>
+      <div class="cal-grid" id="grid"></div>
     </div>
+  </section>
 
-  </div>
-</main>
-  
+</div>
+  </main>
+
 <footer>
   © Gieszer16 · <span id="year">2026</span> ·
   <a href="datenschutz.html">Datenschutz</a> ·
