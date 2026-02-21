@@ -388,33 +388,37 @@ textarea {
     margin-top: 2rem;
   }
 
-  /* Beide Container nehmen gleich viel Platz ein */
-  .cal-contact-wrapper .cal-wrapper,
+  /* Kontakt darf flexibel wachsen */
   .cal-contact-wrapper .contact {
-    flex: 0;
-    margin-top: 0;
-    order: 0;
+    flex: 1; 
+    order: 2;
   }
 
-  /* Kalender: gleiche Einstellungen wie im Landscape-Modus */
+  /* Kalender soll nicht wachsen */
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 0; 
+    order: 1;
+  }
+
+  /* Kalender selbst: feste Höhe wie Desktop/Landscape */
   .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
-    height: auto; /* Höhe richtet sich nicht nach Anzahl der Tage */
+    height: 360px; /* feste Höhe für alle Monate */
   }
 
-  /* Grid: gleiche Spalten wie im Landscape, Höhe passt sich automatisch */
+  /* Grid: nimmt gesamte Kalenderhöhe ein */
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.6rem;
-    flex: 1;
-    height: auto; /* keine feste Höhe */
+    flex: 1;         /* gleichmäßig die Höhe des Kalenders nutzen */
+    height: 100%;    /* bleibt innerhalb der festen Kalenderhöhe */
   }
 
   /* Zellen innerhalb des Grids */
   .cell {
-    min-height: 3rem; /* bleibt wie Desktop/Landscape */
+    min-height: 3rem; /* gleiche Höhe wie Desktop/Landscape */
     position: relative;
   }
 }
