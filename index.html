@@ -436,6 +436,16 @@ textarea {
   }
 }
 
+  @media (orientation: landscape) {
+  body {
+    transform: scale(0.68);      /* 68% Größe */
+    transform-origin: top left;   /* Ursprung oben links, damit Layout nicht verschoben wird */
+    width: 147%;                  /* kompensiert die Skalierung horizontal */
+    height: 147%;                 /* kompensiert die Skalierung vertikal */
+    overflow-x: hidden;           /* verhindert horizontales Scrollen */
+  }
+}
+
 @media (max-width: 600px) {
   html {
     font-size: 68%;
@@ -712,7 +722,7 @@ Einlass: 20:00  Bands: 21:00
 <article class="event" data-date="2026-03-28" id="event-2026-03-28">
           <div class="date">28.03.2026: Subardo Spring Edition</div>
           <div class="content">
-Jungle/Drum'n'Bass/Dubstep/Bassmusic by:
+Jungle/Drum'n'Bass/Dubstep/Bassmusic:
 Cuepric b2b NOVALU
 DjBadshape
 EL P
@@ -721,7 +731,7 @@ Heftique
 Mary Jane
 YouDid
 
-Downtempo/Bass/Breaks/House/Electro/Techno by: 
+Downtempo/Bass/Breaks/House/Electro/Techno: 
 Derrick
 Eni T           
 Lars Goldammer b2b Lichtschalter
