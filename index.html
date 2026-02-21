@@ -333,16 +333,22 @@ textarea {
   .cell-tooltip {
   position: absolute;
   background: #141414;
-  color: var(--red);
-  padding: 1rem 1.5rem;
+  color: var(--red);       /* ROT */
+  padding: 1rem 1.5rem;    /* größere Box */
   border-radius: 6px;
   border: 1px solid #262626;
   pointer-events: none;
-  white-space: pre-line;
   z-index: 1000;
   display: none;
-  max-width: 500px;
-  font-size: 0.9rem;
+  max-width: 500px;        /* doppelte Breite */
+  font-size: 1.8rem;       /* doppelte Schriftgröße */
+  white-space: normal;     /* HTML erlaubt Zeilenumbrüche */
+}
+
+/* Container für Einlass + Bands nebeneinander */
+.tooltip-row {
+  display: flex;
+  gap: 1rem;               /* Abstand zwischen den beiden */
 }
 
 .cal-contact-wrapper .cal-wrapper { order: 1; }
@@ -929,7 +935,17 @@ function showTooltip(cell) {
   const bands = eventEl.querySelector('.bands')?.innerText || '';
   const djsets = eventEl.querySelector('.djsets')?.innerText || '';
 
-  tooltip.textContent = [titleOnly, starttime, bands, djsets].filter(Boolean).join('\n');
+  // HTML für Tooltip
+  tooltip.innerHTML = `
+    <div class="tooltip-title">${titleOnly}</div>
+    <div style="height:0.5rem;"></div> <!-- Leerzeile -->
+    <div class="tooltip-row">
+      <div class="tooltip-starttime">${starttime}</div>
+      <div class="tooltip-bands">${bands}</div>
+    </div>
+    ${djsets ? `<div style="margin-top:0.5rem;">${djsets}</div>` : ''}
+  `;
+
   tooltip.style.display = 'block';
 }
 
