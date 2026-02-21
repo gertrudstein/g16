@@ -438,17 +438,14 @@ textarea {
 }
 
 @media (max-width: 1023px) and (orientation: landscape) {
-  body {
-    transform: scale(0.68);      /* Seite verkleinern */
-    transform-origin: top left;   /* Skalierung startet oben links */
-    width: 147%;                  /* kompensiert die Skalierung */
-    height: auto;
-    overflow-x: hidden;           /* verhindert horizontalen Scroll */
+  main.wrap {
+    transform: scale(0.68);
+    transform-origin: top left;
+    width: 147%;
   }
-  footer {
-    position: relative;  /* Footer außerhalb von transformierter Fläche */
-    transform: none;     /* Keine zusätzliche Skalierung */
-    width: 100%;
+
+  body {
+    transform: none; /* Body bleibt normal */
   }
 }
   
