@@ -381,24 +381,18 @@ textarea {
 
   .cal-contact-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* untereinander stapeln */
+    gap: 40px;              /* Abstand zwischen Kalender und Kontakt */
+    align-items: stretch;   /* volle Breite der Kinder */
+    margin-top: 2rem;
   }
 
+  .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    order: 1;
+    flex: none;             /* keine flexible Höhe, nur natürliche Höhe */
+    margin-top: 0;
+    order: 0;
   }
-
-  .cal-contact-wrapper .contact {
-    order: 2;
-  }
-
-  .event:first-of-type + .notice {
-    margin-top: 2rem;  /* Abstand nur hier */
-  }
-  
-  .notice:last-of-type + .event {
-        margin-top: 2rem !important;
-    }
 }
 
 @media (max-width: 700px) {
