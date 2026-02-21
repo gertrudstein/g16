@@ -812,148 +812,158 @@ Einlass: 20:00  DJ sets: 21:00
   <div id="cellTooltip" class="cell-tooltip"></div>
   
 <script>
-  const monthLabel = document.getElementById('monthLabel');
-  const grid = document.getElementById('grid');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
-  const tooltip = document.getElementById('cellTooltip');
+const monthLabel = document.getElementById('monthLabel');
+const grid = document.getElementById('grid');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const tooltip = document.getElementById('cellTooltip');
+const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
 
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  let view = new Date(today.getFullYear(), today.getMonth(), 1);
+const today = new Date();
+today.setHours(0,0,0,0);
+let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-  // Alte Events entfernen, die vor heute liegen
+// Alte Events vor heute entfernen
+document.querySelectorAll('.event[data-date]').forEach(el => {
+  const d = el.getAttribute('data-date');
+  if (!d) return;
+  const eventDate = new Date(d + "T00:00:00");
+  if (eventDate < today) el.remove();
+});
+
+// Hilfsfunktion: alle Event-Daten sammeln
+function getEventDates() {
+  const dates = new Set();
   document.querySelectorAll('.event[data-date]').forEach(el => {
     const d = el.getAttribute('data-date');
-    if (!d) return;
-    const eventDate = new Date(d + "T00:00:00");
-    if (eventDate < today) el.remove();
+    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
   });
+  return dates;
+}
 
-  function getEventDates() {
-    const dates = new Set();
-    document.querySelectorAll('.event[data-date]').forEach(el => {
-      const d = el.getAttribute('data-date');
-      if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
-    });
-    return dates;
+// Kalender rendern
+function renderCalendar() {
+  const eventDates = getEventDates();
+  const y = view.getFullYear();
+  const m = view.getMonth();
+
+  monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+
+  grid.innerHTML = '';
+
+  // Wochentage
+  for (const w of DOW) {
+    const el = document.createElement('div');
+    el.className = 'dow';
+    el.textContent = w;
+    grid.appendChild(el);
   }
 
-  function renderCalendar() {
-    const eventDates = getEventDates();
-    const y = view.getFullYear();
-    const m = view.getMonth();
+  const first = new Date(y, m, 1);
+  const startOffset = (first.getDay() + 6) % 7; // Montag-basiert
+  const daysInMonth = new Date(y, m+1, 0).getDate();
 
-    monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+  // Leere Zellen bis Monatsanfang
+  for (let i=0; i<startOffset; i++){
+    const b = document.createElement('div');
+    b.className='cell';
+    grid.appendChild(b);
+  }
 
-    grid.innerHTML = '';
+  // Tage mit Events
+  for (let d=1; d<=daysInMonth; d++){
+    const el = document.createElement('div');
+    el.className = 'cell';
+    el.dataset.date = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-    // Wochentage
-    for (const w of DOW) {
-      const el = document.createElement('div');
-      el.className = 'dow';
-      el.textContent = w;
-      grid.appendChild(el);
+    const day = document.createElement('div');
+    day.className='day';
+    day.textContent = d;
+    el.appendChild(day);
+
+    if (eventDates.has(el.dataset.date)) {
+      el.classList.add('eventful');
+      const dot = document.createElement('div');
+      dot.className='dot';
+      el.appendChild(dot);
+      el.title = 'Veranstaltung';
     }
 
-    const first = new Date(y, m, 1);
-    const startOffset = (first.getDay() + 6) % 7; // Montag basiert
-    const daysInMonth = new Date(y, m+1, 0).getDate();
+    grid.appendChild(el);
+  }
 
-    // Leere Felder bis Monatsanfang
-    for (let i=0; i<startOffset; i++){
-      const b = document.createElement('div');
-      b.className='cell';
-      grid.appendChild(b);
-    }
+  attachTooltipEvents(); // Tooltip für neue Zellen
+}
 
-    // Tage erstellen
-    for (let d=1; d<=daysInMonth; d++){
-      const el = document.createElement('div');
-      el.className = 'cell';
-      el.dataset.date = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+// Tooltip-Funktion
+function attachTooltipEvents() {
+  document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
+    cell.onmouseenter = () => {
+      const dateStr = cell.dataset.date;
+      const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
+      if (!eventEl) return;
 
-      const day = document.createElement('div');
-      day.className='day';
-      day.textContent = d;
-      el.appendChild(day);
+      // Erste Zeile aus .date nach Doppelpunkt
+      let dateText = eventEl.querySelector('.date').innerText || '';
+      const colonIndex = dateText.indexOf(':');
+      const titleLine = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
 
-      if (eventDates.has(el.dataset.date)) {
-        el.classList.add('eventful');
-        const dot = document.createElement('div');
-        dot.className='dot';
-        el.appendChild(dot);
-        el.title = 'Veranstaltung';
+      // Letzte relevante Zeile aus .content (Einlass/Bands)
+      let lastLine = '';
+      const contentEl = eventEl.querySelector('.content');
+      if (contentEl) {
+        const lines = contentEl.innerText
+          .split('\n')
+          .map(l => l.trim())
+          .filter(l => l.length > 0);
+        for (let i = lines.length - 1; i >= 0; i--) {
+          if (/Einlass|Bands/i.test(lines[i])) {
+            lastLine = lines[i];
+            break;
+          }
+        }
       }
 
-      grid.appendChild(el);
-    }
+      tooltip.textContent = `${titleLine}\n${lastLine}`;
+      tooltip.style.display = 'block';
+    };
 
-    // Tooltip-Events für die gerade gerenderten Zellen anhängen
-    attachTooltipEvents();
-  }
+    cell.onmousemove = (e) => {
+      tooltip.style.top = (e.pageY + 10) + 'px';
+      tooltip.style.left = (e.pageX + 10) + 'px';
+    };
 
-  prevBtn.addEventListener('click', () => { 
-    view.setMonth(view.getMonth()-1); 
-    renderCalendar(); 
+    cell.onmouseleave = () => {
+      tooltip.style.display = 'none';
+    };
   });
+}
 
-  nextBtn.addEventListener('click', () => { 
-    view.setMonth(view.getMonth()+1); 
-    renderCalendar(); 
-  });
+// Buttons
+prevBtn.addEventListener('click', () => { 
+  view.setMonth(view.getMonth()-1); 
+  renderCalendar(); 
+});
+nextBtn.addEventListener('click', () => { 
+  view.setMonth(view.getMonth()+1); 
+  renderCalendar(); 
+});
 
-  // Kontaktformular
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const to = "vgruppe-g16@mail36.net";
-    const name = document.getElementById('name').value.trim();
-    const from = document.getElementById('email').value.trim();
-    const msg = document.getElementById('msg').value.trim();
-    const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
-    const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-  });
+// Kontaktformular
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const to = "vgruppe-g16@mail36.net";
+  const name = document.getElementById('name').value.trim();
+  const from = document.getElementById('email').value.trim();
+  const msg = document.getElementById('msg').value.trim();
+  const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
+  const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
+  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+});
 
-  // --- TOOLTIP-FUNKTION ---
-  function attachTooltipEvents() {
-    document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
-      cell.onmouseenter = () => {
-        const dateStr = cell.dataset.date;
-        const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
-        if (!eventEl) return;
-
-        // Titel: erste Zeile aus .date ohne Datum/Doppelpunkt
-        let dateText = eventEl.querySelector('.date').innerText || '';
-        const titleLine = dateText.includes(':') ? dateText.split(':')[1].trim() : dateText;
-
-        // Letzte Zeile: nur die letzte nicht-leere Zeile aus .content
-        let lastLine = '';
-        const contentEl = eventEl.querySelector('.content');
-        if (contentEl) {
-          const lines = contentEl.innerText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-          if (lines.length > 0) lastLine = lines[lines.length - 1];
-        }
-
-        tooltip.textContent = `${titleLine}\n${lastLine}`;
-        tooltip.style.display = 'block';
-      };
-
-      cell.onmousemove = (e) => {
-        tooltip.style.top = (e.pageY + 10) + 'px';
-        tooltip.style.left = (e.pageX + 10) + 'px';
-      };
-
-      cell.onmouseleave = () => {
-        tooltip.style.display = 'none';
-      };
-    });
-  }
-
-  // Kalender initial rendern
-  renderCalendar();
-  document.getElementById('year').textContent = new Date().getFullYear();
+// Initial render
+renderCalendar();
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
