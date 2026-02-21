@@ -439,11 +439,21 @@ textarea {
 }
 
 @media (max-width: 1023px) and (orientation: landscape) {
-  body {
-    transform: scale(0.68);      /* Seite verkleinern */
-    transform-origin: top left;   /* Skalierung startet oben links */
-    width: 147%;                  /* kompensiert die Skalierung */
-    overflow-x: hidden;           /* verhindert horizontalen Scroll */
+
+  html {
+    font-size: 68%;
+  }
+
+  .ribbon {
+    padding: 1rem;
+  }
+
+  .hero img {
+    max-height: 220px;
+  }
+
+  .event {
+    padding: 0.8rem;
   }
 }
   
