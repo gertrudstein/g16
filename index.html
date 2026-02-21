@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="format-detection" content="telephone=no">
-<title>G16 Veranstaltungen</title>
-<meta name="description" content="G16 Veranstaltungen – Kein Bock auf Diskriminierung!" />
+<!DOCTYPE html> 
+<html lang="de"> 
+<head> <meta charset="utf-8" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<meta name="format-detection" content="telephone=no"> 
+<title>G16 Veranstaltungen</title> <meta name="description" content="G16 Veranstaltungen – Kein Bock auf Diskriminierung!" />
 
 <style>
 @font-face {
@@ -31,6 +29,7 @@
 }
 
 * { box-sizing: border-box; }
+
 html { font-size: 100%; }
 
 body {
@@ -101,6 +100,11 @@ main.wrap { margin-bottom: 2rem; }
   min-height: 10vh; 
 }
 
+.ribbon {
+  padding: clamp(1.2rem, 4vw, 2.2rem) 1rem;
+  min-height: auto;
+}
+
 .ribbon h1 {
   font-size: clamp(1.6rem, 7vw, 2.6rem);
   line-height: 1.1;
@@ -151,161 +155,832 @@ header {
   color: var(--muted);
 }
 
-.notice:first-of-type { margin-top: 0; }
+.notice:first-of-type {
+  margin-top: 0; /* erste Box klebt am Header */
+}
 
-.notice:last-of-type + .event { margin-top: 2rem; }
-.notice + .notice { margin-top: 2rem; }
+.notice:last-of-type + .event {
+    margin-top: 2rem; /* Abstand zwischen letzter Notice und erstem Event */
+}
+  
+.notice + .notice {
+  margin-top: 2rem; /* Abstand zur vorherigen Box */
+}
 .notice h2 { margin-top: 0; text-align: left; }
 .notice h2.centered { text-align: center; }
 
-h2 { color: var(--red); margin: 1.2rem 0 .6rem; text-align: center; }
+h2 {
+  color: var(--red);
+  margin: 1.2rem 0 .6rem;
+  text-align: center;
+}
 
 .event {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1rem;
-  color: var(--muted); /* Eventtext wieder auf muted */
 }
 
-.event .date { color: var(--red); font-weight: bold; font-size: 1.15rem; }
+.event .date {
+  color: var(--red);
+  font-weight: bold;
+  font-size: 1.15rem;
+}
 
-.event .content { color: var(--muted); white-space: pre-line; }
+.event .content {
+  color: var(--muted);
+  white-space: pre-line;
+}
 
-#events { display: grid; gap: 2rem; }
+  #events {
+  display: grid;
+  gap: 2rem; /* Abstand zwischen Events */
+}
 
 .cal { margin-bottom: 2rem; user-select: none; }
-.cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem; }
-.cal-head button { border: 1px solid var(--border); background: #000; color: var(--muted); padding: .45rem .7rem; border-radius: 8px; cursor: pointer; }
-.cal-head button:active { outline: 2px solid var(--focus); outline-offset: 2px; }
-.cal-month { font-size: 1.1rem; color: var(--muted); text-align: center; flex-grow: 1; }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .6rem; }
-.dow, .cell { text-align: center; padding: .55rem .2rem; border-radius: 8px; border: 1px solid var(--border); background: #0f0f0f; }
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .8rem;
+}
+
+.cal-head button {
+  border: 1px solid var(--border);
+  background: #000;
+  color: var(--muted);
+  padding: .45rem .7rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cal-head button:active {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.cal-month {
+  font-size: 1.1rem;
+  color: var(--muted);
+  text-align: center;
+  flex-grow: 1;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .6rem;
+}
+
+.dow,
+.cell {
+  text-align: center;
+  padding: .55rem .2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0f0f0f;
+}
+
 .dow { font-weight: bold; color: var(--muted); }
-.cell { min-height: 3rem; position: relative; }
-.cell .day { position: absolute; top: .4rem; left: .5rem; font-size: .95rem; color: var(--muted); }
-.cell.eventful { border-color: #2b2b2b; background: #141414; cursor: pointer; }
-.dot { position: absolute; right: .45rem; bottom: .35rem; width: .55rem; height: .55rem; border-radius: 50%; background: var(--red-strong); }
 
-.contact { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: .5rem; margin: 2rem 0; }
-label { display: block; margin: .35rem 0 .2rem; color: var(--muted); }
-input, textarea { width: 100%; padding: .75rem .9rem; background: #0e0e0e; color: var(--muted); border: 1px solid #1f1f1f; border-radius: 8px; font-family: inherit; }
-input:focus, textarea:focus { outline: none; border: 1px solid var(--muted); }
-textarea { min-height: 160px; resize: vertical; }
+.cell {
+  min-height: 3rem;
+  position: relative;
+}
 
-.row { display: grid; gap: .8rem; grid-template-columns: 1fr 1fr; }
-.btn { background: var(--red); color: var(--muted); border: 1px solid #6f0b0b; border-radius: 10px; padding: .75rem 1rem; cursor: pointer; font-weight: bold; }
+.cell .day {
+  position: absolute;
+  top: .4rem;
+  left: .5rem;
+  font-size: .95rem;
+  color: var(--muted);
+}
 
-.cal-contact-wrapper { display: flex; flex-direction: column; }
+.cell.eventful {
+  border-color: #2b2b2b;
+  background: #141414;
+  cursor: pointer;
+}
 
-.cell-tooltip {
+.dot {
+  position: absolute;
+  right: .45rem;
+  bottom: .35rem;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  background: var(--red-strong);
+}
+
+.contact {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .5rem;
+  margin: 2rem 0;
+}
+
+label {
+  display: block;
+  margin: .35rem 0 .2rem;
+  color: var(--muted);
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: .75rem .9rem;
+  background: #0e0e0e;
+  color: var(--muted);
+  border: 1px solid #1f1f1f;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 1px solid var(--muted);
+}
+
+textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.row {
+  display: grid;
+  gap: .8rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.btn {
+  background: var(--red);
+  color: var(--muted);
+  border: 1px solid #6f0b0b;
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cal-contact-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+  .cell-tooltip {
   position: absolute;
   background: #141414;
   color: var(--red);
   padding: 1rem 1.5rem;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid #262626;
   pointer-events: none;
+  white-space: pre-line;
   z-index: 1000;
   display: none;
   max-width: 500px;
-  font-size: 1.8rem;
-  white-space: normal;
+  font-size: 0.9rem;
 }
 
-.tooltip-row { display: flex; gap: 1rem; }
+.cal-contact-wrapper .cal-wrapper { order: 1; }
+.cal-contact-wrapper .contact { order: 2; }
 
 @media (min-width: 1024px) {
-  .cal-contact-wrapper { display: flex; flex-direction: row; gap: 40px; align-items: flex-start; margin-top: 2rem; }
-  .cal-contact-wrapper .contact, .cal-contact-wrapper .cal-wrapper { flex:1; margin-top:0; order:0; }
+  /* Wrapper für Kalender + Kontakt nebeneinander */
+  .cal-contact-wrapper {
+    display: flex;
+    flex-direction: row;       /* Nebeneinander */
+    gap: 40px;                 /* Abstand zwischen den Spalten */
+    align-items: flex-start;   /* Oben ausrichten */
+    margin-top: 2rem;
+  }
+
+  /* Kontaktformular und Kalender gleichmäßig verteilen */
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;                   /* Beide nehmen gleichen Platz ein */
+    margin-top: 0;             /* kein zusätzlicher Abstand */
+    order: 0;                   /* Reihenfolge wie im HTML */
+  }
+
+  /* Kalender-inhalt sauber anordnen */
+  .cal-wrapper .cal {
+    display: flex;
+    flex-direction: column;
+    height: auto;              /* Höhe richtet sich nach Inhalt */
+  }
+
+  .cal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-grid {
+    flex: 1;
+  }
+
+  /* Events volle Breite im Kalender-Container */
+  #events .event {
+    width: 100%;
+    max-width: none;
+  }
 }
 
-</style>
+@media (max-width: 1023px) 
+  {
+ 
+  .cal-contact-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-contact-wrapper .cal-wrapper {
+    order: 1;
+  }
+
+  .cal-contact-wrapper .contact {
+    order: 2;
+    margin-top: 0rem;
+  }
+
+  .event:first-of-type + .notice {
+    margin-top: 2rem;  /* Abstand nur hier */
+  }
+  
+  .notice:last-of-type + .event {
+        margin-top: 2rem !important;
+    }
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+
+  .cal-contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;
+    margin-top: 0;
+    order: 0;
+  }
+
+  .cal-wrapper .cal,
+  .cal {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .cal-grid {
+    flex: 1;
+   
+  }
+
+  .cell {
+    min-height: 3.95rem;
+}
+ }
+@media (max-width: 1023px) and (orientation: landscape) {
+
+  html {
+    font-size: 68%;
+  }
+
+  .ribbon {
+    padding: 1rem;
+  }
+
+  .hero img {
+    max-height: 220px;
+  }
+
+  .event {
+    padding: 0.8rem;
+  }
+}
+  
+@media (max-width: 600px) {
+  html {
+    font-size: 68%;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-size: 1.2rem;
+  }
+
+  .notice + .notice {
+    margin-top: 2rem;
+  }
+
+  .notice {
+    margin: 2rem 0;
+    padding: 0.9rem 1rem;
+  }
+
+  .notice:last-of-type {
+    margin-bottom: 2rem;
+  }
+
+  #events-head {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  #events {
+    margin-bottom: 2rem;
+  }
+
+  .event {
+    padding: 0.9rem;
+  }
+
+  .cal-grid {
+    gap: 0.3rem;
+  }
+
+  .dow,
+  .cell {
+    padding: 0.35rem 0.1rem;
+    font-size: 0.8rem;
+  }
+
+  .cell {
+    min-height: 3.2rem;
+  }
+
+  .cell .day {
+    top: 0.25rem;
+    left: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .contact input::placeholder,
+  .contact textarea::placeholder {
+    font-size: 0.85rem;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .ribbon h1 {
+    font-size: 1rem;
+  }
+
+  .ribbon p {
+    font-size: 0.5rem;
+  }
+
+  .dow,
+  .cell {
+    padding: 0.3rem 0.1rem;
+    font-size: 0.75rem;
+  }
+
+  .cell {
+    min-height: 2.2rem;
+  }
+
+  .cell .day {
+    top: 0.2rem;
+    left: 0.25rem;
+    font-size: 0.7rem;
+  }
+
+#events-head {
+    margin-top: 2rem;
+  }
+
+
+}
+   
+  </style>
 </head>
 
 <body>
-<div class="ribbon">
-  <h1>G16 Veranstaltungen</h1>
-  <p>Kein Bock auf Diskriminierung!</p>
-</div>
-
-<header>
-  <div class="wrap mast">
-    <div class="hero" aria-hidden="true">
-      <img id="bannerImg" src="/assets/banner.jpg" alt="" referrerpolicy="no-referrer">
-    </div>
+  <div class="ribbon">
+    <h1>G16 Veranstaltungen</h1>
+    <p>Kein Bock auf Diskriminierung!</p>
   </div>
-</header>
 
-<main class="wrap">
-  <div class="notice">
-    <h2 class="centered">- Wir brauchen Euern SUPPORT! -</h2>
-    <p>Wir arbeiten gerade an unserem <u>Dach</u> – und das ist so fucking teuer. Wir brauchen Euch nicht erzählen, wie wichtig ein Dach ist oder alternative Freiräume sind. Wenn Ihr die Möglichkeit habt, uns finanziell mit <u>Spenden</u> zu unterstützen, würden wir uns seeehr freuen!<br><br> 
+  <header>
+    <div class="wrap mast">
+      <div class="hero" aria-hidden="true">
+        <!-- decorative image => empty alt -->
+        <img id="bannerImg"
+             src="/assets/banner.jpg"
+             alt=""
+             referrerpolicy="no-referrer">
+      </div>
+    </div>
+  </header>
+
+  <script>
+    // If local file missing, fall back to Imgur automatically
+    (function () {
+      const img = document.getElementById('bannerImg');
+      const fallback = 'https://i.imgur.com/sxL5FZ0.jpg';
+
+      // Use "img.complete" to reduce flicker; still keep a test image.
+      const test = new Image();
+      test.onload = () => {};
+      test.onerror = () => { img.src = fallback; };
+      test.src = img.src;
+    })();
+  </script>
+
+  <main class="wrap">
+ <div class="notice">
+
+      <h2 class="centered">- Wir brauchen Euern SUPPORT! -</h2>
+
+<p>Wir arbeiten gerade an unserem <u>Dach</u> – und das ist so fucking teuer. Wir brauchen Euch nicht erzählen, wie wichtig ein Dach ist oder alternative Freiräume sind. Wenn Ihr die Möglichkeit habt, uns finanziell mit <u>Spenden</u> zu unterstützen, würden wir uns seeehr freuen!<br><br> 
+
 Verein für Stadtteilförderung, Wohn- und Kultur e.V<br>
 IBAN: DE50 8609 5604 0327 7475 41<br>
 BIC: GENODEF1LVB Leipziger Volksbank<br>
 Verwendungszweck: muss das Wort "Spende" enthalten!</p>
-  </div>
 
-  <section aria-labelledby="events-head">
-    <div id="events">
-      <article class="event" data-date="2026-02-21">
-        <div class="date">21.02.2026: Konzert - Soli Abend -</div>
-        <div><span class="band">Krav Boca: Punk Rap|France|Greek|Morocco</span></div>
-        <div><span class="band">Flesia: Black Metal|Leipzig</span></div>
-        <div><span class="starttime">Einlass: 20:00</span> <span class="bands">Bands/DJ sets: 21:00</span></div>
-      </article>
+<p>Wir sind auch auf <u>Direktkredite</u> angewiesen. Wenn Ihr die Möglichkeit habt, uns so zu unterstützen - oder reiche Freund*innen kennt ;) - würdet Ihr uns damit enorm helfen! Für mehr Infos oder Fragen hier <a href="mailto:direktkredit-g16@systemli.org" class="white-link">klicken</a>.
+
+<br><br>MERCI BEAUCOUP 4 LIFE :*</p>
+   
+    </div>
+
+ <div class="notice">
+  <h2><span class="highlight-hinweis">Hinweis:</span></h2>
+  Es gibt grundsätzlich keinen Vorverkauf, wir können auch keine Karten an der Abendkasse reservieren.
+</div>
+    
+    <!-- Veranstaltungen -->
+    <section aria-labelledby="events-head">
+      <div id="events">
+        <article class="event" data-date="2026-02-07" id="event-2026-02-07">
+          <div class="date">07.02.2026: Konzert</div>
+          <div class="content">
+Needful Things: Grindcore|Prag
+Controlled Existence: Grindcore|Prag
+Nidare: Post Blackmetal|Berlin
+The Hole: Grindcore|Leipzig
+
+Einlass: 20:00  Bands: 21:00
+          </div>
+        </article>
+
+        <article class="event" data-date="2026-02-14" id="event-2026-02-14">
+          <div class="date">14.02.2026: <s>WYRD•PÄNG RecordRelease</s></div>
+          <div class="content">
+Kein Bock auf social media!
+            
+<s>Packung: HC Punk</s>
+<s>Ecstasphere: Metallic IDM</s>
+<s>Oliotronix: 8bit glitch</s>
+<s>DerWarst: Circuit Bent Noise</s>
+<s>Skam: Mutant Acid</s>
+<s>CancelWashington: Hit³</s>
+
+<s>DJ Sets:</s>
+<s>Enuit B2B Hektor Lack</s>
+<s>Caedes</s>
+<s>LUI</s>
+<s>Zirkuskind</s>
+<s>FRX</s>
+<s>Fugly</s>
+<s>Einemillion</s>
+
+<s>Einlass: 21:30</s>  <s>Bands: 22:30</s>
+          </div>
+        </article>
+
+        <article class="event" data-date="2026-02-21" id="event-2026-02-21">
+          <div class="date">21.02.2026: Konzert - Soli Abend -</div>
+          <div class="content">
+Krav Boca: Punk Rap|France|Greek|Morocco
+Flesia: Black Metal|Leipzig
+
+Aftershow/ DJ sets:            
+MXXLXCC: 90s Feelgood & 2000er Dance Hits
+Rita Riot: Punk Rock Disco Madness
+
+Einlass: 20:00  Bands: 21:00
+          </div>
+        </article>
+
+        <article class="event" data-date="2026-02-28" id="event-2026-02-28">
+          <div class="date">28.02.2026: HEAVY ROOTATION</div>
+          <div class="content">
+Siren Sisters Soundsystem ls. MC Treasure Irie plus Paam Soundsystem: 
+Reggae/Dub/Steppa/Bass|München|Grimma|Leipzig
+
+Einlass: 20:00  Bands: 21:00
+</div>
+</article>
+
+        <article class="event" data-date="2026-03-07" id="event-2026-03-07">
+          <div class="date">07.03.2026: SubDiversity7</div>
+          <div class="content">
+Elen in Waves: genrefluid soulful
+Francis Hunter: Stoner Rock
+
+Afterhow/ Dj Sets: 
+Dustertanz: Darkwave 
+Madam Glocharg: Psytrance 
+Acinonyx vs. GarHermes: Forest/ Dark 
+Jack Delik: Hi-Tech 
+Komp.Log: Dubsteb 
+Johnny Deep: Drum'n'Bass 
+moodus: Hypno Tek
+Malena Blum: Hardtechno 
+Vladislost: Techno
+
+Einlass: 20:00  Bands: 21:30      
+          </div>
+        </article>
+
+        <article class="event" data-date="2026-03-13" id="event-2026-03-13">
+          <div class="date">13.03.2026: Konzert</div>
+          <div class="content">
+Die Bockwurschtbude: Punk|Frankfurt Oder
+Dead Honeckers: Punk|Leipzig
+
+Einlass: 20:00  Bands: 21:00
+          </div>
+        </article>
+
+        <article class="event" data-date="2026-03-14" id="event-2026-03-14">
+          <div class="date">14.03.2026: Konzert - 20 Jahre Schlagzeiln - </div>
+          <div class="content">
+Schlagzeiln: Zecken Rap|Berlin
++ Support tba 
+            
+Aftershow/ DJ sets:
+tba
+
+Einlass: 20:00  Bands: 21:00
+          </div>
+        </article>
+
+<article class="event" data-date="2026-03-28" id="event-2026-03-28">
+          <div class="date">28.03.2026: Subardo Spring Edition</div>
+          <div class="content">
+Jungle/Drum'n'Bass/Dubstep/Bassmusic:
+Cuepric b2b NOVALU
+DjBadshape
+EL P
+Grawinkel
+Heftique
+Mary Jane
+YouDid
+
+Downtempo/Bass/Breaks/House/Electro/Techno: 
+Derrick
+Eni T           
+Lars Goldammer b2b Lichtschalter
+Lauter Unfuch
+Semi-Legit
+Zukunft Pink
+
+Einlass: 20:00  DJ sets: 21:00      
+          </div>
+        </article>  
+      </div>
+    </section>
+
+  <div class="cal-contact-wrapper">
+
+  <section class="contact" aria-labelledby="contact-head">
+    <h2 id="contact-head"></h2>
+    <form id="contactForm" novalidate>
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Dein Name" />
+        </div>
+      </div>
+      <label for="email">E-Mail</label>
+      <input id="email" type="email" placeholder="deine(at)mail.tld" />
+      <label for="msg">Nachricht</label>
+      <textarea id="msg" placeholder="Schreib uns…"></textarea>
+      <div style="margin-top:.8rem; text-align:left;">
+        <button type="submit" class="btn">Senden</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="cal-wrapper">
+    
+    <div class="cal" id="calendar">
+      <div class="cal-head">
+        <button id="prev" aria-label="Vorheriger Monat">◀</button>
+        <div class="cal-month" id="monthLabel">—</div>
+        <button id="next" aria-label="Nächster Monat">▶</button>
+      </div>
+      <div class="cal-grid" id="grid"></div>
     </div>
   </section>
-</main>
+
+</div>
+  </main>
 
 <footer>
-  © Gieszer16 · <span id="year">2026</span>
+  © Gieszer16 · <span id="year">2026</span> ·
+  <a href="datenschutz.html">Datenschutz</a> ·
+  <a href="impressum.html">Impressum</a> ·
+  <a href="kontakte.html">Kontakte</a>
 </footer>
-
-<div id="cellTooltip" class="cell-tooltip"></div>
-
+  <div id="cellTooltip" class="cell-tooltip"></div>
+  
 <script>
+const monthLabel = document.getElementById('monthLabel');
+const grid = document.getElementById('grid');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 const tooltip = document.getElementById('cellTooltip');
+const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
 
+const today = new Date();
+today.setHours(0,0,0,0);
+let view = new Date(today.getFullYear(), today.getMonth(), 1);
+
+// Alte Events vor heute entfernen
+document.querySelectorAll('.event[data-date]').forEach(el => {
+  const d = el.getAttribute('data-date');
+  if (!d) return;
+  const eventDate = new Date(d + "T00:00:00");
+  if (eventDate < today) el.remove();
+});
+
+// Hilfsfunktion: alle Event-Daten sammeln
+function getEventDates() {
+  const dates = new Set();
+  document.querySelectorAll('.event[data-date]').forEach(el => {
+    const d = el.getAttribute('data-date');
+    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
+  });
+  return dates;
+}
+
+// Kalender rendern
+function renderCalendar() {
+  const eventDates = getEventDates();
+  const y = view.getFullYear();
+  const m = view.getMonth();
+
+  monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+
+  grid.innerHTML = '';
+
+  // Wochentage
+  for (const w of DOW) {
+    const el = document.createElement('div');
+    el.className = 'dow';
+    el.textContent = w;
+    grid.appendChild(el);
+  }
+
+  const first = new Date(y, m, 1);
+  const startOffset = (first.getDay() + 6) % 7; // Montag-basiert
+  const daysInMonth = new Date(y, m+1, 0).getDate();
+
+  // Leere Zellen bis Monatsanfang
+  for (let i=0; i<startOffset; i++){
+    const b = document.createElement('div');
+    b.className='cell';
+    grid.appendChild(b);
+  }
+
+  // Tage mit Events
+  for (let d=1; d<=daysInMonth; d++){
+    const el = document.createElement('div');
+    el.className = 'cell';
+    el.dataset.date = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+    const day = document.createElement('div');
+    day.className='day';
+    day.textContent = d;
+    el.appendChild(day);
+
+    if (eventDates.has(el.dataset.date)) {
+      el.classList.add('eventful');
+      const dot = document.createElement('div');
+      dot.className='dot';
+      el.appendChild(dot);
+      el.title = 'Veranstaltung';
+    }
+
+    grid.appendChild(el);
+  }
+
+  attachTooltipEvents(); // Tooltip für neue Zellen
+}
+
+// Tooltip-Funktion
+function attachTooltipEvents() {
+  document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
+    // Desktop: hover
+    cell.onmouseenter = () => {
+      showTooltip(cell);
+    };
+    cell.onmousemove = (e) => {
+      moveTooltipLeftOfMouse(e);
+    };
+    cell.onmouseleave = () => {
+      tooltip.style.display = 'none';
+    };
+
+    // Mobile: Touch
+    cell.ontouchstart = () => {
+      showTooltip(cell);
+    };
+  });
+}
+
+// Tooltip-Inhalt setzen und anzeigen
 function showTooltip(cell) {
   const dateStr = cell.dataset.date;
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
   if (!eventEl) return;
 
-  const dateText = eventEl.querySelector('.date').innerText || '';
+  let dateText = eventEl.querySelector('.date').innerText || '';
   const colonIndex = dateText.indexOf(':');
   const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
 
-  const starttime = eventEl.querySelector('.starttime')?.innerText || '';
-  const bands = eventEl.querySelector('.bands')?.innerText || '';
-
-  tooltip.innerHTML = `
-    <div class="tooltip-title">${titleOnly}</div>
-    <div style="height:0.5rem;"></div>
-    <div class="tooltip-row">
-      <div class="tooltip-starttime">${starttime}</div>
-      <div class="tooltip-bands">${bands}</div>
-    </div>
-  `;
+  tooltip.textContent = titleOnly;
   tooltip.style.display = 'block';
 }
 
+// Tooltip links von der Maus positionieren
 function moveTooltipLeftOfMouse(e) {
   const tooltipWidth = tooltip.offsetWidth;
-  let leftPos = e.pageX - tooltipWidth - 10;
-  if (leftPos < 5) leftPos = 5;
+  let leftPos = e.pageX - tooltipWidth - 10; // links von Maus
+  if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
   tooltip.style.top = (e.pageY + 10) + 'px';
   tooltip.style.left = leftPos + 'px';
 }
 
-document.addEventListener('click', e => {
+// Tooltip schließen, wenn Klick/Tap außerhalb
+document.addEventListener('touchstart', (e) => {
+  const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
+  if (!isTooltipOrCell) tooltip.style.display = 'none';
+});
+document.addEventListener('click', (e) => {
   const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
   if (!isTooltipOrCell) tooltip.style.display = 'none';
 });
 
-window.addEventListener('orientationchange', () => { tooltip.style.display='none'; });
-window.addEventListener('resize', () => { tooltip.style.display='none'; });
+// Tooltip bei Orientation-Change oder Resize ausblenden
+function hideTooltipOnOrientationChange() {
+  tooltip.style.display = 'none';
+}
+window.addEventListener('orientationchange', hideTooltipOnOrientationChange);
+window.addEventListener('resize', hideTooltipOnOrientationChange);
+
+// Buttons
+prevBtn.addEventListener('click', () => { 
+  view.setMonth(view.getMonth()-1); 
+  renderCalendar(); 
+});
+nextBtn.addEventListener('click', () => { 
+  view.setMonth(view.getMonth()+1); 
+  renderCalendar(); 
+});
+
+// Kontaktformular
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const to = "vgruppe-g16@mail36.net";
+  const name = document.getElementById('name').value.trim();
+  const from = document.getElementById('email').value.trim();
+  const msg = document.getElementById('msg').value.trim();
+  const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
+  const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
+  window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+});
+
+// Initial render
+renderCalendar();
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
