@@ -898,58 +898,63 @@ function renderCalendar() {
 // Tooltip-Funktion
 function attachTooltipEvents() {
   document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
+    // Desktop: hover
     cell.onmouseenter = () => {
-      const dateStr = cell.dataset.date;
-      const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
-      if (!eventEl) return;
-
-      // Nur Überschrift ohne Datum und Doppelpunkt
-      let dateText = eventEl.querySelector('.date').innerText || '';
-      const colonIndex = dateText.indexOf(':');
-      const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
-
-      tooltip.textContent = titleOnly;
-      tooltip.style.display = 'block';
+      showTooltip(cell);
     };
-
     cell.onmousemove = (e) => {
-      const tooltipWidth = tooltip.offsetWidth;
-      let leftPos = e.pageX - tooltipWidth - 10; // links von Maus, 10px Abstand
-      if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
-      tooltip.style.top = (e.pageY + 10) + 'px';
-      tooltip.style.left = leftPos + 'px';
+      moveTooltipLeftOfMouse(e);
     };
-
     cell.onmouseleave = () => {
       tooltip.style.display = 'none';
     };
 
-    // Touch auf mobile Geräten zeigt Tooltip und verschwindet bei Tap draußen
+    // Mobile: Touch
     cell.ontouchstart = () => {
-      const dateStr = cell.dataset.date;
-      const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
-      if (!eventEl) return;
-
-      let dateText = eventEl.querySelector('.date').innerText || '';
-      const colonIndex = dateText.indexOf(':');
-      const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
-
-      tooltip.textContent = titleOnly;
-      tooltip.style.display = 'block';
+      showTooltip(cell);
     };
   });
 }
 
-// Tooltip auf Smartphones / Klicks schließen, wenn außerhalb
+// Tooltip-Inhalt setzen und anzeigen
+function showTooltip(cell) {
+  const dateStr = cell.dataset.date;
+  const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
+  if (!eventEl) return;
+
+  let dateText = eventEl.querySelector('.date').innerText || '';
+  const colonIndex = dateText.indexOf(':');
+  const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
+
+  tooltip.textContent = titleOnly;
+  tooltip.style.display = 'block';
+}
+
+// Tooltip links von der Maus positionieren
+function moveTooltipLeftOfMouse(e) {
+  const tooltipWidth = tooltip.offsetWidth;
+  let leftPos = e.pageX - tooltipWidth - 10; // links von Maus
+  if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
+  tooltip.style.top = (e.pageY + 10) + 'px';
+  tooltip.style.left = leftPos + 'px';
+}
+
+// Tooltip schließen, wenn Klick/Tap außerhalb
 document.addEventListener('touchstart', (e) => {
   const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
   if (!isTooltipOrCell) tooltip.style.display = 'none';
 });
-
 document.addEventListener('click', (e) => {
   const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
   if (!isTooltipOrCell) tooltip.style.display = 'none';
 });
+
+// Tooltip bei Orientation-Change oder Resize ausblenden
+function hideTooltipOnOrientationChange() {
+  tooltip.style.display = 'none';
+}
+window.addEventListener('orientationchange', hideTooltipOnOrientationChange);
+window.addEventListener('resize', hideTooltipOnOrientationChange);
 
 // Buttons
 prevBtn.addEventListener('click', () => { 
