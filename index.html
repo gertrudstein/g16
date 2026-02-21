@@ -378,28 +378,27 @@ textarea {
 }
 
 @media (max-width: 1023px) {
-  .cal-wrapper .cal {
+
+  .cal-contact-wrapper {
     display: flex;
     flex-direction: column;
-    height: auto; /* nicht fixieren */
   }
 
-  .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.6rem;
-    height: auto; /* automatisch */
-    grid-auto-rows: minmax(3rem, auto); 
-}
-    .cell {
-    min-height: 3.5rem;     /* zusätzlich sicherstellen */
-    max-height: 3.5rem;
+  .cal-contact-wrapper .cal-wrapper {
+    order: 1;
   }
 
-@media (max-width: 600px) {
-  .cell {
-    min-height: 3rem; /* optional: Mindesthöhe, aber nicht kleiner */
+  .cal-contact-wrapper .contact {
+    order: 2;
   }
+
+  .event:first-of-type + .notice {
+    margin-top: 2rem;  /* Abstand nur hier */
+  }
+  
+  .notice:last-of-type + .event {
+        margin-top: 2rem !important;
+    }
 }
 
 @media (max-width: 700px) {
@@ -413,7 +412,7 @@ textarea {
   .cal-contact-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 40px;
     align-items: flex-start;
     margin-top: 2rem;
   }
@@ -433,11 +432,11 @@ textarea {
   }
 
   .cal-grid {
-  grid-auto-rows: 3.5rem;
+    flex: 1;
   }
 }
 
-@media (max-width: 600px)  {
+@media (max-width: 600px) {
   html {
     font-size: 68%;
   }
@@ -713,7 +712,7 @@ Einlass: 20:00  Bands: 21:00
 <article class="event" data-date="2026-03-28" id="event-2026-03-28">
           <div class="date">28.03.2026: Subardo Spring Edition</div>
           <div class="content">
-Jungle/Drum'n'Bass/Dubstep/Bassmusic:
+Jungle/Drum'n'Bass/Dubstep/Bassmusic by:
 Cuepric b2b NOVALU
 DjBadshape
 EL P
@@ -722,7 +721,7 @@ Heftique
 Mary Jane
 YouDid
 
-Downtempo/Bass/Breaks/House/Electro/Techno: 
+Downtempo/Bass/Breaks/House/Electro/Techno by: 
 Derrick
 Eni T           
 Lars Goldammer b2b Lichtschalter
