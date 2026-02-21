@@ -446,8 +446,9 @@ textarea {
     overflow-x: hidden;           /* verhindert horizontalen Scroll */
   }
   footer {
-    transform: scale(0.7);  /* Footer kleiner machen */
-    transform-origin: top center;
+    position: relative;  /* Footer außerhalb von transformierter Fläche */
+    transform: none;     /* Keine zusätzliche Skalierung */
+    width: 100%;
   }
 }
   
