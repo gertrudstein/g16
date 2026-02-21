@@ -899,34 +899,43 @@ function renderCalendar() {
 function attachTooltipEvents() {
   document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
     // Desktop: hover
-    cell.onmouseenter = () => {
-      showTooltip(cell);
-    };
-    cell.onmousemove = (e) => {
-      moveTooltipLeftOfMouse(e);
-    };
-    cell.onmouseleave = () => {
-      tooltip.style.display = 'none';
-    };
+    cell.onmouseenter = () => { showTooltip(cell); };
+    cell.onmousemove = (e) => { moveTooltipLeftOfMouse(e); };
+    cell.onmouseleave = () => { tooltip.style.display = 'none'; };
 
     // Mobile: Touch
-    cell.ontouchstart = () => {
-      showTooltip(cell);
-    };
+    cell.ontouchstart = () => { showTooltip(cell); };
   });
 }
 
-// Tooltip-Inhalt setzen und anzeigen
+// Tooltip-Inhalt setzen und anzeigen (Überschrift + Einlass + Bandszeit)
 function showTooltip(cell) {
   const dateStr = cell.dataset.date;
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
   if (!eventEl) return;
 
+  // Nur Überschrift ohne Datum/Doppelpunkt
   let dateText = eventEl.querySelector('.date').innerText || '';
   const colonIndex = dateText.indexOf(':');
   const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
 
-  tooltip.textContent = titleOnly;
+  // Einlass + Bands-Zeile aus .content
+  let timing = '';
+  const contentEl = eventEl.querySelector('.content');
+  if (contentEl) {
+    const lines = contentEl.innerText
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l.length > 0);
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (/Einlass|Bands/i.test(lines[i])) {
+        timing = lines[i];
+        break;
+      }
+    }
+  }
+
+  tooltip.textContent = titleOnly + (timing ? '\n' + timing : '');
   tooltip.style.display = 'block';
 }
 
@@ -934,7 +943,7 @@ function showTooltip(cell) {
 function moveTooltipLeftOfMouse(e) {
   const tooltipWidth = tooltip.offsetWidth;
   let leftPos = e.pageX - tooltipWidth - 10; // links von Maus
-  if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
+  if (leftPos < 5) leftPos = 5;
   tooltip.style.top = (e.pageY + 10) + 'px';
   tooltip.style.left = leftPos + 'px';
 }
