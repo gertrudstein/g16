@@ -330,6 +330,20 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+  .cell-tooltip {
+  position: absolute;
+  background: #141414;
+  color: #e1e1e1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #262626;
+  pointer-events: none;
+  white-space: pre-line;
+  z-index: 1000;
+  display: none;
+  max-width: 250px;
+  font-size: 0.9rem;
+}
 
 .cal-contact-wrapper .cal-wrapper { order: 1; }
 .cal-contact-wrapper .contact { order: 2; }
@@ -795,100 +809,156 @@ Einlass: 20:00  DJ sets: 21:00
   <a href="impressum.html">Impressum</a> ·
   <a href="kontakte.html">Kontakte</a>
 </footer>
+  <div id="cellTooltip" class="cell-tooltip"></div>
   
-  <script>
-    const monthLabel = document.getElementById('monthLabel');
-    const grid = document.getElementById('grid');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+ <script>
+  const monthLabel = document.getElementById('monthLabel');
+  const grid = document.getElementById('grid');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const DOW = ['Mo','Di','Mi','Do','Fr','Sa','So'];
 
-    const today = new Date();
-  
-    today.setHours(0,0,0,0);
+  const today = new Date();
+  today.setHours(0,0,0,0);
 
-    let view = new Date(today.getFullYear(), today.getMonth(), 1);
+  let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
+  // Alte Events entfernen, die vor heute liegen
+  document.querySelectorAll('.event[data-date]').forEach(el => {
+    const d = el.getAttribute('data-date');
+    if (!d) return;
+    const eventDate = new Date(d + "T00:00:00");
+    if (eventDate < today) el.remove();
+  });
+
+  function getEventDates(){
+    const dates = new Set();
     document.querySelectorAll('.event[data-date]').forEach(el => {
       const d = el.getAttribute('data-date');
-      if (!d) return;
-      const eventDate = new Date(d + "T00:00:00");
-      if (eventDate < today) el.remove();
+      if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
     });
+    return dates;
+  }
 
-    function getEventDates(){
-      const dates = new Set();
-      document.querySelectorAll('.event[data-date]').forEach(el => {
-        const d = el.getAttribute('data-date');
-        if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
+  function renderCalendar(){
+    const eventDates = getEventDates();
+    const y = view.getFullYear();
+    const m = view.getMonth();
+
+    monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+
+    grid.innerHTML = '';
+    for (const w of DOW){
+      const el = document.createElement('div');
+      el.className = 'dow';
+      el.textContent = w;
+      grid.appendChild(el);
+    }
+
+    const first = new Date(y, m, 1);
+    const startOffset = (first.getDay() + 6) % 7; // Montag basiert
+    const daysInMonth = new Date(y, m+1, 0).getDate();
+
+    for (let i=0;i<startOffset;i++){
+      const b = document.createElement('div');
+      b.className='cell';
+      grid.appendChild(b);
+    }
+
+    for (let d=1; d<=daysInMonth; d++){
+      const el = document.createElement('div');
+      el.className = 'cell';
+
+      const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+      const day = document.createElement('div');
+      day.className='day';
+      day.textContent = d;
+      el.appendChild(day);
+
+      if (eventDates.has(dateStr)){
+        el.classList.add('eventful');
+        const dot = document.createElement('div');
+        dot.className='dot';
+        el.appendChild(dot);
+        el.title = 'Veranstaltung';
+      }
+
+      grid.appendChild(el);
+    }
+  }
+
+  prevBtn.addEventListener('click', () => { 
+    view.setMonth(view.getMonth()-1); 
+    renderCalendar(); 
+    attachTooltipEvents(); 
+  });
+  nextBtn.addEventListener('click', () => { 
+    view.setMonth(view.getMonth()+1); 
+    renderCalendar(); 
+    attachTooltipEvents(); 
+  });
+
+  renderCalendar();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Kontaktformular
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const to = "vgruppe-g16@mail36.net";
+    const name = document.getElementById('name').value.trim();
+    const from = document.getElementById('email').value.trim();
+    const msg = document.getElementById('msg').value.trim();
+    const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
+    const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  });
+
+  // === TOOLTIP FÜR KALENDERZELLEN ===
+  const tooltip = document.getElementById('cellTooltip');
+
+  function attachTooltipEvents() {
+    document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
+      cell.addEventListener('mouseenter', () => {
+        const dateStr = getDateFromCell(cell);
+        const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
+        if (!eventEl) return;
+
+        // Titel: alles nach dem Doppelpunkt
+        const dateText = eventEl.querySelector('.date').innerText || '';
+        const titleLine = dateText.includes(':') ? dateText.split(':')[1].trim() : dateText;
+
+        // Event-Text
+        const contentText = eventEl.querySelector('.content').innerText.trim();
+
+        tooltip.textContent = `${titleLine}\n${contentText}`;
+        tooltip.style.display = 'block';
       });
-      return dates;
-    }
 
-    function renderCalendar(){
-      const eventDates = getEventDates();
-      const y = view.getFullYear();
-      const m = view.getMonth();
+      cell.addEventListener('mousemove', e => {
+        tooltip.style.top = (e.pageY + 10) + 'px';
+        tooltip.style.left = (e.pageX + 10) + 'px';
+      });
 
-      monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+      cell.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  }
 
-      grid.innerHTML = '';
-      for (const w of DOW){
-        const el = document.createElement('div');
-        el.className = 'dow';
-        el.textContent = w;
-        grid.appendChild(el);
-      }
+  function getDateFromCell(cell) {
+    const dayEl = cell.querySelector('.day');
+    if (!dayEl) return '';
+    const day = String(dayEl.textContent).padStart(2,'0');
+    const monthYearText = monthLabel.textContent.split(' ');
+    const month = String(new Date(`${monthYearText[0]} 1, ${monthYearText[1]}`).getMonth() + 1).padStart(2,'0');
+    const year = monthYearText[1];
+    return `${year}-${month}-${day}`;
+  }
 
-      const first = new Date(y, m, 1);
-      const startOffset = (first.getDay() + 6) % 7; // Monday-based
-      const daysInMonth = new Date(y, m+1, 0).getDate();
-
-      for (let i=0;i<startOffset;i++){
-        const b = document.createElement('div');
-        b.className='cell';
-        grid.appendChild(b);
-      }
-
-      for (let d=1; d<=daysInMonth; d++){
-        const el = document.createElement('div');
-        el.className = 'cell';
-
-        const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-
-        const day = document.createElement('div');
-        day.className='day';
-        day.textContent = d;
-        el.appendChild(day);
-
-        if (eventDates.has(dateStr)){
-          el.classList.add('eventful');
-          const dot = document.createElement('div');
-          dot.className='dot';
-          el.appendChild(dot);
-          el.title = 'Veranstaltung';
-        }
-
-        grid.appendChild(el);
-      }
-    }
-
-    prevBtn.addEventListener('click', () => { view.setMonth(view.getMonth()-1); renderCalendar(); });
-    nextBtn.addEventListener('click', () => { view.setMonth(view.getMonth()+1); renderCalendar(); });
-
-    renderCalendar();
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const to = "vgruppe-g16@mail36.net";
-      const name = document.getElementById('name').value.trim();
-      const from = document.getElementById('email').value.trim();
-      const msg = document.getElementById('msg').value.trim();
-      const subject = encodeURIComponent(`[G16] Nachricht von ${name || 'Website'}`);
-      const body = encodeURIComponent((from ? `Absender: ${from}\n\n` : '') + msg);
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
- });
+  // Tooltip bei initialem Rendern anbringen
+  attachTooltipEvents();
 
    </script>
 </body>
