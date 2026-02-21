@@ -381,17 +381,27 @@ textarea {
 
   .cal-contact-wrapper {
     display: flex;
-    flex-direction: column; /* untereinander stapeln */
-    gap: 20px;              /* Abstand zwischen Kalender und Kontakt */
-    align-items: stretch;   /* volle Breite der Kinder */
+    flex-direction: column; 
+    gap: 20px;              
+    align-items: stretch;   
     margin-top: 2rem;
   }
 
   .cal-contact-wrapper .contact,
   .cal-contact-wrapper .cal-wrapper {
-    flex: 1;             /* keine flexible Höhe, nur natürliche Höhe */
+    flex: 1;                
     margin-top: 0;
     order: 0;
+  }
+
+  .cal-wrapper .cal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;           
+  }
+
+  .cal-grid {
+    flex: 1;                
   }
 }
 
