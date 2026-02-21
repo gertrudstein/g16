@@ -437,7 +437,16 @@ textarea {
   }
 }
 
-
+@media (orientation: landscape) {
+  body {
+    transform: scale(0.68);      /* Seite verkleinern */
+    transform-origin: top left;   /* Skalierung startet oben links */
+    width: 147%;                  /* kompensiert die Skalierung */
+    height: 147%;
+    overflow-x: hidden;           /* verhindert horizontalen Scroll */
+  }
+}
+  
 @media (max-width: 600px) {
   html {
     font-size: 68%;
