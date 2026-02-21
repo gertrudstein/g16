@@ -334,14 +334,14 @@ textarea {
   position: absolute;
   background: #141414;
   color: #e1e1e1;
-  padding: 0.5rem 0.75rem;
+  padding: 1rem 1.5rem;
   border-radius: 6px;
   border: 1px solid #262626;
   pointer-events: none;
   white-space: pre-line;
   z-index: 1000;
   display: none;
-  max-width: 250px;
+  max-width: 500px;
   font-size: 0.9rem;
 }
 
@@ -928,9 +928,12 @@ function attachTooltipEvents() {
       tooltip.style.display = 'block';
     };
 
-    cell.onmousemove = (e) => {
-      tooltip.style.top = (e.pageY + 10) + 'px';
-      tooltip.style.left = (e.pageX + 10) + 'px';
+  cell.onmousemove = (e) => {
+  const tooltipWidth = tooltip.offsetWidth;       // aktuelle Breite des Tooltips
+  let leftPos = e.pageX - tooltipWidth - 10;     // links von Maus, 10px Abstand
+  if (leftPos < 5) leftPos = 5;                  // verhindert dass Tooltip aus dem Bildschirm ragt
+  tooltip.style.top = (e.pageY + 10) + 'px';
+  tooltip.style.left = leftPos + 'px';
     };
 
     cell.onmouseleave = () => {
