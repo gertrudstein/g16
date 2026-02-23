@@ -99,11 +99,18 @@ footer a:hover{
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
+
   body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .wrap {
     transform: scale(0.68);
     transform-origin: top center;
-    width: 147%; 
   }
+
 }
   
 @media (max-width: 600px){
