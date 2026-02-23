@@ -864,12 +864,11 @@ function showTooltip(cell) {
   const start = eventEl.querySelector('.start')?.innerText || '';
 
   tooltip.innerHTML = `
-    <strong>${titleText}</strong>
-    <div style="height:0.3rem;"></div>
-    <div style="display:flex; gap:1rem; color:var(--muted);">
-      ${doors ? `<div>${doors}</div>` : ''}
-      ${start ? `<div>${start}</div>` : ''}
-    </div>
+  <strong style="color:var(--red); font-size:1rem; line-height:1.5;">${titleText}</strong>
+  <div style="display:flex; gap:1rem; color:var(--muted); font-size:1rem; line-height:1.5;">
+    ${doors ? `<div>${doors}</div>` : ''}
+    ${start ? `<div>${start}</div>` : ''}
+  </div>
   `;
 
   tooltip.style.display = 'block';
