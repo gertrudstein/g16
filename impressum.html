@@ -98,18 +98,16 @@ footer a:hover{
   font-size: 1.15rem; 
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) and (orientation: landscape){
   html{ font-size: 68%; }
   h1{ font-size: 1.5rem; }
   .wrap{ padding: 0.8rem; }
   .box{ padding: 1rem; }
 }
 
-  @media (max-width: 600px) and (orientation: landscape) {
+@media (max-width: 900px) and (orientation: landscape) {
   body {
-    transform: scale(0.68);       /* skaliert die gesamte Seite */
-    transform-origin: top left;   /* Fixpunkt oben links */
-    width: 147%;                  /* kompensiert das verkleinerte Scaling */
+    font-size: 68%;
   }
 </style>
 </head>
