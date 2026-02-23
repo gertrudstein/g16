@@ -855,7 +855,6 @@ function showTooltip(cell) {
 
   let titleText = eventEl.querySelector('.date')?.innerText || '';
 
-  // Datum + Doppelpunkt entfernen
   const colonIndex = titleText.indexOf(':');
   if (colonIndex !== -1) {
     titleText = titleText.slice(colonIndex + 1).trim();
@@ -867,7 +866,7 @@ function showTooltip(cell) {
   tooltip.innerHTML = `
     <strong>${titleText}</strong>
     <div style="height:0.6rem;"></div>
-    <div style="display:flex; gap:1rem;">
+    <div style="display:flex; gap:1rem; color:#ffffff;">
       ${doors ? `<div>${doors}</div>` : ''}
       ${start ? `<div>${start}</div>` : ''}
     </div>
