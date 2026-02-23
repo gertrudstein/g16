@@ -104,6 +104,13 @@ footer a:hover{
   .wrap{ padding: 0.8rem; }
   .box{ padding: 1rem; }
 }
+
+  @media (max-width: 600px) and (orientation: landscape) {
+  body {
+    transform: scale(0.68);       /* skaliert die gesamte Seite */
+    transform-origin: top left;   /* Fixpunkt oben links */
+    width: 147%;                  /* kompensiert das verkleinerte Scaling */
+  }
 </style>
 </head>
 
