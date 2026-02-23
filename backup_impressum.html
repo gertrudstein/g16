@@ -25,6 +25,10 @@
 
 *{ box-sizing: border-box; }
 
+html {
+  font-size: 100%; /* Standardgröße, skaliert bei Landscape */
+}
+
 body{
   margin:0;
   font-family: 'Typo1915', monospace;
@@ -61,6 +65,7 @@ h2{
 
 p{
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 a{
@@ -92,17 +97,28 @@ footer a:hover{
   text-decoration: underline;
 }
 
-  .red-heading {
+.red-heading {
   color: var(--red);
   font-weight: bold;
   font-size: 1.15rem; 
 }
 
+/* Portrait auf kleinen Bildschirmen */
 @media (max-width: 600px){
   html{ font-size: 68%; }
   h1{ font-size: 1.5rem; }
   .wrap{ padding: 0.8rem; }
   .box{ padding: 1rem; }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .box p,
+  .box a {
+    font-size: 0.5rem; /* Weiße Schrift kleiner */
+  }
+  .wrap { padding: 0.8rem; } /* optional: Box etwas kleiner */
+  /* Überschriften und Footer bleiben unverändert */
+
 }
 </style>
 </head>
@@ -110,9 +126,7 @@ footer a:hover{
 <body>
 <div class="wrap">
 
-  <div class="box" style="margin-bottom:1.5rem;"
-
-  <div class="box">
+  <div class="box" style="margin-bottom:1.5rem;">
     <h2 id="impressum">Impressum:</h2>
     <p>Angaben gemäß § 5 Digitale-Dienste-Gesetz:</p>
 
