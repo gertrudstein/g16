@@ -349,81 +349,6 @@ textarea {
 .cal-contact-wrapper .contact { order: 2; }
 
 @media (min-width: 1024px) {
-  /* Wrapper für Kalender + Kontakt nebeneinander */
-  .cal-contact-wrapper {
-    display: flex;
-    flex-direction: row;       /* Nebeneinander */
-    gap: 40px;                 /* Abstand zwischen den Spalten */
-    align-items: flex-start;   /* Oben ausrichten */
-    margin-top: 2rem;
-  }
-
-  /* Kontaktformular und Kalender gleichmäßig verteilen */
-  .cal-contact-wrapper .contact,
-  .cal-contact-wrapper .cal-wrapper {
-    flex: 1;                   /* Beide nehmen gleichen Platz ein */
-    margin-top: 0;             /* kein zusätzlicher Abstand */
-    order: 0;                   /* Reihenfolge wie im HTML */
-  }
-
-  /* Kalender-inhalt sauber anordnen */
-  .cal-wrapper .cal {
-    display: flex;
-    flex-direction: column;
-    height: auto;              /* Höhe richtet sich nach Inhalt */
-  }
-
-  .cal {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cal-grid {
-    flex: 1;
-  }
-
-  /* Events volle Breite im Kalender-Container */
-  #events .event {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-@media (max-width: 1023px) 
-  {
- 
-  .cal-contact-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cal-contact-wrapper .cal-wrapper {
-    order: 1;
-  }
-
-  .cal-contact-wrapper .contact {
-    order: 2;
-    margin-top: 0rem;
-  }
-
-  .event:first-of-type + .notice {
-    margin-top: 2rem;  /* Abstand nur hier */
-  }
-  
-  .notice:last-of-type + .event {
-        margin-top: 2rem !important;
-    }
-}
-
-@media (max-width: 700px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
-
   .cal-contact-wrapper {
     display: flex;
     flex-direction: row;
@@ -439,8 +364,8 @@ textarea {
     order: 0;
   }
 
-  .cal-wrapper .cal,
-  .cal {
+  .cal,
+  .cal-wrapper .cal {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -448,15 +373,66 @@ textarea {
 
   .cal-grid {
     flex: 1;
-   
+  }
+
+  #events .event {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cal-contact-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal-contact-wrapper .cal-wrapper {
+    order: 1;
+  }
+
+  .cal-contact-wrapper .contact {
+    order: 2;
+    margin-top: 0;
+  }
+
+  .notice:last-of-type + .event {
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px) and (orientation: landscape) {
+  .cal-contact-wrapper {
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+
+  .cal-contact-wrapper .contact,
+  .cal-contact-wrapper .cal-wrapper {
+    flex: 1;
+    margin-top: 0;
+    order: 0;
+  }
+
+  .cal,
+  .cal-wrapper .cal {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .cal-grid {
+    flex: 1;
   }
 
   .cell {
     min-height: 3.95rem;
+  }
 }
- }
-@media (max-width: 1023px) and (orientation: landscape) {
 
+@media (max-width: 1023px) and (orientation: landscape) {
   html {
     font-size: 68%;
   }
@@ -473,7 +449,13 @@ textarea {
     padding: 0.8rem;
   }
 }
-  
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   html {
     font-size: 68%;
@@ -488,13 +470,13 @@ textarea {
     font-size: 1.2rem;
   }
 
-  .notice + .notice {
-    margin-top: 2rem;
-  }
-
   .notice {
     margin: 2rem 0;
     padding: 0.9rem 1rem;
+  }
+
+  .notice + .notice {
+    margin-top: 2rem;
   }
 
   .notice:last-of-type {
@@ -543,7 +525,6 @@ textarea {
 }
 
 @media (max-width: 380px) {
-
   .ribbon h1 {
     font-size: 1rem;
   }
@@ -568,10 +549,9 @@ textarea {
     font-size: 0.7rem;
   }
 
-#events-head {
+  #events-head {
     margin-top: 2rem;
   }
-
 
 }
    
@@ -636,57 +616,6 @@ Verwendungszweck: muss das Wort "Spende" enthalten!</p>
     <!-- Veranstaltungen -->
     <section aria-labelledby="events-head">
       <div id="events">
-        <article class="event" data-date="2026-02-07" id="event-2026-02-07">
-          <div class="date">07.02.2026: Konzert</div>
-          <div class="content">
-Needful Things: Grindcore|Prag
-Controlled Existence: Grindcore|Prag
-Nidare: Post Blackmetal|Berlin
-The Hole: Grindcore|Leipzig
-
-Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
-
-        <article class="event" data-date="2026-02-14" id="event-2026-02-14">
-          <div class="date">14.02.2026: <s>WYRD•PÄNG RecordRelease</s></div>
-          <div class="content">
-Kein Bock auf social media!
-            
-<s>Packung: HC Punk</s>
-<s>Ecstasphere: Metallic IDM</s>
-<s>Oliotronix: 8bit glitch</s>
-<s>DerWarst: Circuit Bent Noise</s>
-<s>Skam: Mutant Acid</s>
-<s>CancelWashington: Hit³</s>
-
-<s>DJ Sets:</s>
-<s>Enuit B2B Hektor Lack</s>
-<s>Caedes</s>
-<s>LUI</s>
-<s>Zirkuskind</s>
-<s>FRX</s>
-<s>Fugly</s>
-<s>Einemillion</s>
-
-<s>Einlass: 21:30</s>  <s>Bands: 22:30</s>
-          </div>
-        </article>
-
-        <article class="event" data-date="2026-02-21" id="event-2026-02-21">
-          <div class="date">21.02.2026: Konzert - Soli Abend -</div>
-          <div class="content">
-Krav Boca: Punk Rap|France|Greek|Morocco
-Flesia: Black Metal|Leipzig
-
-Aftershow/ DJ sets:            
-MXXLXCC: 90s Feelgood & 2000er Dance Hits
-Rita Riot: Punk Rock Disco Madness
-
-Einlass: 20:00  Bands: 21:00
-          </div>
-        </article>
-
         <article class="event" data-date="2026-02-28" id="event-2026-02-28">
           <div class="date">28.02.2026: HEAVY ROOTATION</div>
           <div class="content">
