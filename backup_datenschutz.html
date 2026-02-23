@@ -34,7 +34,7 @@ body{
 }
 
 .wrap{
-  max-width: 800px;
+  max-width: 700px;
   margin: 2rem auto;
   padding: 1rem;
 }
@@ -74,7 +74,6 @@ a:hover{
   text-decoration: underline;
 }
 
-/* Footer */
 footer{
   color: var(--muted);
   text-align: center;
@@ -98,6 +97,12 @@ footer a:hover{
   font-size: 1.15rem; 
 }
 
+@media (min-width: 1200px) {
+  html {
+    font-size: 75%;
+  }
+}
+
 @media (max-width: 600px){
   html{ font-size: 68%; }
   h1{ font-size: 1.5rem; }
@@ -108,10 +113,10 @@ footer a:hover{
   @media (max-width: 900px) and (orientation: landscape) {
   .box p,
   .box a {
-    font-size: 0.5rem; /* Weiße Schrift kleiner */
+    font-size: 0.5rem; 
   }
-  .wrap { padding: 0.8rem; } /* optional: Box etwas kleiner */
-  /* Überschriften und Footer bleiben unverändert */
+  .wrap { padding: 0.8rem; } 
+ 
 }
 </style>
 </head>
