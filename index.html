@@ -780,7 +780,7 @@ document.querySelectorAll('.event[data-date]').forEach(el => {
   if (eventDate < today) el.remove();
 });
 
-// Event-Daten sammeln (einmalig)
+// Event-Daten einmal sammeln
 const eventDates = new Set();
 document.querySelectorAll('.event[data-date]').forEach(el => {
   if (el.dataset.date) eventDates.add(el.dataset.date);
@@ -826,7 +826,6 @@ function renderCalendar() {
 
     if (eventDates.has(dateStr)) {
       el.classList.add('eventful');
-
       const dot = document.createElement('div');
       dot.className='dot';
       el.appendChild(dot);
@@ -841,11 +840,9 @@ function renderCalendar() {
 // Tooltip Events
 function attachTooltipEvents() {
   document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
-
     cell.onmouseenter = () => showTooltip(cell);
     cell.onmousemove = moveTooltipLeftOfMouse;
     cell.onmouseleave = () => tooltip.style.display = 'none';
-
     cell.ontouchstart = () => showTooltip(cell);
   });
 }
@@ -856,19 +853,24 @@ function showTooltip(cell) {
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
   if (!eventEl) return;
 
-  const titleText = eventEl.querySelector('.date')?.innerText || '';
+  let titleText = eventEl.querySelector('.date')?.innerText || '';
+
+  // Datum + Doppelpunkt entfernen
+  const colonIndex = titleText.indexOf(':');
+  if (colonIndex !== -1) {
+    titleText = titleText.slice(colonIndex + 1).trim();
+  }
 
   const doors = eventEl.querySelector('.doors')?.innerText || '';
   const start = eventEl.querySelector('.start')?.innerText || '';
 
-  let infoBlock = '';
-  if (doors) infoBlock += `<div>${doors}</div>`;
-  if (start) infoBlock += `<div>${start}</div>`;
-
   tooltip.innerHTML = `
     <strong>${titleText}</strong>
     <div style="height:0.6rem;"></div>
-    ${infoBlock}
+    <div style="display:flex; gap:1rem;">
+      ${doors ? `<div>${doors}</div>` : ''}
+      ${start ? `<div>${start}</div>` : ''}
+    </div>
   `;
 
   tooltip.style.display = 'block';
@@ -883,7 +885,7 @@ function moveTooltipLeftOfMouse(e) {
   tooltip.style.left = leftPos + 'px';
 }
 
-// Tooltip schließen bei Klick außerhalb
+// Tooltip schließen
 document.addEventListener('touchstart', (e) => {
   if (!e.target.closest('.cell.eventful') && !e.target.closest('#cellTooltip')) {
     tooltip.style.display = 'none';
