@@ -334,15 +334,15 @@ textarea {
   position: absolute;
   background: #141414;
   color: var(--red);
-  padding: 1rem 1.5rem;
+  padding: 0.35rem 0.5rem;
   border-radius: 6px;
   border: 1px solid #262626;
   pointer-events: none;
-  white-space: pre-line;
+  white-space: nowrap;
   z-index: 1000;
   display: none;
-  max-width: 500px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.1;
 }
 
 .cal-contact-wrapper .cal-wrapper { order: 1; }
@@ -623,6 +623,10 @@ Siren Sisters Soundsystem ls. MC Treasure Irie plus Paam Soundsystem:
 Reggae/Dub/Steppa/Bass|München|Grimma|Leipzig
 
 Einlass: 20:00  Bands: 21:00
+            <div class="meta">
+      <span class="doors">Einlass: 20:00</span>
+      <span class="start">Bands: 21:00</span>
+</div>         
 </div>
 </article>
 
@@ -643,7 +647,11 @@ moodus: Hypno Tek
 Malena Blum: Hardtechno 
 Vladislost: Techno
 
-Einlass: 20:00  Bands: 21:30      
+Einlass: 20:00  Bands: 21:30 
+                   <div class="meta">
+      <span class="doors">Einlass: 20:00</span>
+      <span class="start">Bands: 21:00</span>
+</div>  
           </div>
         </article>
 
@@ -654,6 +662,10 @@ Die Bockwurschtbude: Punk|Frankfurt Oder
 Dead Honeckers: Punk|Leipzig
 
 Einlass: 20:00  Bands: 21:00
+                   <div class="meta">
+      <span class="doors">Einlass: 20:00</span>
+      <span class="start">Bands: 21:00</span>
+</div>  
           </div>
         </article>
 
@@ -667,6 +679,10 @@ Aftershow/ DJ sets:
 tba
 
 Einlass: 20:00  Bands: 21:00
+                   <div class="meta">
+      <span class="doors">Einlass: 20:00</span>
+      <span class="start">Bands: 21:00</span>
+</div>  
           </div>
         </article>
 
@@ -690,7 +706,11 @@ Lauter Unfuch
 Semi-Legit
 Zukunft Pink
 
-Einlass: 20:00  DJ sets: 21:00      
+Einlass: 20:00  DJ sets: 21:00 
+                   <div class="meta">
+      <span class="doors">Einlass: 20:00</span>
+      <span class="start">DJ sets: 21:00</span>
+</div>  
           </div>
         </article>  
       </div>
@@ -752,35 +772,30 @@ const today = new Date();
 today.setHours(0,0,0,0);
 let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-// Alte Events vor heute entfernen
+// Alte Events entfernen
 document.querySelectorAll('.event[data-date]').forEach(el => {
-  const d = el.getAttribute('data-date');
+  const d = el.dataset.date;
   if (!d) return;
   const eventDate = new Date(d + "T00:00:00");
   if (eventDate < today) el.remove();
 });
 
-// Hilfsfunktion: alle Event-Daten sammeln
-function getEventDates() {
-  const dates = new Set();
-  document.querySelectorAll('.event[data-date]').forEach(el => {
-    const d = el.getAttribute('data-date');
-    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) dates.add(d);
-  });
-  return dates;
-}
+// Event-Daten einmal sammeln
+const eventDates = new Set();
+document.querySelectorAll('.event[data-date]').forEach(el => {
+  if (el.dataset.date) eventDates.add(el.dataset.date);
+});
 
 // Kalender rendern
 function renderCalendar() {
-  const eventDates = getEventDates();
   const y = view.getFullYear();
   const m = view.getMonth();
 
-  monthLabel.textContent = new Date(y, m, 1).toLocaleDateString('de-DE', { month:'long', year:'numeric' });
+  monthLabel.textContent = new Date(y, m, 1)
+    .toLocaleDateString('de-DE', { month:'long', year:'numeric' });
 
   grid.innerHTML = '';
 
-  // Wochentage
   for (const w of DOW) {
     const el = document.createElement('div');
     el.className = 'dow';
@@ -789,103 +804,101 @@ function renderCalendar() {
   }
 
   const first = new Date(y, m, 1);
-  const startOffset = (first.getDay() + 6) % 7; // Montag-basiert
+  const startOffset = (first.getDay() + 6) % 7;
   const daysInMonth = new Date(y, m+1, 0).getDate();
 
-  // Leere Zellen bis Monatsanfang
   for (let i=0; i<startOffset; i++){
     const b = document.createElement('div');
     b.className='cell';
     grid.appendChild(b);
   }
 
-  // Tage mit Events
   for (let d=1; d<=daysInMonth; d++){
     const el = document.createElement('div');
     el.className = 'cell';
-    el.dataset.date = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    el.dataset.date = dateStr;
 
     const day = document.createElement('div');
     day.className='day';
     day.textContent = d;
     el.appendChild(day);
 
-    if (eventDates.has(el.dataset.date)) {
+    if (eventDates.has(dateStr)) {
       el.classList.add('eventful');
       const dot = document.createElement('div');
       dot.className='dot';
       el.appendChild(dot);
-
     }
 
     grid.appendChild(el);
   }
 
-  attachTooltipEvents(); // Tooltip für neue Zellen
+  attachTooltipEvents();
 }
 
-// Tooltip-Funktion
+// Tooltip Events
 function attachTooltipEvents() {
   document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
-    // Desktop: hover
-    cell.onmouseenter = () => {
-      showTooltip(cell);
-    };
-    cell.onmousemove = (e) => {
-      moveTooltipLeftOfMouse(e);
-    };
-    cell.onmouseleave = () => {
-      tooltip.style.display = 'none';
-    };
-
-    // Mobile: Touch
-    cell.ontouchstart = () => {
-      showTooltip(cell);
-    };
+    cell.onmouseenter = () => showTooltip(cell);
+    cell.onmousemove = moveTooltipLeftOfMouse;
+    cell.onmouseleave = () => tooltip.style.display = 'none';
+    cell.ontouchstart = () => showTooltip(cell);
   });
 }
 
-// Tooltip-Inhalt setzen und anzeigen
+// Tooltip Inhalt
 function showTooltip(cell) {
   const dateStr = cell.dataset.date;
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
   if (!eventEl) return;
 
-  let dateText = eventEl.querySelector('.date').innerText || '';
-  const colonIndex = dateText.indexOf(':');
-  const titleOnly = colonIndex >= 0 ? dateText.slice(colonIndex + 1).trim() : dateText.trim();
+  let titleText = eventEl.querySelector('.date')?.innerText || '';
 
-  tooltip.textContent = titleOnly;
+  const colonIndex = titleText.indexOf(':');
+  if (colonIndex !== -1) {
+    titleText = titleText.slice(colonIndex + 1).trim();
+  }
+
+  const doors = eventEl.querySelector('.doors')?.innerText || '';
+  const start = eventEl.querySelector('.start')?.innerText || '';
+
+  tooltip.innerHTML = `
+  <strong style="color:var(--red); font-size:1rem; line-height:1.5;">${titleText}</strong>
+  <div style="display:flex; gap:1rem; color:var(--muted); font-size:1rem; line-height:1.5;">
+    ${doors ? `<div>${doors}</div>` : ''}
+    ${start ? `<div>${start}</div>` : ''}
+  </div>
+  `;
+
   tooltip.style.display = 'block';
 }
 
-// Tooltip links von der Maus positionieren
+// Tooltip Position
 function moveTooltipLeftOfMouse(e) {
   const tooltipWidth = tooltip.offsetWidth;
-  let leftPos = e.pageX - tooltipWidth - 10; // links von Maus
-  if (leftPos < 5) leftPos = 5;              // nicht aus dem Bildschirm ragen
+  let leftPos = e.pageX - tooltipWidth - 10;
+  if (leftPos < 5) leftPos = 5;
   tooltip.style.top = (e.pageY + 10) + 'px';
   tooltip.style.left = leftPos + 'px';
 }
 
-// Tooltip schließen, wenn Klick/Tap außerhalb
+// Tooltip schließen
 document.addEventListener('touchstart', (e) => {
-  const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
-  if (!isTooltipOrCell) tooltip.style.display = 'none';
+  if (!e.target.closest('.cell.eventful') && !e.target.closest('#cellTooltip')) {
+    tooltip.style.display = 'none';
+  }
 });
 document.addEventListener('click', (e) => {
-  const isTooltipOrCell = e.target.closest('.cell.eventful') || e.target.closest('#cellTooltip');
-  if (!isTooltipOrCell) tooltip.style.display = 'none';
+  if (!e.target.closest('.cell.eventful') && !e.target.closest('#cellTooltip')) {
+    tooltip.style.display = 'none';
+  }
 });
 
-// Tooltip bei Orientation-Change oder Resize ausblenden
-function hideTooltipOnOrientationChange() {
-  tooltip.style.display = 'none';
-}
-window.addEventListener('orientationchange', hideTooltipOnOrientationChange);
-window.addEventListener('resize', hideTooltipOnOrientationChange);
+window.addEventListener('orientationchange', () => tooltip.style.display = 'none');
+window.addEventListener('resize', () => tooltip.style.display = 'none');
 
-// Buttons
+// Monat wechseln
 prevBtn.addEventListener('click', () => { 
   view.setMonth(view.getMonth()-1); 
   renderCalendar(); 
@@ -907,7 +920,7 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 });
 
-// Initial render
+// Initial
 renderCalendar();
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
