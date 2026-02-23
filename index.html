@@ -338,11 +338,11 @@ textarea {
   border-radius: 6px;
   border: 1px solid #262626;
   pointer-events: none;
-  white-space: pre-line;
+  white-space: nowrap;
   z-index: 1000;
   display: none;
-  max-width: 500px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.1;
 }
 
 .cal-contact-wrapper .cal-wrapper { order: 1; }
@@ -865,7 +865,7 @@ function showTooltip(cell) {
 
   tooltip.innerHTML = `
     <strong>${titleText}</strong>
-    <div style="height:0.6rem;"></div>
+    <div style="height:0.3rem;"></div>
     <div style="display:flex; gap:1rem; color:var(--muted);">
       ${doors ? `<div>${doors}</div>` : ''}
       ${start ? `<div>${start}</div>` : ''}
