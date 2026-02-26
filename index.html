@@ -156,15 +156,15 @@ header {
 }
 
 .notice:first-of-type {
-  margin-top: 0; /* erste Box klebt am Header */
+  margin-top: 0;
 }
 
 .notice:last-of-type + .event {
-    margin-top: 2rem; /* Abstand zwischen letzter Notice und erstem Event */
+    margin-top: 2rem; 
 }
   
 .notice + .notice {
-  margin-top: 2rem; /* Abstand zur vorherigen Box */
+  margin-top: 2rem; 
 }
 .notice h2 { margin-top: 0; text-align: left; }
 .notice h2.centered { text-align: center; }
@@ -195,7 +195,7 @@ h2 {
 
   #events {
   display: grid;
-  gap: 2rem; /* Abstand zwischen Events */
+  gap: 2rem; 
 }
 
 .cal { margin-bottom: 2rem; user-select: none; }
@@ -636,7 +636,6 @@ MERCI BEAUCOUP 4 LIFE :*
   Es gibt grundsätzlich keinen Vorverkauf, wir können auch keine Karten an der Abendkasse reservieren.
 </div>
     
-    <!-- Veranstaltungen -->
     <section aria-labelledby="events-head">
       <div id="events">
         <article class="event" data-date="2026-02-28" id="event-2026-02-28">
@@ -803,7 +802,6 @@ const today = new Date();
 today.setHours(0,0,0,0);
 let view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-// Alte Events entfernen
 document.querySelectorAll('.event[data-date]').forEach(el => {
   const d = el.dataset.date;
   if (!d) return;
@@ -811,13 +809,11 @@ document.querySelectorAll('.event[data-date]').forEach(el => {
   if (eventDate < today) el.remove();
 });
 
-// Event-Daten einmal sammeln
 const eventDates = new Set();
 document.querySelectorAll('.event[data-date]').forEach(el => {
   if (el.dataset.date) eventDates.add(el.dataset.date);
 });
 
-// Kalender rendern
 function renderCalendar() {
   const y = view.getFullYear();
   const m = view.getMonth();
@@ -868,7 +864,6 @@ function renderCalendar() {
   attachTooltipEvents();
 }
 
-// Tooltip Events
 function attachTooltipEvents() {
   document.querySelectorAll('#grid .cell.eventful').forEach(cell => {
     cell.onmouseenter = () => showTooltip(cell);
@@ -878,7 +873,6 @@ function attachTooltipEvents() {
   });
 }
 
-// Tooltip Inhalt
 function showTooltip(cell) {
   const dateStr = cell.dataset.date;
   const eventEl = document.querySelector(`.event[data-date="${dateStr}"]`);
@@ -905,7 +899,6 @@ function showTooltip(cell) {
   tooltip.style.display = 'block';
 }
 
-// Tooltip Position
 function moveTooltipLeftOfMouse(e) {
   const tooltipWidth = tooltip.offsetWidth;
   let leftPos = e.pageX - tooltipWidth - 10;
@@ -914,7 +907,6 @@ function moveTooltipLeftOfMouse(e) {
   tooltip.style.left = leftPos + 'px';
 }
 
-// Tooltip schließen
 document.addEventListener('touchstart', (e) => {
   if (!e.target.closest('.cell.eventful') && !e.target.closest('#cellTooltip')) {
     tooltip.style.display = 'none';
@@ -929,7 +921,6 @@ document.addEventListener('click', (e) => {
 window.addEventListener('orientationchange', () => tooltip.style.display = 'none');
 window.addEventListener('resize', () => tooltip.style.display = 'none');
 
-// Monat wechseln
 prevBtn.addEventListener('click', () => { 
   view.setMonth(view.getMonth()-1); 
   renderCalendar(); 
@@ -939,7 +930,6 @@ nextBtn.addEventListener('click', () => {
   renderCalendar(); 
 });
 
-// Kontaktformular
 document.getElementById('contactForm').addEventListener('submit', (e) => {
   e.preventDefault();
   const to = "vgruppe-g16@mail36.net";
@@ -951,7 +941,6 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 });
 
-// Initial
 renderCalendar();
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
